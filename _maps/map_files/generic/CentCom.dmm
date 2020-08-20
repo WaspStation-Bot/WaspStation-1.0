@@ -2237,12 +2237,11 @@
 /turf/open/floor/plasteel,
 /area/tdome/arena_source)
 "fR" = (
-/obj/item/reagent_containers/food/snacks/egg/rainbow{
-	desc = "I bet you think you're pretty clever... well you are.";
-	name = "easter egg"
+/obj/machinery/abductor/experiment{
+	team_number = 2
 	},
-/turf/open/space/basic,
-/area/space)
+/turf/open/floor/plating/abductor,
+/area/abductor_ship)
 "fS" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 8
@@ -12874,6 +12873,14 @@
 "Di" = (
 /turf/closed/indestructible/riveted,
 /area/ai_multicam_room)
+"Dl" = (
+/obj/structure/overmap{
+	icon_state = "globe"
+	},
+/turf/open/overmap,
+/area/space{
+	color = "#FF9900"
+	})
 "Dq" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/turf_decal/stripes/line{
@@ -13715,6 +13722,13 @@
 /obj/structure/chair/stool,
 /turf/open/floor/carpet/black,
 /area/centcom/holding)
+"Fd" = (
+/obj/item/reagent_containers/food/snacks/egg/rainbow{
+	desc = "I bet you think you're pretty clever... well you are.";
+	name = "easter egg"
+	},
+/turf/open/space/basic,
+/area/space)
 "Fe" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/sashimi,
@@ -16709,19 +16723,19 @@
 /turf/open/floor/mineral/titanium/blue,
 /area/centcom/evac)
 "LK" = (
-/obj/machinery/abductor/experiment{
-	team_number = 2
-	},
-/turf/open/floor/plating/abductor,
-/area/abductor_ship)
-"LL" = (
 /obj/machinery/abductor/console{
 	team_number = 2
 	},
 /turf/open/floor/plating/abductor,
 /area/abductor_ship)
-"LM" = (
+"LL" = (
 /obj/machinery/abductor/pad{
+	team_number = 2
+	},
+/turf/open/floor/plating/abductor,
+/area/abductor_ship)
+"LM" = (
+/obj/machinery/computer/camera_advanced/abductor{
 	team_number = 2
 	},
 /turf/open/floor/plating/abductor,
@@ -16753,64 +16767,23 @@
 /turf/open/floor/mineral/titanium/blue,
 /area/centcom/evac)
 "LS" = (
-/obj/machinery/computer/camera_advanced/abductor{
-	team_number = 2
-	},
-/turf/open/floor/plating/abductor,
-/area/abductor_ship)
-"LT" = (
 /obj/effect/landmark/abductor/scientist{
 	team_number = 2
 	},
 /turf/open/floor/plating/abductor,
 /area/abductor_ship)
-"LU" = (
+"LT" = (
 /obj/effect/landmark/abductor/agent{
 	team_number = 2
 	},
 /turf/open/floor/plating/abductor,
 /area/abductor_ship)
-"LV" = (
+"LU" = (
 /turf/closed/indestructible/riveted,
 /area/awaymission/errorroom)
-"LW" = (
-/turf/closed/mineral/ash_rock,
-/area/awaymission/errorroom)
-"LX" = (
-/obj/structure/speaking_tile,
-/turf/closed/mineral/ash_rock,
-/area/awaymission/errorroom)
-"LY" = (
-/obj/item/rupee,
-/turf/open/floor/plating/ashplanet/wateryrock{
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
-	planetary_atmos = 0
-	},
-/area/awaymission/errorroom)
-"LZ" = (
-/turf/open/floor/plating/ashplanet/wateryrock{
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
-	planetary_atmos = 0
-	},
-/area/awaymission/errorroom)
-"Ma" = (
-/obj/effect/landmark/error,
-/turf/open/floor/plating/ashplanet/wateryrock{
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
-	planetary_atmos = 0
-	},
-/area/awaymission/errorroom)
 "Mb" = (
-/obj/structure/signpost/salvation{
-	icon = 'icons/obj/structures.dmi';
-	icon_state = "ladder10";
-	invisibility = 100
-	},
-/turf/open/floor/plating/ashplanet/wateryrock{
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
-	planetary_atmos = 0
-	},
-/area/awaymission/errorroom)
+/turf/open/overmap,
+/area/space)
 "Mc" = (
 /obj/structure/lattice,
 /turf/open/space,
@@ -17013,6 +16986,10 @@
 /obj/structure/window/reinforced,
 /turf/open/floor/carpet/black,
 /area/centcom/holding)
+"MP" = (
+/obj/structure/speaking_tile,
+/turf/closed/mineral/ash_rock,
+/area/awaymission/errorroom)
 "MR" = (
 /obj/machinery/light{
 	dir = 4
@@ -17232,6 +17209,12 @@
 	},
 /turf/open/floor/plasteel/grimy,
 /area/centcom/ferry)
+"Ot" = (
+/turf/open/floor/plating/ashplanet/wateryrock{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
+	planetary_atmos = 0
+	},
+/area/awaymission/errorroom)
 "OA" = (
 /turf/open/floor/plasteel/freezer,
 /area/syndicate_mothership/control)
@@ -17305,6 +17288,10 @@
 	},
 /turf/open/floor/plasteel/grimy,
 /area/centcom/ferry)
+"Pk" = (
+/obj/structure/overmap/dockable/main,
+/turf/open/overmap,
+/area/space)
 "Pl" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -17384,6 +17371,17 @@
 	dir = 9
 	},
 /area/centcom/terragov/bay)
+"PE" = (
+/obj/structure/signpost/salvation{
+	icon = 'icons/obj/structures.dmi';
+	icon_state = "ladder10";
+	invisibility = 100
+	},
+/turf/open/floor/plating/ashplanet/wateryrock{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
+	planetary_atmos = 0
+	},
+/area/awaymission/errorroom)
 "PG" = (
 /obj/machinery/door/airlock/external/glass,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -17568,6 +17566,9 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/centcom/holding)
+"QJ" = (
+/turf/closed/mineral/ash_rock,
+/area/awaymission/errorroom)
 "QL" = (
 /obj/structure/flora/ausbushes/fernybush,
 /obj/structure/flora/ausbushes/ppflowers,
@@ -17875,6 +17876,13 @@
 /obj/structure/closet/secure_closet/personal,
 /turf/open/floor/plasteel/dark,
 /area/centcom/supplypod)
+"SI" = (
+/obj/item/rupee,
+/turf/open/floor/plating/ashplanet/wateryrock{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
+	planetary_atmos = 0
+	},
+/area/awaymission/errorroom)
 "SN" = (
 /obj/structure/mopbucket,
 /obj/item/mop,
@@ -18160,6 +18168,13 @@
 /obj/machinery/reagentgrinder,
 /turf/open/floor/plasteel/cafeteria,
 /area/centcom/holding)
+"Vx" = (
+/obj/effect/landmark/error,
+/turf/open/floor/plating/ashplanet/wateryrock{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
+	planetary_atmos = 0
+	},
+/area/awaymission/errorroom)
 "Vz" = (
 /obj/machinery/vending/wallmed{
 	name = "Emergency NanoMed";
@@ -18749,6 +18764,9 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/centcom/ferry)
+"Zf" = (
+/turf/open/overmap/edge,
+/area/space)
 "Zh" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 1
@@ -19142,21 +19160,21 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
 "}
 (2,1,1) = {"
 aa
@@ -19375,6 +19393,17 @@ aa
 aa
 aa
 aa
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
 aa
 aa
 aa
@@ -19388,32 +19417,21 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-LV
-LV
-LV
-LV
-LV
-LV
-LV
-LV
-LV
-LV
-LV
-aa
+Zf
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Zf
 "}
 (3,1,1) = {"
 aa
@@ -19541,68 +19559,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 kK
 lg
 lB
 lX
 mr
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-kK
-lg
-lB
-lX
-mr
-aa
-aa
-aa
 aa
 aa
 aa
@@ -19659,18 +19620,75 @@ lX
 mr
 aa
 aa
-LV
-LW
-LW
-LW
-LW
-LW
-LW
-LW
-LW
-LW
-LV
 aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+kK
+lg
+lB
+lX
+mr
+aa
+aa
+LU
+QJ
+QJ
+QJ
+QJ
+QJ
+QJ
+QJ
+QJ
+QJ
+LU
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+Zf
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Zf
 "}
 (4,1,1) = {"
 aa
@@ -19797,13 +19815,13 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ko
+kL
+LM
+lC
+lY
+ms
+nb
 aa
 aa
 aa
@@ -19889,6 +19907,17 @@ lY
 ms
 nb
 aa
+LU
+QJ
+SI
+SI
+SI
+Ot
+SI
+SI
+SI
+QJ
+LU
 aa
 aa
 aa
@@ -19902,32 +19931,21 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-ko
-kL
-LS
-lC
-lY
-ms
-nb
-aa
-LV
-LW
-LY
-LY
-LY
-LZ
-LY
-LY
-LY
-LW
-LV
-aa
+Zf
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Zf
 "}
 (5,1,1) = {"
 aa
@@ -20054,13 +20072,13 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+kp
+fR
+li
+LS
+li
+mt
+nc
 aa
 aa
 aa
@@ -20146,6 +20164,17 @@ li
 mt
 nc
 aa
+LU
+QJ
+SI
+SI
+SI
+Ot
+SI
+SI
+SI
+QJ
+LU
 aa
 aa
 aa
@@ -20159,32 +20188,21 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-kp
-LK
-li
-LT
-li
-mt
-nc
-aa
-LV
-LW
-LY
-LY
-LY
-LZ
-LY
-LY
-LY
-LW
-LV
-aa
+Zf
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Pk
+Mb
+Mb
+Mb
+Zf
 "}
 (6,1,1) = {"
 aa
@@ -20311,13 +20329,13 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+kq
+LK
+li
+lE
+li
+mu
+nd
 aa
 aa
 aa
@@ -20403,6 +20421,17 @@ li
 mu
 nd
 aa
+LU
+QJ
+SI
+SI
+SI
+Ot
+SI
+SI
+SI
+QJ
+LU
 aa
 aa
 aa
@@ -20416,32 +20445,21 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-kq
-LL
-li
-lE
-li
-mu
-nd
-aa
-LV
-LW
-LY
-LY
-LY
-LZ
-LY
-LY
-LY
-LW
-LV
-aa
+Zf
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Dl
+Mb
+Mb
+Mb
+Mb
+Zf
 "}
 (7,1,1) = {"
 aa
@@ -20568,13 +20586,13 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+kr
+LL
+li
+LT
+li
+mv
+ne
 aa
 aa
 aa
@@ -20660,45 +20678,45 @@ li
 mv
 ne
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-kr
-LM
-li
 LU
-li
-mv
-ne
+QJ
+Ot
+Ot
+Ot
+Ot
+Ot
+Ot
+Ot
+QJ
+LU
 aa
-LV
-LW
-LZ
-LZ
-LZ
-LZ
-LZ
-LZ
-LZ
-LW
-LV
 aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+Zf
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Zf
 "}
 (8,1,1) = {"
 aa
@@ -20825,33 +20843,6 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 ks
 kP
 RQ
@@ -20859,36 +20850,6 @@ lG
 lj
 mw
 nf
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-ks
-kP
-RQ
-lG
-lj
-mw
-nf
-aa
-aa
-aa
 aa
 aa
 aa
@@ -20944,18 +20905,75 @@ lj
 mw
 nf
 aa
-LV
-LW
-LY
-LY
-LY
-LZ
-LZ
-LZ
-LZ
-LW
-LV
 aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ks
+kP
+RQ
+lG
+lj
+mw
+nf
+aa
+LU
+QJ
+SI
+SI
+SI
+Ot
+Ot
+Ot
+Ot
+QJ
+LU
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+Zf
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Zf
 "}
 (9,1,1) = {"
 aa
@@ -21083,68 +21101,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 kQ
 lk
 lH
 lZ
 mx
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-kQ
-lk
-lH
-lZ
-mx
-aa
-aa
-aa
 aa
 aa
 aa
@@ -21201,18 +21162,75 @@ lZ
 mx
 aa
 aa
-LV
-LX
-LY
-LY
-LY
-LZ
-LZ
-Ma
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+kQ
+lk
+lH
+lZ
+mx
+aa
+aa
+LU
+MP
+SI
+SI
+SI
+Ot
+Ot
+Vx
+PE
+QJ
+LU
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+Zf
 Mb
-LW
-LV
-aa
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Zf
 "}
 (10,1,1) = {"
 aa
@@ -21431,6 +21449,17 @@ aa
 aa
 aa
 aa
+LU
+QJ
+SI
+SI
+SI
+Ot
+Ot
+Ot
+Ot
+QJ
+LU
 aa
 aa
 aa
@@ -21444,32 +21473,21 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-LV
-LW
-LY
-LY
-LY
-LZ
-LZ
-LZ
-LZ
-LW
-LV
-aa
+Zf
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Zf
 "}
 (11,1,1) = {"
 aa
@@ -21688,6 +21706,17 @@ aa
 aa
 aa
 aa
+LU
+QJ
+Ot
+Ot
+Ot
+Ot
+Ot
+Ot
+Ot
+QJ
+LU
 aa
 aa
 aa
@@ -21701,32 +21730,21 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-LV
-LW
-LZ
-LZ
-LZ
-LZ
-LZ
-LZ
-LZ
-LW
-LV
-aa
+Zf
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Zf
 "}
 (12,1,1) = {"
 aa
@@ -21945,6 +21963,17 @@ aa
 aa
 aa
 aa
+LU
+QJ
+SI
+SI
+SI
+Ot
+SI
+SI
+SI
+QJ
+LU
 aa
 aa
 aa
@@ -21958,32 +21987,21 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-LV
-LW
-LY
-LY
-LY
-LZ
-LY
-LY
-LY
-LW
-LV
-aa
+Zf
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Zf
 "}
 (13,1,1) = {"
 aa
@@ -22202,6 +22220,17 @@ aa
 aa
 aa
 aa
+LU
+QJ
+SI
+SI
+SI
+Ot
+SI
+SI
+SI
+QJ
+LU
 aa
 aa
 aa
@@ -22215,32 +22244,21 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-LV
-LW
-LY
-LY
-LY
-LZ
-LY
-LY
-LY
-LW
-LV
-aa
+Zf
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Zf
 "}
 (14,1,1) = {"
 aa
@@ -22459,6 +22477,17 @@ aa
 aa
 aa
 aa
+LU
+QJ
+SI
+SI
+SI
+Ot
+SI
+SI
+SI
+QJ
+LU
 aa
 aa
 aa
@@ -22472,32 +22501,21 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-LV
-LW
-LY
-LY
-LY
-LZ
-LY
-LY
-LY
-LW
-LV
-aa
+Zf
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Zf
 "}
 (15,1,1) = {"
 aa
@@ -22716,6 +22734,17 @@ aa
 aa
 aa
 aa
+LU
+QJ
+QJ
+QJ
+QJ
+QJ
+QJ
+QJ
+QJ
+QJ
+LU
 aa
 aa
 aa
@@ -22729,32 +22758,21 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-LV
-LW
-LW
-LW
-LW
-LW
-LW
-LW
-LW
-LW
-LV
-aa
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
+Zf
 "}
 (16,1,1) = {"
 aa
@@ -22973,6 +22991,17 @@ aa
 aa
 aa
 aa
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
 aa
 aa
 aa
@@ -23000,17 +23029,6 @@ aa
 aa
 aa
 aa
-LV
-LV
-LV
-LV
-LV
-LV
-LV
-LV
-LV
-LV
-LV
 aa
 "}
 (17,1,1) = {"
@@ -23233,6 +23251,7 @@ aa
 aa
 aa
 aa
+Fd
 aa
 aa
 aa
@@ -23260,7 +23279,6 @@ aa
 aa
 aa
 aa
-fR
 aa
 aa
 aa
