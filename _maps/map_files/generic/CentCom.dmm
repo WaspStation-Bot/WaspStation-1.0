@@ -12873,13 +12873,6 @@
 "Di" = (
 /turf/closed/indestructible/riveted,
 /area/ai_multicam_room)
-"Dl" = (
-/obj/structure/overmap/planet/lavaland{
-	pixel_x = -1;
-	pixel_y = 1
-	},
-/turf/open/overmap,
-/area/space)
 "Dq" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/turf_decal/stripes/line{
@@ -13918,10 +13911,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/tdome/tdomeobserve)
-"FC" = (
-/obj/structure/overmap/event/emp,
-/turf/open/overmap,
-/area/space)
 "FD" = (
 /obj/machinery/shower{
 	dir = 4
@@ -16131,10 +16120,6 @@
 	},
 /turf/open/space/basic,
 /area/space)
-"Km" = (
-/obj/structure/overmap/event/emp/minor,
-/turf/open/overmap,
-/area/space)
 "Kn" = (
 /obj/structure/bookcase/random,
 /obj/effect/turf_decal/tile/neutral{
@@ -16788,9 +16773,6 @@
 "LU" = (
 /turf/closed/indestructible/riveted,
 /area/awaymission/errorroom)
-"Mb" = (
-/turf/open/overmap,
-/area/space)
 "Mc" = (
 /obj/structure/lattice,
 /turf/open/space,
@@ -17295,10 +17277,6 @@
 	},
 /turf/open/floor/plasteel/grimy,
 /area/centcom/ferry)
-"Pk" = (
-/obj/structure/overmap/main,
-/turf/open/overmap,
-/area/space)
 "Pl" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -18023,9 +18001,8 @@
 /turf/open/floor/wood,
 /area/centcom/holding)
 "TM" = (
-/obj/structure/overmap/event/meteor/major,
 /turf/open/overmap,
-/area/space)
+/area/overmap)
 "TT" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/fancy/donut_box,
@@ -18089,10 +18066,6 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/plasteel,
 /area/tdome/tdomeobserve)
-"Uv" = (
-/obj/structure/overmap/event/emp/major,
-/turf/open/overmap,
-/area/space)
 "Uw" = (
 /obj/machinery/light{
 	dir = 8
@@ -18116,10 +18089,6 @@
 	},
 /turf/open/floor/wood,
 /area/centcom/holding)
-"UK" = (
-/obj/structure/overmap/event/meteor/minor,
-/turf/open/overmap,
-/area/space)
 "UM" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -18387,10 +18356,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/centcom/ferry)
-"WU" = (
-/obj/structure/overmap/event/meteor,
-/turf/open/overmap,
-/area/space)
 "WV" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -19442,18 +19407,18 @@ aa
 aa
 Zf
 TM
-WU
-WU
-WU
-UK
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
 Zf
 "}
 (3,1,1) = {"
@@ -19698,19 +19663,19 @@ aa
 aa
 aa
 Zf
-WU
-WU
-UK
-UK
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
 Zf
 "}
 (4,1,1) = {"
@@ -19955,19 +19920,19 @@ aa
 aa
 aa
 Zf
-WU
-UK
-UK
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
 Zf
 "}
 (5,1,1) = {"
@@ -20212,19 +20177,19 @@ aa
 aa
 aa
 Zf
-UK
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Pk
-Mb
-Mb
-Mb
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
 Zf
 "}
 (6,1,1) = {"
@@ -20469,19 +20434,19 @@ aa
 aa
 aa
 Zf
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Dl
-Mb
-Mb
-Mb
-Mb
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
 Zf
 "}
 (7,1,1) = {"
@@ -20726,19 +20691,19 @@ aa
 aa
 aa
 Zf
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
 Zf
 "}
 (8,1,1) = {"
@@ -20983,19 +20948,19 @@ aa
 aa
 aa
 Zf
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
 Zf
 "}
 (9,1,1) = {"
@@ -21240,19 +21205,19 @@ aa
 aa
 aa
 Zf
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
 Zf
 "}
 (10,1,1) = {"
@@ -21497,19 +21462,19 @@ aa
 aa
 aa
 Zf
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
 Zf
 "}
 (11,1,1) = {"
@@ -21754,19 +21719,19 @@ aa
 aa
 aa
 Zf
-Km
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
 Zf
 "}
 (12,1,1) = {"
@@ -22011,19 +21976,19 @@ aa
 aa
 aa
 Zf
-FC
-Km
-Km
-Km
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
 Zf
 "}
 (13,1,1) = {"
@@ -22268,19 +22233,19 @@ aa
 aa
 aa
 Zf
-FC
-FC
-FC
-Km
-Km
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
 Zf
 "}
 (14,1,1) = {"
@@ -22525,19 +22490,19 @@ aa
 aa
 aa
 Zf
-Uv
-FC
-FC
-FC
-Km
-Km
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
+TM
 Zf
 "}
 (15,1,1) = {"

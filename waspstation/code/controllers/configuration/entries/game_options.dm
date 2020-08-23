@@ -10,3 +10,10 @@
 /datum/config_entry/number/max_malf_apc_hack_obj
 	min_val = 10
 	max_val = 20
+
+/datum/config_entry/number/max_overmap_events
+	config_entry_value = 20
+
+/datum/config_entry/number/max_overmap_event_clusters
+	config_entry_value = 7
+	max_val = 15
