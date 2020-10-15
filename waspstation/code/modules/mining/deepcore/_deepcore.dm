@@ -1,12 +1,10 @@
 /obj/machinery/deepcore
+	icon = 'waspstation/icons/obj/machines/deepcore.dmi'
+
+	var/type_flags //Check _DEFINES/DCM.dm
 	var/datum/component/remote_mining/network
 
 /obj/machinery/deepcore/Initialize(mapload)
 	. = ..()
-	if(mapload)
-		if(GLOB.dcm_network_default)
-			network = GLOB.dcm_network_default
-		else
-			network = AddComponent(/datum/component/remote_mining, mapload)
-			GLOB.dcm_network_default = network
+	network = AddComponent(/datum/component/remote_mining, type_flags, mapload)
 

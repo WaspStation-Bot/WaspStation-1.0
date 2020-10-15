@@ -3,3 +3,5 @@
 	desc = "A machine designed to recieve the output of any bluespace drills connected to its network."
 	icon = 'waspstation/icons/obj/machines/deepcore.dmi'
 	icon_state = "hopper_off"
+	density = TRUE
+	type_flags = DCM_TYPE_OUTPUT
