@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(overmap)
 	var/obj/structure/overmap/main
 
 	///Width/heighth of the overmap "zlevel"
-	var/size = 15
+	var/size = 20
 	///Should events be processed
 	var/events_enabled = TRUE
 	///Should ship movement be processed
