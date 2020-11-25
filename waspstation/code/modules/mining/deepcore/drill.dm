@@ -5,25 +5,66 @@
 	icon_state = "deep_core_drill"
 	density = TRUE
 	anchored = FALSE
-	type_flags = DCM_TYPE_INPUT
 	use_power = NO_POWER_USE
 	pressure_resistance = 30
-	max_integrity = 300
-	integrity_failure = 0.2
+	max_integrity = 200
+	integrity_failure = 0.3
 
 	var/deployed = FALSE //If the drill is anchored and ready-to-mine
 	var/active = FALSE //If the drill is activly mining ore
-	var/area/ore_vein/active_vein //Ore vein currently set to be mined in
+	var/ore_contained = list()
+	var/total_amount = 0
+	var/max_amount
+	var/area/lavaland/surface/ore_vein/active_vein //Ore vein currently set to be mined in
 
 /obj/machinery/deepcore/drill/Initialize(mapload)
 	. = ..()
 
+/obj/machinery/deepcore/drill/interact(mob/user, special_state)
+	. = ..()
+	if(machine_stat & BROKEN)
+		return .
+	if(deployed)
+		if(active)
+			active = FALSE
+			to_chat(user, "<span class='notice'>You deactiveate [src]</span>")
+		else
+			active = TRUE
+			to_chat(user, "<span class='notice'>You reactiveate [src]</span>")
+		update_icon_state()
+		update_overlays()
+		return TRUE
+	else
+		switch(scanArea())
+			if(DCM_LOCATED_VEIN)
+				anchored = TRUE
+				playsound(src, 'sound/machines/windowdoor.ogg', 50)
+				flick("deep_core_drill-deploy", src)
+				addtimer(CALLBACK(src, .proc/Deploy), 14)
+				to_chat(user, "<span class='notice'>[src] detects an ore vein and begins to deploy...</span>")
+				return TRUE
+			if(DCM_OCCUPIED_VEIN)
+				to_chat(user, "<span class='warning'>[src] detects a drill active nearby!</span>")
+			if(DCM_NO_VEIN)
+				to_chat(user, "<span class='warning'>[src] fails to locate any ore in the area!</span>")
+
+/obj/machinery/deepcore/drill/AltClick(mob/user)
+	. = ..()
+	if(active)
+		to_chat(user, "<span class='warning'>You can't disengage [src] while it's active!</span>")
+		return
+	else
+		playsound(src, 'sound/machines/windowdoor.ogg', 50)
+		flick("deep_core_drill-undeploy", src)
+		addtimer(CALLBACK(src, .proc/Undeploy), 13)
+
 /obj/machinery/deepcore/drill/process()
-	if(machine_stat & BROKEN || active && !active_vein)
+	if(machine_stat & BROKEN || (active && !active_vein))
 		active = FALSE
 		return
 	if(deployed && active)
-
+		if(!mineOre())
+			return
 		if(network)
 			return
 			//TODO: DCMnet
@@ -31,18 +72,23 @@
 			return
 
 /obj/machinery/deepcore/drill/proc/mineOre()
-	if(!active_vein)
-		if(scanArea() != DCM_LOCATED_VEIN)
-			return FALSE
-	else
+	if(total_amount >= max_amount || !active_vein)
+		return FALSE
 
+	var/list/extracted = active_vein.extract_ore()
+	for(var/O in extracted)
+		var/extract_amount = extracted[O]
+		if(total_amount + extract_amount >= max_amount)
+			ore_contained[O] += max_amount - total_amount
+			return FALSE
+		ore_contained[O] += extract_amount
 
 /obj/machinery/deepcore/drill/proc/scanArea()
 	//Checks for ores and latches to an active vein if one is located.
 	var/area/deployed_zone = get_area(src)
 	if(deployed_zone && isarea(deployed_zone))
-		if(istype(deployed_zone, /area/ore_vein))
-			var/area/ore_vein/vein = deployed_zone
+		if(istype(deployed_zone, /area/lavaland/surface/ore_vein))
+			var/area/lavaland/surface/ore_vein/vein = deployed_zone
 			if(!vein.active_drill)
 				vein.active_drill = src
 				active_vein = vein
@@ -51,6 +97,21 @@
 				return DCM_OCCUPIED_VEIN
 		else
 			return DCM_NO_VEIN
+
+/obj/machinery/deepcore/drill/proc/Deploy()
+	deployed = TRUE
+	update_icon_state()
+	playsound(src, 'sound/machines/boltsdown.ogg', 50)
+	visible_message("<span class='notice'>[src] is now deployed and ready to operate!</span>")
+
+/obj/machinery/deepcore/drill/proc/Undeploy()
+	active_vein.active_drill = null
+	active_vein = null
+	deployed = FALSE
+	anchored = FALSE
+	update_icon_state()
+	playsound(src, 'sound/machines/boltsup.ogg', 50)
+	visible_message("<span class='notice'>[src] is now undeployed and safe to move!</span>")
 
 /obj/machinery/deepcore/drill/update_icon_state()
 	if(deployed)

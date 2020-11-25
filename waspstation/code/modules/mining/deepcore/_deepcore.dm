@@ -1,4 +1,4 @@
-GLOBAL_DATUM(dcm_net_default, datum/dcm_net)
+GLOBAL_DATUM(dcm_net_default, /datum/dcm_net)
 /obj/machinery/deepcore
 	icon = 'waspstation/icons/obj/machines/deepcore.dmi'
 	var/datum/dcm_net/network
@@ -7,7 +7,7 @@ GLOBAL_DATUM(dcm_net_default, datum/dcm_net)
 	. = ..()
 	if(mapload && !network)
 		if(!GLOB.dcm_net_default)
-			GLOB.dcm_net_default = new datum/dcm_net(mapload)
+			GLOB.dcm_net_default = new /datum/dcm_net(mapload)
 		network = GLOB.dcm_net_default
 
 /obj/machinery/deepcore/multitool_act(mob/living/user, obj/item/multitool/I)
@@ -16,7 +16,7 @@ GLOBAL_DATUM(dcm_net_default, datum/dcm_net)
 		return
 
 	//Check if we would like to add a network
-	if(istype(I.buffer, datum/dcm_net))
+	if(istype(I.buffer, /datum/dcm_net))
 		if(network)
 			switch(alert("Merge the networks. Move [src] to the buffer network. Or replace the buffer?", "Deep Core Network", "Merge", "Move", "Replace"))
 				if("Merge")
@@ -28,7 +28,7 @@ GLOBAL_DATUM(dcm_net_default, datum/dcm_net)
 					ClearNetwork()
 					SetNetwork(I.buffer)
 					return TRUE
-				if("Replace") break // continues to the network log
+				//Passes down to the network storage.
 		else
 			to_chat(user, "<span class='notice'>You load the saved network data into [src] and test the connection...</span>")
 			SetNetwork(I.buffer)
@@ -39,11 +39,11 @@ GLOBAL_DATUM(dcm_net_default, datum/dcm_net)
 		I.buffer = network
 		return TRUE
 
-/obj/machinery/deepcore/proc/SetNetwork(datum/dcm_net/net)
+/obj/machinery/deepcore/proc/SetNetwork(var/datum/dcm_net/net)
 	return net.AddMachine(src)
 
 /obj/machinery/deepcore/proc/ClearNetwork()
 	return network.RemoveMachine(src)
 
-/obj/machinery/deepcore/proc/MergeNetwork(datum/dcm_net/net)
+/obj/machinery/deepcore/proc/MergeNetwork(var/datum/dcm_net/net)
 	network.MergeWith(net)

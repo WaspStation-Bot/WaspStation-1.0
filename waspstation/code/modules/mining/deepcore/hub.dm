@@ -6,17 +6,10 @@
 	var/list/datum/dcm_net/connected = list()
 
 /obj/machinery/computer/dcm_hub/Initialize(mapload)
-	if(!GLOB.dcm_hub_default && mapload && is_station_level(z))
-		GLOB.dcm_hub_default = src
+	if(mapload && is_station_level(z))
+		connected += GLOB.dcm_net_default
 
 /obj/machinery/computer/dcm_hub/Destroy()
-	if(GLOB.ore_silo_default == src)
-		GLOB.ore_silo_default = null
-
-	for(var/C in connected)
-		var/datum/component/remote_mining/network = C
-		network.disconnect(src)
-
 	connected = null
 
 	return ..()
@@ -28,7 +21,7 @@
 
 /obj/machinery/computer/dcm_hub/multitool_act(mob/living/user, obj/item/multitool/I)
 	. = ..()
-	if (istype(I) && istype(I.buffer, datum/dcm_net))
+	if (istype(I) && istype(I.buffer, /datum/dcm_net))
 		to_chat(user, "<span class='notice'>You load the network data on the multitool to [src] and gain remote access...</span>")
 		connected += I.buffer
 		return TRUE

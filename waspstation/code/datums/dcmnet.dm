@@ -13,13 +13,13 @@
 
 /datum/dcm_net/Destroy()
 	if(connected)
-		for (obj/machinery/deepcore/M in connected)
+		for (var/obj/machinery/deepcore/M in connected)
 			M.network = null
 	return ..()
 
 /datum/dcm_net/proc/AddMachine(obj/machinery/deepcore/M)
 	if(!M in connected)
-		connected =+ M
+		connected += M
 		M.network = src
 		return TRUE
 

@@ -4,49 +4,44 @@
 \*/
 /area/lavaland/surface/ore_vein
 	name = "Undefined Ore Vein"
-	var/datum/material/material_type //What you're pulling out of the ground
+	var/obj/item/stack/ore/ore_type //What you're pulling out of the ground
 	var/material_rate_coeff = 0	//Affects overall value of the ore vein
-	var/material_density		//ore earned per-tick, affected by size of vein
 	var/obj/machinery/deepcore/drill/active_drill
 
-/area/lavaland/surface/ore_vein/Initialize()
-	. = ..()
-	calculate_value()
-
-/area/lavaland/surface/ore_vein/proc/calculate_value()
-	material_density = (material_rate_coeff*1000)/(sqrt(areasize)**-1)
+/area/lavaland/surface/ore_vein/proc/extract_ore() //Called by deepcore drills, returns a list of keyed ore stacks by amount
+	return list(ore_type = round(sqrt(areasize) * material_rate_coeff * 10))
 
 /area/lavaland/surface/ore_vein/iron
 	name = "Iron Ore Vein"
-	material_type = /datum/material/iron
+	ore_type = /obj/item/stack/ore/iron
 	material_rate_coeff = 0.6
 
 /area/lavaland/surface/ore_vein/plasma
 	name = "Inert Plasma Vein"
-	material_type = /datum/material/plasma
+	ore_type = /obj/item/stack/ore/plasma
 	material_rate_coeff = 0.5
 
 /area/lavaland/surface/ore_vein/gold
 	name = "Gold Ore Vein"
-	material_type = /datum/material/gold
+	ore_type = /obj/item/stack/ore/gold
 	material_rate_coeff = 0.3
 
 /area/lavaland/surface/ore_vein/silver
 	name = "Silver Ore Vein"
-	material_type = /datum/material/silver
+	ore_type = /obj/item/stack/ore/silver
 	material_rate_coeff = 0.4
 
 /area/lavaland/surface/ore_vein/titanium
 	name = "Titanium Ore Vein"
-	material_type = /datum/material/titanium
+	ore_type = /obj/item/stack/ore/titanium
 	material_rate_coeff = 0.3
 
 /area/lavaland/surface/ore_vein/uranium
 	name = "Uranium Ore Vein"
-	material_type = /datum/material/uranium
+	ore_type = /obj/item/stack/ore/uranium
 	material_rate_coeff = 0.2
 
 /area/lavaland/surface/ore_vein/diamond
 	name = "Diamond Ore Vein"
-	material_type = /datum/material/diamond
+	ore_type = /obj/item/stack/ore/diamond
 	material_rate_coeff = 0.1
