@@ -159,6 +159,12 @@
 /obj/machinery/atmospherics/pipe/simple/general/visible,
 /turf/open/floor/mineral/titanium/yellow,
 /area/shuttle/mining)
+"w" = (
+/obj/machinery/door/poddoor{
+	id = "golemloading"
+	},
+/turf/template_noop,
+/area/template_noop)
 "x" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
@@ -219,7 +225,7 @@
 	icon_state = "box_corners"
 	},
 /obj/structure/extinguisher_cabinet{
-	pixel_x = 24
+	pixel_y = -30
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/mining)
@@ -398,7 +404,7 @@ B
 S
 "}
 (7,1,1) = {"
-a
+w
 K
 K
 h
