@@ -221,21 +221,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/dark,
 /area/ruin/powered/golem_ship)
-"ev" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/turf/open/floor/plasteel,
+"ez" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bedsheetbin,
+/obj/structure/table,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/plating,
 /area/ruin/powered/golem_ship)
 "eC" = (
 /obj/structure/frame/machine,
 /turf/open/floor/plasteel/dark,
-/area/ruin/powered/golem_ship)
-"fb" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/trimline/yellow/line,
-/obj/structure/ore_box,
-/turf/open/floor/mineral/plastitanium,
 /area/ruin/powered/golem_ship)
 "fs" = (
 /obj/item/kirbyplants{
@@ -278,6 +273,12 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/open/floor/plasteel,
+/area/ruin/powered/golem_ship)
+"fM" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/mineral/titanium/yellow,
 /area/ruin/powered/golem_ship)
 "fN" = (
 /obj/effect/turf_decal/stripes,
@@ -366,6 +367,13 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/trimline/blue/line,
 /turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/golem_ship)
+"hG" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/light/small,
+/turf/open/floor/plasteel,
 /area/ruin/powered/golem_ship)
 "hI" = (
 /obj/structure/chair/comfy/shuttle{
@@ -506,6 +514,15 @@
 	},
 /obj/effect/turf_decal/box/corners{
 	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/golem_ship)
+"lE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/yellow/line,
+/obj/structure/ore_box,
+/obj/machinery/light/small{
+	dir = 1
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/powered/golem_ship)
@@ -667,14 +684,6 @@
 	},
 /turf/open/floor/mineral/titanium/yellow,
 /area/ruin/powered/golem_ship)
-"pJ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small,
-/obj/structure/bedsheetbin,
-/obj/structure/table,
-/obj/effect/turf_decal/bot,
-/turf/open/floor/plating,
-/area/ruin/powered/golem_ship)
 "ql" = (
 /obj/effect/turf_decal/stripes,
 /obj/effect/turf_decal/trimline/yellow/arrow_cw{
@@ -721,6 +730,11 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/door/airlock/external,
 /turf/open/floor/plasteel/dark,
+/area/ruin/powered/golem_ship)
+"rB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small,
+/turf/open/floor/plating,
 /area/ruin/powered/golem_ship)
 "rC" = (
 /obj/item/areaeditor/blueprints{
@@ -1967,10 +1981,6 @@
 /obj/item/pod_parts/pod_frame/aft_port,
 /turf/open/floor/mineral/titanium/yellow,
 /area/ruin/powered/golem_ship)
-"ZX" = (
-/obj/structure/table,
-/turf/open/floor/mineral/titanium/yellow,
-/area/ruin/powered/golem_ship)
 
 (1,1,1) = {"
 aa
@@ -2108,7 +2118,7 @@ ab
 KL
 hS
 hS
-ZX
+fM
 ql
 Kc
 "}
@@ -2118,7 +2128,7 @@ aU
 ab
 bN
 me
-ev
+hG
 ab
 bH
 Fd
@@ -2366,7 +2376,7 @@ gl
 qV
 Ij
 ab
-fb
+lE
 mT
 hS
 Rc
@@ -2456,7 +2466,7 @@ iP
 ab
 NO
 nU
-nU
+rB
 ab
 ab
 lO
@@ -2496,7 +2506,7 @@ ab
 iP
 iP
 Gh
-pJ
+ez
 ab
 Iv
 gH
