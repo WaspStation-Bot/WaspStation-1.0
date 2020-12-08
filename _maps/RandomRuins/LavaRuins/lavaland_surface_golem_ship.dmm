@@ -132,6 +132,18 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
 /area/ruin/powered/golem_ship)
+"cc" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/purple/line{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/golem_ship)
 "co" = (
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel,
@@ -202,9 +214,6 @@
 /obj/structure/frame/machine,
 /turf/open/floor/plasteel/dark,
 /area/ruin/powered/golem_ship)
-"eZ" = (
-/turf/closed/wall/mineral/titanium/nodiagonal,
-/area/space)
 "fs" = (
 /obj/item/kirbyplants{
 	icon_state = "plant-22"
@@ -1186,6 +1195,19 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel/dark,
 /area/ruin/powered/golem_ship)
+"HL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/purple/line{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/golem_ship)
 "HQ" = (
 /obj/item/soap,
 /obj/machinery/shower{
@@ -1430,10 +1452,6 @@
 /obj/machinery/suit_storage_unit,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/powered/golem_ship)
-"Or" = (
-/obj/structure/table,
-/turf/template_noop,
-/area/template_noop)
 "Oz" = (
 /obj/machinery/door/airlock/titanium,
 /obj/effect/turf_decal/stripes/line{
@@ -1660,6 +1678,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small,
 /turf/open/floor/plating,
+/area/ruin/powered/golem_ship)
+"SU" = (
+/obj/effect/turf_decal/trimline/purple/line,
+/turf/open/floor/mineral/titanium/white,
 /area/ruin/powered/golem_ship)
 "SZ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1936,7 +1958,7 @@ fz
 ab
 aa
 aa
-Or
+aa
 "}
 (5,1,1) = {"
 aa
@@ -2176,7 +2198,7 @@ Oz
 ab
 ab
 ab
-eZ
+ab
 "}
 (17,1,1) = {"
 SA
@@ -2206,10 +2228,10 @@ iS
 jQ
 ab
 Ao
-gl
-qV
-gl
-qV
+HL
+cc
+HL
+cc
 VZ
 gQ
 eg
@@ -2247,7 +2269,7 @@ dw
 ab
 RC
 gl
-qV
+SU
 gl
 qV
 Ij
