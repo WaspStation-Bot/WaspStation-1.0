@@ -1,62 +1,22 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
+"aa" = (
 /turf/template_noop,
 /area/template_noop)
-"b" = (
+"ab" = (
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/ruin/powered/golem_ship)
-"c" = (
-/obj/structure/closet/crate,
-/obj/item/shovel,
-/obj/item/shovel,
-/obj/item/shovel,
-/obj/item/pickaxe,
-/obj/item/pickaxe,
-/obj/item/pickaxe,
-/obj/item/storage/bag/ore,
-/obj/item/storage/bag/ore,
-/obj/item/mining_scanner,
-/obj/item/flashlight/lantern,
-/obj/item/card/id/mining,
+"af" = (
 /turf/open/floor/plating,
 /area/ruin/powered/golem_ship)
-"d" = (
-/obj/structure/closet/crate,
-/obj/item/shovel,
-/obj/item/shovel,
-/obj/item/pickaxe,
-/obj/item/pickaxe,
-/obj/item/storage/bag/ore,
-/obj/item/storage/bag/ore,
-/obj/item/mining_scanner,
-/obj/item/flashlight/lantern,
-/obj/item/card/id/mining,
-/turf/open/floor/plating,
-/area/ruin/powered/golem_ship)
-"e" = (
-/obj/item/storage/toolbox/mechanical,
-/turf/open/floor/plating,
-/area/ruin/powered/golem_ship)
-"f" = (
-/turf/open/floor/plating,
-/area/ruin/powered/golem_ship)
-"g" = (
-/obj/machinery/mineral/equipment_vendor/golem,
-/turf/open/floor/mineral/titanium/purple,
-/area/ruin/powered/golem_ship)
-"h" = (
-/obj/structure/reagent_dispensers/watertank,
-/turf/open/floor/plating,
-/area/ruin/powered/golem_ship)
-"i" = (
+"ai" = (
 /obj/machinery/light/small,
 /turf/open/floor/plating,
 /area/ruin/powered/golem_ship)
-"j" = (
+"aj" = (
 /obj/machinery/door/airlock/titanium,
 /turf/open/floor/mineral/titanium/purple,
 /area/ruin/powered/golem_ship)
-"k" = (
+"ak" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
 	},
@@ -67,14 +27,10 @@
 	initial_gas_mix = "LAVALAND_ATMOS"
 	},
 /area/ruin/powered/golem_ship)
-"l" = (
+"al" = (
 /turf/open/floor/mineral/titanium/purple,
 /area/ruin/powered/golem_ship)
-"m" = (
-/obj/effect/mob_spawn/human/golem/adamantine,
-/turf/open/floor/mineral/titanium/purple,
-/area/ruin/powered/golem_ship)
-"n" = (
+"an" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 8
 	},
@@ -82,179 +38,50 @@
 	initial_gas_mix = "LAVALAND_ATMOS"
 	},
 /area/ruin/powered/golem_ship)
-"o" = (
-/obj/item/resonator,
-/turf/open/floor/mineral/titanium/purple,
-/area/ruin/powered/golem_ship)
-"p" = (
-/obj/machinery/computer/arcade/battle,
-/turf/open/floor/mineral/titanium/purple,
-/area/ruin/powered/golem_ship)
-"q" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/open/floor/mineral/titanium/purple,
-/area/ruin/powered/golem_ship)
-"r" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/mineral/titanium/purple,
-/area/ruin/powered/golem_ship)
-"t" = (
+"at" = (
 /obj/machinery/door/airlock/titanium,
 /obj/structure/fans/tiny,
 /turf/open/floor/mineral/titanium/purple,
 /area/ruin/powered/golem_ship)
-"u" = (
-/obj/structure/table/wood,
-/obj/item/bedsheet/rd/royal_cape{
-	layer = 3;
-	pixel_x = 5;
-	pixel_y = 9
-	},
-/obj/item/book/manual/wiki/research_and_development{
-	name = "Sacred Text of the Liberator";
-	pixel_x = -4;
-	pixel_y = 3
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	name = "shrine of the liberator"
-	},
-/turf/open/floor/mineral/titanium/purple,
-/area/ruin/powered/golem_ship)
-"v" = (
+"av" = (
 /obj/item/resonator/upgraded,
 /turf/open/floor/mineral/titanium/purple,
 /area/ruin/powered/golem_ship)
-"w" = (
+"aw" = (
 /obj/machinery/autolathe,
 /turf/open/floor/mineral/titanium/purple,
 /area/ruin/powered/golem_ship)
-"x" = (
-/obj/structure/table/wood,
-/obj/machinery/reagentgrinder,
-/turf/open/floor/mineral/titanium/purple,
-/area/ruin/powered/golem_ship)
-"y" = (
+"ay" = (
 /obj/machinery/computer/arcade/orion_trail,
 /turf/open/floor/mineral/titanium/purple,
 /area/ruin/powered/golem_ship)
-"z" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_y = -30
+"aC" = (
+/obj/machinery/mineral/ore_redemption{
+	input_dir = 2;
+	output_dir = 1
 	},
+/obj/machinery/door/firedoor,
 /turf/open/floor/mineral/titanium/purple,
 /area/ruin/powered/golem_ship)
-"A" = (
-/obj/structure/table/wood,
-/obj/item/storage/firstaid/fire,
-/obj/item/storage/firstaid/fire,
-/turf/open/floor/mineral/titanium/purple,
-/area/ruin/powered/golem_ship)
-"B" = (
-/obj/item/storage/firstaid/fire,
-/obj/structure/table/wood,
-/obj/item/storage/firstaid/fire,
-/obj/machinery/light,
-/turf/open/floor/mineral/titanium/purple,
-/area/ruin/powered/golem_ship)
-"C" = (
-/obj/item/storage/firstaid/brute,
-/obj/structure/table/wood,
-/obj/item/storage/firstaid/brute,
-/obj/item/areaeditor/blueprints{
-	desc = "Use to build new structures in the wastes.";
-	name = "land claim"
-	},
-/turf/open/floor/mineral/titanium/purple,
-/area/ruin/powered/golem_ship)
-"D" = (
-/obj/item/storage/firstaid/brute,
-/obj/structure/table/wood,
-/obj/item/storage/firstaid/brute,
-/obj/item/disk/design_disk/golem_shell,
-/turf/open/floor/mineral/titanium/purple,
-/area/ruin/powered/golem_ship)
-"E" = (
-/obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor/plating,
-/area/ruin/powered/golem_ship)
-"F" = (
-/obj/structure/ore_box,
-/turf/open/floor/plating,
-/area/ruin/powered/golem_ship)
-"G" = (
-/turf/closed/wall/mineral/titanium,
-/area/ruin/powered/golem_ship)
-"H" = (
-/obj/machinery/computer/shuttle,
-/turf/open/floor/mineral/titanium/purple,
-/area/ruin/powered/golem_ship)
-"I" = (
-/obj/effect/mob_spawn/human/golem/adamantine,
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/open/floor/mineral/titanium/purple,
-/area/ruin/powered/golem_ship)
-"K" = (
-/obj/machinery/mineral/ore_redemption,
-/turf/open/floor/mineral/titanium/purple,
-/area/ruin/powered/golem_ship)
-"L" = (
-/obj/structure/statue/gold/rd,
-/obj/structure/window/reinforced{
-	dir = 4;
-	name = "shrine of the liberator"
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/mineral/titanium/purple,
-/area/ruin/powered/golem_ship)
-"M" = (
+"aM" = (
 /obj/machinery/door/airlock/titanium,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
 	},
 /turf/open/floor/mineral/titanium/purple,
 /area/ruin/powered/golem_ship)
-"N" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_y = 30
-	},
-/turf/open/floor/mineral/titanium/purple,
-/area/ruin/powered/golem_ship)
-"O" = (
+"aO" = (
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/open/floor/mineral/titanium/purple,
 /area/ruin/powered/golem_ship)
-"Q" = (
-/obj/machinery/light/small,
-/turf/open/floor/mineral/titanium/purple,
-/area/ruin/powered/golem_ship)
-"T" = (
+"aT" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/titanium,
 /turf/open/floor/mineral/titanium/purple,
 /area/ruin/powered/golem_ship)
-"U" = (
-/obj/effect/mob_spawn/human/golem/adamantine,
-/obj/machinery/light/small,
-/turf/open/floor/mineral/titanium/purple,
-/area/ruin/powered/golem_ship)
-"V" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/ruin/powered/golem_ship)
-"Y" = (
+"aY" = (
 /obj/machinery/door/airlock/titanium,
 /obj/structure/fans/tiny,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -262,604 +89,1082 @@
 	},
 /turf/open/floor/mineral/titanium/purple,
 /area/ruin/powered/golem_ship)
+"ci" = (
+/obj/structure/bed,
+/obj/item/bedsheet/rd/royal_cape,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/powered/golem_ship)
+"cs" = (
+/obj/structure/closet/crate/science,
+/obj/item/storage/box/stockparts/basic,
+/obj/item/storage/box/stockparts/basic,
+/turf/open/floor/plating,
+/area/ruin/powered/golem_ship)
+"eZ" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/space)
+"fT" = (
+/obj/machinery/door/airlock/titanium,
+/turf/open/floor/mineral/titanium/blue,
+/area/ruin/powered/golem_ship)
+"gd" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/ruin/powered/golem_ship)
+"gQ" = (
+/obj/effect/spawner/structure/window/shuttle,
+/turf/open/floor/plating,
+/area/ruin/powered/golem_ship)
+"hS" = (
+/turf/open/floor/mineral/titanium/yellow,
+/area/ruin/powered/golem_ship)
+"hV" = (
+/obj/structure/ore_box,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/plating,
+/area/ruin/powered/golem_ship)
+"it" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/golem_ship)
+"iu" = (
+/obj/structure/extinguisher_cabinet{
+	dir = 4;
+	pixel_x = 27
+	},
+/turf/open/floor/mineral/titanium/yellow,
+/area/ruin/powered/golem_ship)
+"iW" = (
+/obj/machinery/door/airlock/titanium,
+/obj/structure/fans/tiny,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/turf/open/floor/mineral/titanium/yellow,
+/area/ruin/powered/golem_ship)
+"lf" = (
+/obj/effect/turf_decal/bot,
+/turf/open/floor/plating,
+/area/ruin/powered/golem_ship)
+"ll" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/bot,
+/obj/item/card/id/mining,
+/obj/item/card/id/mining,
+/obj/item/card/id/mining,
+/obj/item/card/id/mining,
+/obj/item/card/id/mining,
+/turf/open/floor/plating,
+/area/ruin/powered/golem_ship)
+"lW" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/item/storage/firstaid/fire{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/storage/firstaid/fire,
+/obj/item/storage/firstaid/fire{
+	pixel_x = -4;
+	pixel_y = -4
+	},
+/obj/structure/table,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/powered/golem_ship)
+"mn" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/closet/crate,
+/obj/item/storage/bag/ore,
+/obj/item/flashlight/lantern,
+/obj/item/pickaxe,
+/obj/item/shovel,
+/obj/item/mining_scanner,
+/obj/item/card/id/mining,
+/turf/open/floor/plating,
+/area/ruin/powered/golem_ship)
+"mu" = (
+/obj/structure/closet/crate,
+/obj/effect/spawner/lootdrop/maintenance/two,
+/turf/open/floor/plating,
+/area/ruin/powered/golem_ship)
+"nb" = (
+/obj/structure/table/reinforced,
+/obj/item/clipboard,
+/obj/item/toy/figure/rd{
+	name = "the Liberator action figure";
+	toysay = "Yeah, go do whatever."
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/golem_ship)
+"np" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/plating,
+/area/ruin/powered/golem_ship)
+"pZ" = (
+/obj/item/kirbyplants{
+	icon_state = "plant-22"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/golem_ship)
+"qy" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/closet/crate,
+/turf/open/floor/plating,
+/area/ruin/powered/golem_ship)
+"qB" = (
+/obj/machinery/mineral/equipment_vendor/golem,
+/turf/open/floor/plating,
+/area/ruin/powered/golem_ship)
+"qF" = (
+/obj/machinery/light/small,
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -30
+	},
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/powered/golem_ship)
+"rB" = (
+/obj/structure/table/reinforced,
+/obj/machinery/light/small,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/golem_ship)
+"rK" = (
+/obj/machinery/door/airlock/titanium,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/turf/open/floor/mineral/titanium/yellow,
+/area/ruin/powered/golem_ship)
+"tT" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/rack,
+/obj/item/storage/bag/ore,
+/obj/item/mining_scanner,
+/obj/item/storage/bag/ore,
+/obj/item/mining_scanner,
+/obj/item/storage/bag/ore,
+/obj/item/mining_scanner,
+/obj/item/storage/bag/ore,
+/obj/item/mining_scanner,
+/turf/open/floor/plating,
+/area/ruin/powered/golem_ship)
+"uq" = (
+/obj/item/storage/firstaid/brute{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/storage/firstaid/brute,
+/obj/item/storage/firstaid/brute{
+	pixel_x = -4;
+	pixel_y = -4
+	},
+/obj/structure/table,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/powered/golem_ship)
+"uu" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/ore_box,
+/turf/open/floor/plating,
+/area/ruin/powered/golem_ship)
+"uZ" = (
+/obj/structure/window/reinforced{
+	dir = 2;
+	name = "shrine of the liberator"
+	},
+/obj/structure/statue/gold/rd,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/powered/golem_ship)
+"vx" = (
+/obj/machinery/reagentgrinder,
+/obj/structure/table,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/powered/golem_ship)
+"wi" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/powered/golem_ship)
+"xh" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/rack,
+/obj/item/shovel,
+/obj/item/shovel{
+	pixel_x = 5
+	},
+/obj/item/shovel{
+	pixel_x = 10
+	},
+/turf/open/floor/plating,
+/area/ruin/powered/golem_ship)
+"xq" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -30
+	},
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/powered/golem_ship)
+"zB" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/closet/crate,
+/obj/effect/spawner/lootdrop/maintenance/three,
+/turf/open/floor/plating,
+/area/ruin/powered/golem_ship)
+"zZ" = (
+/obj/structure/window/reinforced{
+	dir = 2;
+	name = "shrine of the liberator"
+	},
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/powered/golem_ship)
+"Am" = (
+/obj/item/kirbyplants{
+	icon_state = "applebush"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/golem_ship)
+"AI" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/closet/crate,
+/obj/effect/spawner/lootdrop/maintenance,
+/turf/open/floor/plating,
+/area/ruin/powered/golem_ship)
+"Cw" = (
+/obj/machinery/computer{
+	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
+	dir = 4;
+	name = "Broken Computer"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/golem_ship)
+"CI" = (
+/obj/structure/table/wood,
+/obj/item/book/manual/wiki/research_and_development{
+	name = "Sacred Text of the Liberator";
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/toy/figure/rd{
+	name = "the Liberator action figure";
+	toysay = "Yeah, go do whatever."
+	},
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/powered/golem_ship)
+"CX" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/golem_ship)
+"DO" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -30
+	},
+/turf/open/floor/mineral/titanium/yellow,
+/area/ruin/powered/golem_ship)
+"Ha" = (
+/obj/structure/table/reinforced,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/golem_ship)
+"Hm" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/bot,
+/obj/item/resonator{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/resonator{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/resonator{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/item/resonator{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/turf/open/floor/plating,
+/area/ruin/powered/golem_ship)
+"HA" = (
+/obj/item/areaeditor/blueprints{
+	desc = "Use to build new structures in the wastes.";
+	name = "land claim"
+	},
+/obj/item/disk/design_disk/golem_shell,
+/obj/structure/table,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/powered/golem_ship)
+"IF" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/rack,
+/obj/item/storage/toolbox/electrical{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/emergency{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/turf/open/floor/plating,
+/area/ruin/powered/golem_ship)
+"IZ" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/rack,
+/obj/item/pickaxe{
+	pixel_x = -10
+	},
+/obj/item/pickaxe{
+	pixel_x = -5
+	},
+/obj/item/pickaxe,
+/turf/open/floor/plating,
+/area/ruin/powered/golem_ship)
+"Jc" = (
+/obj/structure/closet/crate,
+/obj/effect/spawner/lootdrop/maintenance,
+/turf/open/floor/plating,
+/area/ruin/powered/golem_ship)
+"Kc" = (
+/obj/machinery/door/poddoor{
+	id = "golemloading"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/ruin/powered/golem_ship)
+"Lq" = (
+/obj/machinery/door/airlock/titanium,
+/turf/open/floor/plating,
+/area/ruin/powered/golem_ship)
+"Lx" = (
+/obj/machinery/computer/shuttle{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/golem_ship)
+"Oc" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/effect/mob_spawn/human/golem/adamantine,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/golem_ship)
+"Pa" = (
+/obj/machinery/light/small,
+/turf/open/floor/mineral/titanium/blue,
+/area/ruin/powered/golem_ship)
+"Pn" = (
+/obj/structure/reagent_dispensers/fueltank,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/plating,
+/area/ruin/powered/golem_ship)
+"Po" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/obj/effect/mob_spawn/human/golem/adamantine,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/golem_ship)
+"PK" = (
+/obj/item/kirbyplants{
+	icon_state = "plant-21"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/golem_ship)
+"QR" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/mineral/titanium/blue,
+/area/ruin/powered/golem_ship)
+"Rt" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	name = "shrine of the liberator"
+	},
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/powered/golem_ship)
+"RT" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/titanium,
+/turf/open/floor/mineral/titanium/yellow,
+/area/ruin/powered/golem_ship)
+"Sf" = (
+/obj/item/clothing/suit/hazardvest{
+	desc = "A high-visibility lifejacket complete with whistle and slot for oxygen tanks.";
+	name = "emergency lifejacket"
+	},
+/obj/item/clothing/suit/hazardvest{
+	desc = "A high-visibility lifejacket complete with whistle and slot for oxygen tanks.";
+	name = "emergency lifejacket"
+	},
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 3
+	},
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 3
+	},
+/obj/item/clothing/mask/breath{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/item/clothing/mask/breath{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/item/clothing/head/hardhat/orange{
+	name = "protective hat";
+	pixel_y = 9
+	},
+/obj/item/clothing/head/hardhat/orange{
+	name = "protective hat";
+	pixel_y = 9
+	},
+/obj/structure/closet/crate/internals,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plating,
+/area/ruin/powered/golem_ship)
+"SK" = (
+/obj/machinery/light,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/powered/golem_ship)
+"SM" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/machinery/computer/arcade/battle,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/powered/golem_ship)
+"Tq" = (
+/obj/machinery/light/small,
+/turf/open/floor/mineral/titanium/yellow,
+/area/ruin/powered/golem_ship)
+"UE" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	name = "shrine of the liberator"
+	},
+/obj/structure/window/reinforced{
+	dir = 2;
+	name = "shrine of the liberator"
+	},
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/powered/golem_ship)
+"Wo" = (
+/turf/open/floor/mineral/titanium/blue,
+/area/ruin/powered/golem_ship)
+"XS" = (
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/golem_ship)
+"ZQ" = (
+/obj/machinery/door/airlock/titanium,
+/turf/open/floor/mineral/titanium/yellow,
+/area/ruin/powered/golem_ship)
 
 (1,1,1) = {"
-a
-a
-a
-a
-a
-a
-b
-b
-b
-b
-b
-b
-a
-a
-a
-a
-a
-a
+aa
+aa
+aa
+aa
+aa
+aa
+gQ
+gQ
+gQ
+gQ
+gQ
+gQ
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (2,1,1) = {"
-a
-a
-a
-a
-a
-a
-b
-L
-l
-l
-u
-G
-a
-a
-a
-a
-a
-a
+aa
+aa
+aa
+aa
+aa
+aa
+gQ
+CX
+Cw
+Lx
+CX
+gQ
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (3,1,1) = {"
-a
-a
-a
-b
-b
-t
-b
-H
-l
-l
-l
-G
-T
-b
-b
-a
-a
-a
+aa
+aa
+aa
+ab
+at
+ab
+ab
+Ha
+it
+it
+rB
+ab
+iW
+iW
+ab
+aa
+aa
+aa
 "}
 (4,1,1) = {"
-a
-a
-a
-b
-p
-l
-j
-l
-l
-l
-l
-j
-l
-y
-b
-a
-a
-a
+aa
+aa
+aa
+ab
+xq
+ab
+pZ
+XS
+Wo
+Wo
+PK
+ab
+hS
+DO
+ab
+aa
+aa
+aa
 "}
 (5,1,1) = {"
-a
-a
-a
-b
-q
-l
-j
-l
-l
-l
-l
-j
-l
-l
-b
-a
-a
-a
+aa
+aa
+aa
+ab
+aj
+ab
+ab
+Wo
+XS
+XS
+Wo
+ab
+hS
+Tq
+ab
+aa
+aa
+aa
 "}
 (6,1,1) = {"
-b
-b
-b
-b
-l
-l
-b
-l
-l
-l
-Q
-G
-l
-Q
-b
-b
-b
-b
+ab
+ab
+ab
+ab
+al
+al
+ab
+Wo
+Oc
+Oc
+Wo
+ab
+rK
+rK
+ab
+ab
+ab
+ab
 "}
 (7,1,1) = {"
-b
-c
-f
-j
-l
-l
-b
-l
-l
-l
-l
-G
-l
-l
-j
-f
-F
-b
+ab
+af
+af
+aj
+al
+al
+ab
+Wo
+nb
+CX
+Wo
+ab
+af
+af
+af
+af
+mu
+Kc
 "}
 (8,1,1) = {"
-b
-c
-f
-j
-l
-l
-b
-q
-l
-l
-l
-G
-l
-l
-j
-f
-F
-b
+ab
+af
+af
+aj
+al
+al
+ab
+QR
+CX
+CX
+Pa
+ab
+af
+af
+Jc
+af
+af
+Kc
 "}
 (9,1,1) = {"
-b
-c
-i
-b
-I
-o
-b
-l
-l
-l
-l
-G
-o
-U
-b
-V
-F
-b
+ab
+af
+ai
+ab
+SM
+al
+ab
+Wo
+Po
+Po
+Wo
+ab
+af
+af
+af
+af
+af
+Kc
 "}
 (10,1,1) = {"
-b
-c
-f
-b
-m
-o
-b
-l
-l
-l
-l
-G
-o
-m
-b
-f
-F
-b
+ab
+af
+af
+ab
+ay
+al
+ab
+Wo
+Am
+pZ
+Wo
+ab
+Sf
+af
+af
+af
+af
+Kc
 "}
 (11,1,1) = {"
-b
-c
-f
-b
-b
-j
-b
-j
-l
-l
-j
-G
-j
-b
-b
-f
-F
-b
+ab
+af
+af
+ab
+ab
+aj
+ab
+fT
+ab
+ab
+fT
+ab
+ab
+af
+af
+af
+cs
+Kc
 "}
 (12,1,1) = {"
-b
-c
-i
-b
-l
-l
-O
-l
-l
-l
-l
-O
-l
-z
-b
-V
-F
-b
+ab
+af
+ai
+ab
+al
+al
+aO
+al
+al
+al
+al
+aO
+ab
+af
+af
+af
+af
+ab
 "}
 (13,1,1) = {"
-b
-d
-f
-j
-l
-l
-l
-l
-l
-l
-l
-l
-l
-l
-j
-f
-F
-b
+ab
+af
+af
+aj
+al
+al
+al
+al
+al
+al
+al
+al
+ZQ
+af
+lf
+AI
+lf
+gQ
 "}
 (14,1,1) = {"
-b
-d
-f
-j
-l
-l
-l
-l
-l
-l
-l
-l
-l
-l
-j
-f
-e
-b
+ab
+af
+af
+aj
+al
+al
+al
+al
+al
+al
+al
+al
+ZQ
+af
+af
+af
+af
+gQ
 "}
 (15,1,1) = {"
-b
-d
-f
-b
-l
-l
-l
-l
-l
-l
-l
-l
-l
-A
-b
-f
-f
-b
+ab
+af
+af
+ab
+al
+al
+al
+al
+al
+al
+al
+al
+ab
+af
+zB
+lf
+qy
+ab
 "}
 (16,1,1) = {"
-T
-e
-i
-b
-r
-l
-l
-l
-l
-l
-l
-v
-l
-B
-b
-V
-f
-T
+aT
+af
+ai
+ab
+Rt
+UE
+al
+al
+al
+al
+al
+al
+ab
+ZQ
+ab
+ab
+ab
+eZ
 "}
 (17,1,1) = {"
-T
-f
-f
-b
-l
-l
-K
-l
-l
-l
-l
-w
-l
-C
-b
-f
-f
-T
+aT
+af
+af
+ab
+ci
+zZ
+al
+al
+al
+al
+al
+al
+ab
+af
+af
+ZQ
+hS
+RT
 "}
 (18,1,1) = {"
-b
-f
-f
-b
-g
-l
-l
-l
-l
-l
-l
-l
-x
-D
-b
-f
-f
-b
+ab
+af
+af
+ab
+CI
+uZ
+al
+al
+al
+al
+al
+al
+ab
+af
+af
+ZQ
+iu
+RT
 "}
 (19,1,1) = {"
-b
-f
-f
-b
-b
-l
-l
-l
-l
-l
-l
-l
-l
-b
-b
-f
-f
-b
+ab
+af
+af
+ab
+ab
+ab
+al
+al
+al
+al
+al
+al
+aC
+wi
+af
+ab
+ab
+ab
 "}
 (20,1,1) = {"
-b
-f
-f
-f
-b
-l
-l
-l
-l
-l
-l
-l
-l
-b
-f
-f
-f
-b
+ab
+af
+af
+af
+af
+ab
+aw
+al
+al
+al
+al
+al
+ab
+af
+af
+af
+qB
+ab
 "}
 (21,1,1) = {"
-b
-f
-f
-f
-b
-l
-l
-l
-l
-l
-l
-l
-l
-b
-f
-f
-f
-b
+ab
+af
+af
+af
+af
+ab
+lW
+av
+al
+al
+al
+al
+ZQ
+af
+af
+af
+mn
+gQ
 "}
 (22,1,1) = {"
-b
-f
-f
-f
-b
-l
-l
-l
-l
-l
-l
-l
-l
-b
-f
-f
-f
-b
+ab
+af
+af
+af
+af
+ab
+uq
+al
+al
+al
+al
+al
+ab
+ll
+af
+af
+mn
+gQ
 "}
 (23,1,1) = {"
-b
-f
-f
-f
-b
-l
-l
-l
-l
-l
-l
-l
-l
-b
-f
-f
-f
-b
+ab
+af
+af
+af
+af
+ab
+vx
+HA
+al
+al
+al
+SK
+ab
+Hm
+af
+af
+mn
+ab
 "}
 (24,1,1) = {"
-b
-f
-f
-f
-b
-b
-b
-b
-l
-l
-b
-b
-b
-b
-f
-f
-f
-b
+ab
+af
+af
+af
+ab
+ab
+ab
+ab
+aj
+aj
+ab
+ab
+ab
+ab
+af
+af
+tT
+gQ
 "}
 (25,1,1) = {"
-b
-f
-f
-f
-b
-f
-f
-f
-f
-f
-f
-f
-f
-b
-f
-f
-f
-b
+ab
+af
+af
+af
+ab
+IF
+lf
+af
+af
+af
+af
+lf
+lf
+ab
+af
+af
+xh
+gQ
 "}
 (26,1,1) = {"
-b
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-b
+ab
+af
+af
+af
+Lq
+af
+af
+af
+af
+af
+af
+af
+af
+Lq
+af
+af
+IZ
+ab
 "}
 (27,1,1) = {"
-b
-b
-f
-f
-b
-f
-f
-f
-f
-f
-f
-f
-f
-b
-f
-f
-b
-b
+ab
+ab
+af
+af
+ab
+af
+af
+af
+af
+af
+af
+af
+af
+ab
+uu
+uu
+ab
+ab
 "}
 (28,1,1) = {"
-a
-b
-h
-h
-b
-f
-f
-b
-M
-M
-b
-f
-f
-b
-E
-E
-b
-a
+aa
+ab
+af
+af
+ab
+Pn
+np
+ab
+aM
+aM
+ab
+np
+Pn
+ab
+hV
+uu
+ab
+aa
 "}
 (29,1,1) = {"
-a
-b
-k
-k
-b
-k
-k
-b
-N
-Q
-b
-k
-k
-b
-k
-k
-b
-a
+aa
+gd
+ak
+ak
+gd
+ak
+ak
+ab
+al
+qF
+ab
+ak
+ak
+gd
+ak
+ak
+gd
+aa
 "}
 (30,1,1) = {"
-a
-b
-n
-n
-b
-n
-n
-b
-Y
-Y
-b
-n
-n
-b
-n
-n
-b
-a
+aa
+gd
+an
+an
+gd
+an
+an
+ab
+aY
+aY
+ab
+an
+an
+gd
+an
+an
+gd
+aa
 "}
