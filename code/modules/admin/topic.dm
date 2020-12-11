@@ -1295,7 +1295,9 @@
 				if(SOFT_CRIT)
 					status = "<font color='orange'><b>Dying</b></font>"
 				if(UNCONSCIOUS)
-					status = "<font color='orange'><b>[L.InCritical() ? "Unconscious and Dying" : "Unconscious"]</b></font>"
+					status = "<font color='orange'><b>Unconscious</b></font>"
+				if(HARD_CRIT)
+					status = "<font color='orange'><b>Unconscious and Dying</b></font>"
 				if(DEAD)
 					status = "<font color='red'><b>Dead</b></font>"
 			health_description = "Status = [status]"
@@ -2518,9 +2520,23 @@
 		else if(istype(fax, /obj/item/photo))
 			var/obj/item/photo/H = fax
 			H.show(usr)
+		else if(istype(fax, /obj/item/documents/photocopy))
+			to_chat(usr, fax.desc)
 		else
 			to_chat(usr, "<span class='warning'>The faxed item is not viewable. This is probably a bug, and should be reported on the tracker: [fax.type]</span>")
 		return
+
+	else if (href_list["interview"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/datum/interview/I = locate(href_list["interview"])
+		if (I)
+			I.ui_interact(usr)
+
+	else if (href_list["interview_man"])
+		if(!check_rights(R_ADMIN))
+			return
+		GLOB.interviews.ui_interact(usr)
 
 /datum/admins/proc/handle_sendall(var/obj/machinery/photocopier/faxmachine/F, var/obj/item/paper/P)
 	if(F.receivefax(P) == FALSE)

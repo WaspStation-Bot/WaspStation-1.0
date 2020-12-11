@@ -20439,9 +20439,7 @@
 /turf/open/floor/carpet,
 /area/crew_quarters/bar)
 "buQ" = (
-/obj/machinery/computer/slot_machine{
-	pixel_y = 2
-	},
+/obj/machinery/vending/classicbeats,
 /turf/open/floor/carpet,
 /area/crew_quarters/bar)
 "buS" = (
@@ -24094,10 +24092,6 @@
 /obj/effect/landmark/start/atmospheric_technician,
 /turf/open/floor/plasteel,
 /area/engine/atmos)
-"bKH" = (
-/obj/machinery/air_sensor/atmos/nitrous_tank,
-/turf/open/floor/engine/n2o,
-/area/engine/atmos)
 "bKI" = (
 /obj/effect/turf_decal/atmos/nitrous_oxide,
 /turf/open/floor/engine/n2o,
@@ -25781,10 +25775,6 @@
 /obj/machinery/portable_atmospherics/canister,
 /turf/open/floor/plating,
 /area/maintenance/starboard)
-"bQX" = (
-/obj/machinery/air_sensor/atmos/toxin_tank,
-/turf/open/floor/engine/plasma,
-/area/engine/atmos)
 "bQY" = (
 /obj/effect/turf_decal/atmos/plasma,
 /turf/open/floor/engine/plasma,
@@ -26918,10 +26908,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/atmos)
-"bVN" = (
-/obj/machinery/air_sensor/atmos/carbon_tank,
-/turf/open/floor/engine/co2,
-/area/engine/atmos)
 "bVO" = (
 /obj/effect/turf_decal/atmos/carbon_dioxide,
 /turf/open/floor/engine/co2,
@@ -27929,6 +27915,11 @@
 /obj/structure/sign/departments/medbay/alt,
 /turf/closed/wall,
 /area/medical/medbay/central)
+"bZd" = (
+/obj/machinery/atmospherics/miner/nitrogen,
+/obj/machinery/air_sensor/atmos/nitrogen_tank,
+/turf/open/floor/engine/n2,
+/area/engine/atmos)
 "bZe" = (
 /obj/structure/sign/directions/security{
 	dir = 1;
@@ -30287,10 +30278,6 @@
 	},
 /turf/open/floor/engine/n2,
 /area/engine/atmos)
-"chO" = (
-/obj/machinery/air_sensor/atmos/nitrogen_tank,
-/turf/open/floor/engine/n2,
-/area/engine/atmos)
 "chP" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/nitrogen_output{
 	dir = 1
@@ -30301,10 +30288,6 @@
 /obj/machinery/atmospherics/components/unary/outlet_injector/atmos/oxygen_input{
 	dir = 1
 	},
-/turf/open/floor/engine/o2,
-/area/engine/atmos)
-"chR" = (
-/obj/machinery/air_sensor/atmos/oxygen_tank,
 /turf/open/floor/engine/o2,
 /area/engine/atmos)
 "chS" = (
@@ -33303,18 +33286,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/surgery)
-"crn" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 8
-	},
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = 24
-	},
-/turf/open/floor/plasteel/white/side{
-	dir = 8
-	},
-/area/medical/surgery)
 "cro" = (
 /obj/structure/bed/roller,
 /obj/machinery/iv_drip,
@@ -33629,13 +33600,6 @@
 /turf/open/floor/plasteel/white/side{
 	dir = 1
 	},
-/area/medical/surgery)
-"csn" = (
-/obj/item/radio/intercom{
-	pixel_y = -30
-	},
-/obj/structure/closet/crate/freezer/blood,
-/turf/open/floor/plasteel,
 /area/medical/surgery)
 "cso" = (
 /obj/structure/bed/roller,
@@ -35363,11 +35327,17 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/medical/morgue)
-"cyn" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
+"cyi" = (
+/obj/item/radio/intercom{
+	pixel_y = -30
 	},
+/turf/open/floor/plasteel,
+/area/medical/surgery)
+"cyn" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
 "cyo" = (
@@ -35626,7 +35596,9 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 8
+	},
 /turf/open/floor/plasteel/white,
 /area/medical/genetics/cloning)
 "cyX" = (
@@ -35649,6 +35621,9 @@
 	dir = 8
 	},
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 9
+	},
 /turf/open/floor/plasteel/white,
 /area/medical/genetics/cloning)
 "cyY" = (
@@ -54188,6 +54163,11 @@
 	dir = 5
 	},
 /area/hydroponics)
+"hXl" = (
+/obj/machinery/atmospherics/miner/n2o,
+/obj/machinery/air_sensor/atmos/nitrous_tank,
+/turf/open/floor/engine/n2o,
+/area/engine/atmos)
 "hXo" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -66676,6 +66656,14 @@
 	},
 /turf/open/floor/wood,
 /area/maintenance/port/aft)
+"obx" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 8
+	},
+/turf/open/floor/plasteel/white/side{
+	dir = 8
+	},
+/area/medical/surgery)
 "obE" = (
 /obj/machinery/door/airlock/security{
 	aiControlDisabled = 1;
@@ -67162,6 +67150,10 @@
 /obj/machinery/holopad,
 /turf/open/floor/plasteel,
 /area/engine/break_room)
+"omy" = (
+/obj/machinery/smartfridge/bloodbank/preloaded,
+/turf/closed/wall,
+/area/medical/surgery)
 "omB" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
@@ -67581,6 +67573,11 @@
 	},
 /turf/open/floor/plasteel,
 /area/medical/cryo)
+"oxL" = (
+/obj/machinery/atmospherics/miner/toxins,
+/obj/machinery/air_sensor/atmos/toxin_tank,
+/turf/open/floor/engine/plasma,
+/area/engine/atmos)
 "oxT" = (
 /obj/structure/chair,
 /obj/machinery/flasher{
@@ -72936,6 +72933,9 @@
 	},
 /obj/structure/cable{
 	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 6
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/genetics/cloning)
@@ -81383,6 +81383,11 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/bridge)
+"vfj" = (
+/obj/machinery/atmospherics/miner/oxygen,
+/obj/machinery/air_sensor/atmos/oxygen_tank,
+/turf/open/floor/engine/o2,
+/area/engine/atmos)
 "vfn" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -85451,6 +85456,11 @@
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/crew_quarters/kitchen)
+"xfe" = (
+/obj/machinery/atmospherics/miner/carbon_dioxide,
+/obj/machinery/air_sensor/atmos/carbon_tank,
+/turf/open/floor/engine/co2,
+/area/engine/atmos)
 "xfx" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -107189,8 +107199,8 @@ cmk
 cnq
 iiz
 uwC
-crn
-csn
+obx
+cyi
 cia
 cdl
 gFK
@@ -107446,7 +107456,7 @@ cia
 cia
 cia
 kXq
-cia
+omy
 cia
 cia
 ceu
@@ -129283,8 +129293,8 @@ qtn
 fRk
 aaf
 gJs
-chO
 cjd
+bZd
 ckG
 bAR
 aaf
@@ -130311,8 +130321,8 @@ elb
 uzX
 aaf
 gJs
-chR
 cjg
+vfj
 ckH
 bAR
 aaf
@@ -131339,8 +131349,8 @@ vgE
 uzX
 aaf
 gJs
-chU
 cjj
+chU
 ckJ
 bAR
 aaf
@@ -133117,19 +133127,19 @@ aaa
 aaf
 bAR
 bCB
-bEd
+bpH
 bGa
 bAR
 bJc
-bKH
+bKI
 bMm
 bAR
 bPx
-bQX
+bQY
 bSk
 bAR
 bUI
-bVN
+bVO
 bXr
 bAR
 aaf
@@ -133374,19 +133384,19 @@ aaa
 aaf
 bAR
 bCC
-bpH
+bEd
 bCC
 bAR
 bJd
-bKI
+hXl
 bJd
 bAR
 bPy
-bQY
+oxL
 bPy
 bAR
 bUJ
-bVO
+xfe
 bUJ
 bAR
 aaf

@@ -13,6 +13,8 @@
 	radio = /obj/item/radio/borg
 
 	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
+	light_system = MOVABLE_LIGHT_DIRECTIONAL
+	light_on = FALSE
 
 	var/custom_name = ""
 	var/braintype = "Cyborg"
@@ -102,7 +104,6 @@
 
 	wires = new /datum/wires/robot(src)
 	AddComponent(/datum/component/empprotection, EMP_PROTECT_WIRES)
-
 	RegisterSignal(src, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, .proc/charge)
 
 	robot_modules_background = new()
@@ -143,7 +144,7 @@
 		mmi.brain.organ_flags |= ORGAN_FROZEN
 		mmi.brain.name = "[real_name]'s brain"
 		mmi.name = "[initial(mmi.name)]: [real_name]"
-		mmi.brainmob = new(mmi)
+		mmi.set_brainmob(new /mob/living/brain(mmi))
 		mmi.brainmob.name = src.real_name
 		mmi.brainmob.real_name = src.real_name
 		mmi.brainmob.container = mmi
@@ -318,8 +319,6 @@
 	if(connected_ai)
 		. += "Master AI: [connected_ai.name]"
 
-/mob/living/silicon/robot/restrained(ignore_grab)
-	. = 0
 
 /mob/living/silicon/robot/triggerAlarm(class, area/A, O, obj/alarmsource)
 	if(alarmsource.z != z)
@@ -421,7 +420,33 @@
 /mob/living/silicon/robot/regenerate_icons()
 	return update_icons()
 
-// /mob/living/silicon/robot/update_icons() <--- Wasp - Moved to modular for borg icons
+/* /mob/living/silicon/robot/update_icons() <--- Wasp - Moved to modular for borg icons
+/mob/living/silicon/robot/update_icons()
+	cut_overlays()
+	icon_state = module.cyborg_base_icon
+	if(stat != DEAD && !(HAS_TRAIT(src, TRAIT_KNOCKEDOUT) || IsStun() || IsParalyzed() || low_power_mode)) //Not dead, not stunned.
+		if(!eye_lights)
+			eye_lights = new()
+		if(lamp_intensity > 2)
+			eye_lights.icon_state = "[module.special_light_key ? "[module.special_light_key]":"[module.cyborg_base_icon]"]_l"
+		else
+			eye_lights.icon_state = "[module.special_light_key ? "[module.special_light_key]":"[module.cyborg_base_icon]"]_e"
+		eye_lights.icon = icon
+		add_overlay(eye_lights)
+
+	if(opened)
+		if(wiresexposed)
+			add_overlay("ov-opencover +w")
+		else if(cell)
+			add_overlay("ov-opencover +c")
+		else
+			add_overlay("ov-opencover -c")
+	if(hat)
+		var/mutable_appearance/head_overlay = hat.build_worn_icon(default_layer = 20, default_icon_file = 'icons/mob/clothing/head.dmi')
+		head_overlay.pixel_y += hat_offset
+		add_overlay(head_overlay)
+	update_fire()
+*/
 
 /mob/living/silicon/robot/proc/self_destruct()
 	if(emagged)
@@ -435,8 +460,7 @@
 /mob/living/silicon/robot/proc/UnlinkSelf()
 	set_connected_ai(null)
 	lawupdate = FALSE
-	lockcharge = FALSE
-	mobility_flags |= MOBILITY_FLAGS_DEFAULT
+	set_lockcharge(FALSE)
 	scrambledcodes = TRUE
 	//Disconnect it's camera so it's not so easily tracked.
 	if(!QDELETED(builtInCamera))
@@ -458,16 +482,29 @@
 		W.attack_self(src)
 
 
-/mob/living/silicon/robot/proc/SetLockdown(state = 1)
+/mob/living/silicon/robot/proc/SetLockdown(state = TRUE)
 	// They stay locked down if their wire is cut.
 	if(wires.is_cut(WIRE_LOCKDOWN))
-		state = 1
+		state = TRUE
 	if(state)
 		throw_alert("locked", /obj/screen/alert/locked)
 	else
 		clear_alert("locked")
-	lockcharge = state
-	update_mobility()
+	set_lockcharge(state)
+
+
+///Reports the event of the change in value of the lockcharge variable.
+/mob/living/silicon/robot/proc/set_lockcharge(new_lockcharge)
+	if(new_lockcharge == lockcharge)
+		return
+	. = lockcharge
+	lockcharge = new_lockcharge
+	if(lockcharge)
+		if(!.)
+			ADD_TRAIT(src, TRAIT_IMMOBILIZED, LOCKED_BORG_TRAIT)
+	else if(.)
+		REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, LOCKED_BORG_TRAIT)
+
 
 /mob/living/silicon/robot/proc/SetEmagged(new_state)
 	emagged = new_state
@@ -495,30 +532,38 @@
 		return //won't work if dead
 	set_autosay()
 
+
 /mob/living/silicon/robot/proc/control_headlamp()
 	if(stat || lamp_cooldown > world.time || low_power_mode)
 		to_chat(src, "<span class='danger'>This function is currently offline.</span>")
 		return
 
-//Some sort of magical "modulo" thing which somehow increments lamp power by 2, until it hits the max and resets to 0.
-	lamp_intensity = (lamp_intensity+2) % (lamp_max+2)
-	to_chat(src, "<span class='notice'>[lamp_intensity ? "Headlamp power set to Level [lamp_intensity/2]" : "Headlamp disabled"].</span>")
+	if(lamp_intensity == 0) //We'll skip intensity of 2, since every mob already has such a see-darkness range, so no much need for it.
+		lamp_intensity = 4
+	else //Some sort of magical "modulo" thing which somehow increments lamp power by 2, until it hits the max and resets to 0.
+		lamp_intensity = (lamp_intensity + 2) % (lamp_max + 2)
+	to_chat(src, "<span class='notice'>[lamp_intensity > 2 ? "Headlamp power set to Level [lamp_intensity * 0.5]" : "Headlamp disabled"].</span>")
 	update_headlamp()
 
-/mob/living/silicon/robot/proc/update_headlamp(turn_off = 0, cooldown = 100)
-	set_light(0)
 
-	if(lamp_intensity && (turn_off || stat || low_power_mode))
-		to_chat(src, "<span class='danger'>Your headlamp has been deactivated.</span>")
-		lamp_intensity = 0
-		lamp_cooldown = cooldown == BORG_LAMP_CD_RESET ? 0 : max(world.time + cooldown, lamp_cooldown)
+/mob/living/silicon/robot/proc/update_headlamp(turn_off = FALSE, cooldown = 10 SECONDS)
+	if(lamp_intensity > 2)
+		if(turn_off || stat || low_power_mode)
+			to_chat(src, "<span class='danger'>Your headlamp has been deactivated.</span>")
+			lamp_intensity = 0
+			lamp_cooldown = cooldown == BORG_LAMP_CD_RESET ? 0 : max(world.time + cooldown, lamp_cooldown)
+			set_light_on(FALSE)
+		else
+			set_light_range(lamp_intensity * 0.5)
+			set_light_on(TRUE)
 	else
-		set_light(lamp_intensity)
+		set_light_on(FALSE)
 
 	if(lamp_button)
 		lamp_button.icon_state = "lamp[lamp_intensity]"
 
 	update_icons()
+
 
 /mob/living/silicon/robot/proc/deconstruct()
 	SEND_SIGNAL(src, COMSIG_BORG_SAFE_DECONSTRUCT)
@@ -747,19 +792,11 @@
 		if(health <= -maxHealth) //die only once
 			death()
 			return
-		if(IsUnconscious() || IsStun() || IsKnockdown() || IsParalyzed() || getOxyLoss() > maxHealth*0.5)
-			if(stat == CONSCIOUS)
-				set_stat(UNCONSCIOUS)
-				become_blind(UNCONSCIOUS_BLIND)
-				update_mobility()
-				update_headlamp()
+		if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT) || IsStun() || IsKnockdown() || IsParalyzed())
+			set_stat(UNCONSCIOUS)
 		else
-			if(stat == UNCONSCIOUS)
-				set_stat(CONSCIOUS)
-				cure_blind(UNCONSCIOUS_BLIND)
-				update_mobility()
-				update_headlamp()
-	diag_hud_set_status()
+			set_stat(CONSCIOUS)
+	update_headlamp()
 	diag_hud_set_health()
 	diag_hud_set_aishell()
 	update_health_hud()
@@ -986,7 +1023,7 @@
 	if(!do_after(src, 5, target = M))
 		return
 	if(iscarbon(M) && !M.incapacitated() && !riding_datum.equip_buckle_inhands(M, 1))
-		if(M.get_num_arms() <= 0)
+		if(M.usable_hands == 0)
 			M.visible_message("<span class='boldwarning'>[M] can't climb onto [src] because [M.p_they()] don't have any usable arms!</span>")
 		else
 			M.visible_message("<span class='boldwarning'>[M] can't climb onto [src] because [M.p_their()] hands are full!</span>")
