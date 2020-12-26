@@ -1,6 +1,3 @@
-/*
-		Waspstation Edit - Moved to modular folder
-
 //A beast that fire freezing blasts.
 /mob/living/simple_animal/hostile/asteroid/basilisk
 	name = "basilisk"
@@ -21,12 +18,12 @@
 	throw_message = "does nothing against the hard shell of"
 	vision_range = 2
 	speed = 3
-	maxHealth = 200
-	health = 200
+	maxHealth = 175
+	health = 175
 	harm_intent_damage = 5
 	obj_damage = 60
-	melee_damage_lower = 12
-	melee_damage_upper = 12
+	melee_damage_lower = 7
+	melee_damage_upper = 15
 	attack_verb_continuous = "bites into"
 	attack_verb_simple = "bite into"
 	speak_emote = list("chitters")
@@ -39,7 +36,7 @@
 	var/lava_drinker = TRUE
 	var/warmed_up = FALSE
 
-/obj/projectile/temp/basilisk
+/obj/projectile/temp/basilisk_cold
 	name = "freezing blast"
 	icon_state = "ice_2"
 	damage = 0
@@ -48,13 +45,29 @@
 	flag = "energy"
 	temperature = -50 // Cools you down! per hit!
 
-/obj/projectile/temp/basilisk/heated
+/obj/projectile/temp/basilisk_cold/on_hit(atom/target, blocked = 0)
+	. = ..()
+	if(isliving(target))
+		var/mob/living/M = target
+		M.apply_status_effect(STATUS_EFFECT_METAB_FROZEN)
+
+/obj/projectile/temp/basilisk_heat
 	name = "energy blast"
 	icon_state= "chronobolt"
 	damage = 40
 	damage_type = BRUTE
 	nodamage = FALSE
-	temperature = 0
+	flag = "energy"
+	temperature = 50
+
+/obj/projectile/temp/basilisk_heat/on_hit(atom/target, blocked)
+	. = ..()
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+		for(var/vir in H.diseases)
+			var/datum/disease/D = vir
+			//TODO - Put legionvirus stuff here
+
 
 
 /mob/living/simple_animal/hostile/asteroid/basilisk/GiveTarget(new_target)
@@ -81,7 +94,7 @@
 			icon_state = "Basilisk_alert"
 			set_varspeed(0)
 			warmed_up = TRUE
-			projectiletype = /obj/projectile/temp/basilisk/heated
+			projectiletype = /obj/projectile/temp/basilisk_heat
 			addtimer(CALLBACK(src, .proc/cool_down), 3000)
 
 mob/living/simple_animal/hostile/asteroid/basilisk/proc/cool_down()
@@ -90,7 +103,58 @@ mob/living/simple_animal/hostile/asteroid/basilisk/proc/cool_down()
 		icon_state = "Basilisk"
 	set_varspeed(3)
 	warmed_up = FALSE
-	projectiletype = /obj/projectile/temp/basilisk
+	projectiletype = /obj/projectile/temp/basilisk_cold
+
+/******************************************
+		New whitesands varient
+******************************************/
+
+/mob/living/simple_animal/hostile/asteroid/basilisk/whitesands
+	armor = list("melee" = 30, "bullet" = 30, "laser" = 100, "energy" = 100, "bomb" = 30, "bio" = 30, "rad" = 30, "fire" = 30, "acid" = 30)
+	attack_same = TRUE		// So we'll attack watchers
+	butcher_results = list(/obj/item/stack/sheet/sinew = 4, /obj/item/stack/sheet/bone = 2)
+	var/shell_health = 50
+	var/has_shell = TRUE
+
+#define BULLET_SHELL_DAMAGE 1
+
+/mob/living/simple_animal/hostile/asteroid/basilisk/whitesands/proc/shell_damage(dam_amount)
+	if(has_shell)
+		shell_health -= dam_amount
+		if(shell_health <= 0)
+			has_shell = FALSE
+			armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)		// Armor comes from the shell
+		return TRUE
+	return FALSE
+
+/mob/living/simple_animal/hostile/asteroid/basilisk/whitesands/CanAttack(atom/the_target)
+	. = ..()
+	if(!.)
+		return FALSE
+	if(istype(the_target, /mob/living/simple_animal/hostile/asteroid))
+		if(istype(the_target, /mob/living/simple_animal/hostile/asteroid/basilisk/watcher))
+			return TRUE
+		return FALSE
+	return TRUE
+
+mob/living/simple_animal/hostile/asteroid/basilisk/whitesands/attacked_by(obj/item/I, mob/living/user)
+	if(I.force)
+		if(shell_damage(I.force))			// Damage was absorbed by the shell, no need to go further
+			send_item_attack_message(I, user)
+			return TRUE
+	return ..()
+	
+mob/living/simple_animal/hostile/asteroid/basilisk/whitesands/bullet_act(obj/projectile/P)
+	shell_damage(BULLET_SHELL_DAMAGE)
+	return ..()
+
+/mob/living/simple_animal/hostile/asteroid/basilisk/whitesands/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
+	if(istype(AM, /obj/item))
+		shell_damage(BULLET_SHELL_DAMAGE)
+	..()
+	
+
+#undef BULLET_SHELL_DAMAGE
 
 //Watcher
 /mob/living/simple_animal/hostile/asteroid/basilisk/watcher
@@ -179,6 +243,7 @@ mob/living/simple_animal/hostile/asteroid/basilisk/proc/cool_down()
 	icon_dead = "watcher_icewing_dead"
 	maxHealth = 170
 	health = 170
+	ranged_cooldown_time = 20
 	projectiletype = /obj/projectile/temp/basilisk/icewing
 	butcher_results = list(/obj/item/stack/ore/diamond = 5, /obj/item/stack/sheet/bone = 1) //No sinew; the wings are too fragile to be usable
 	crusher_loot = /obj/item/crusher_trophy/watcher_wing/ice_wing
@@ -213,4 +278,4 @@ mob/living/simple_animal/hostile/asteroid/basilisk/proc/cool_down()
 			L.apply_status_effect(/datum/status_effect/freon/watcher)
 
 /mob/living/simple_animal/hostile/asteroid/basilisk/watcher/tendril
-	fromtendril = TRUE */
+	fromtendril = TRUE
