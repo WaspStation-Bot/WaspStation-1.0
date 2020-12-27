@@ -12,13 +12,10 @@
 
 	var/deployed = FALSE //If the drill is anchored and ready-to-mine
 	var/active = FALSE //If the drill is activly mining ore
-	var/ore_contained = list()
+	var/ore_contained = list() //[Ore stack path] = Amount
 	var/total_amount = 0
-	var/max_amount
+	var/max_amount = 10000
 	var/area/lavaland/surface/ore_vein/active_vein //Ore vein currently set to be mined in
-
-/obj/machinery/deepcore/drill/Initialize(mapload)
-	. = ..()
 
 /obj/machinery/deepcore/drill/interact(mob/user, special_state)
 	. = ..()
@@ -27,10 +24,10 @@
 	if(deployed)
 		if(active)
 			active = FALSE
-			to_chat(user, "<span class='notice'>You deactiveate [src]</span>")
+			to_chat(user, "<span class='notice'>You deactivate [src]</span>")
 		else
 			active = TRUE
-			to_chat(user, "<span class='notice'>You reactiveate [src]</span>")
+			to_chat(user, "<span class='notice'>You reactivate [src]</span>")
 		update_icon_state()
 		update_overlays()
 		return TRUE
@@ -61,15 +58,17 @@
 /obj/machinery/deepcore/drill/process()
 	if(machine_stat & BROKEN || (active && !active_vein))
 		active = FALSE
+		update_icon_state()
 		return
 	if(deployed && active)
 		if(!mineOre())
-			return
+			active = FALSE
+			update_icon_state()
 		if(network)
-			return
-			//TODO: DCMnet
+			network.Push(ore_contained)
 		else //Dry deployment of ores
-			return
+			for(var/O in ore_contained)
+				dropOre(O, ore_contained[O])
 
 /obj/machinery/deepcore/drill/proc/mineOre()
 	if(total_amount >= max_amount || !active_vein)
@@ -77,11 +76,25 @@
 
 	var/list/extracted = active_vein.extract_ore()
 	for(var/O in extracted)
+		to_chat(world, "DEBUG: extracting [O] x [extracted[O]]");
 		var/extract_amount = extracted[O]
 		if(total_amount + extract_amount >= max_amount)
 			ore_contained[O] += max_amount - total_amount
+			total_amount = max_amount
 			return FALSE
 		ore_contained[O] += extract_amount
+		total_amount += extract_amount
+	return total_amount
+
+/obj/machinery/deepcore/drill/proc/dropOre(obj/item/stack/ore/O, amount)
+	if(ore_contained[O] > amount)
+		ore_contained[O] -= amount
+	else if(ore_contained[O] == amount)
+		ore_contained -= O
+	else
+		return 0
+	new O(get_step(src, SOUTH), amount, TRUE)
+	return amount
 
 /obj/machinery/deepcore/drill/proc/scanArea()
 	//Checks for ores and latches to an active vein if one is located.

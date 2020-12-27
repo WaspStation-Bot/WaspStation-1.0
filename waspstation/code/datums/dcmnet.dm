@@ -4,12 +4,15 @@
 	*/
 	var/list/obj/machinery/deepcore/connected = list()
 	/* Ores available for system output
+	NOT to be considered
 	*/
 	var/list/ores //Key = item/stack/ore ref | Value = Stack amount
 
 
 /datum/dcm_net/New(obj/machinery/deepcore/source)
 	connected += source
+
+// ** Machine handling procs **
 
 /datum/dcm_net/Destroy()
 	if(connected)
@@ -18,7 +21,7 @@
 	return ..()
 
 /datum/dcm_net/proc/AddMachine(obj/machinery/deepcore/M)
-	if(!M in connected)
+	if(!(M in connected))
 		connected += M
 		M.network = src
 		return TRUE
@@ -34,7 +37,20 @@
 		return TRUE
 
 /datum/dcm_net/proc/MergeWith(datum/dcm_net/net)
-	for (var/obj/machinery/deepcore/M in net)
+	for (var/obj/machinery/deepcore/M in net.connected)
 		AddMachine(M)
 	qdel(net)
 
+// ** Ore handling procs **
+
+/datum/dcm_net/proc/Push(container)
+	for(var/O in container)
+		var/amount = container[O]
+		ores[O] += amount
+		container -= O
+
+/datum/dcm_net/proc/Pull(container)
+	for(var/O in ores)
+		var/amount = ores[O]
+		container[O] += amount
+		ores -= O
