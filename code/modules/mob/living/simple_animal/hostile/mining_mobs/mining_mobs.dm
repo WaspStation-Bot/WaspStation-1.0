@@ -21,9 +21,16 @@
 	mob_size = MOB_SIZE_LARGE
 	var/icon_aggro = null
 	var/crusher_drop_mod = 25
-	var/datum/armor/armor
+	var/datum/armor/armor		// Waspstation edit - Whitesands
 
 /mob/living/simple_animal/hostile/asteroid/Initialize(mapload)
+	if (islist(armor))		// Waspstation edit begin - Whitesands
+		armor = getArmor(arglist(armor))
+	else if (!armor)
+		armor = getArmor()
+	else if (!istype(armor, /datum/armor))
+		stack_trace("Invalid type [armor.type] found in .armor during /mob/living/simple_animal/hostile/asteroid Initialize()")		// Waspstation edit begin - Whitesands
+
 	. = ..()
 	apply_status_effect(STATUS_EFFECT_CRUSHERDAMAGETRACKING)
 
@@ -38,12 +45,11 @@
 		return
 	icon_state = icon_living
 
-/mob/living/simple_animal/hostile/asteroid/getarmor(def_zone, type)
+/mob/living/simple_animal/hostile/asteroid/getarmor(def_zone, type)		// Waspstation edit begin - Whitesands
 	if(armor)
 		return armor.getRating(type)
-	return 0		// If no armor
+	return 0		// If no armor		// Waspstation edit end
 	
-
 /mob/living/simple_animal/hostile/asteroid/bullet_act(obj/projectile/P)//Reduces damage from most projectiles to curb off-screen kills
 	if(!stat)
 		Aggro()

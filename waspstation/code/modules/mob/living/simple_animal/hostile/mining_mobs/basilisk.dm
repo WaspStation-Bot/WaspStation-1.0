@@ -10,7 +10,7 @@
 	icon_gib = "syndicate_gib"
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	move_to_delay = 20
-	projectiletype = /obj/projectile/temp/basilisk
+	projectiletype = /obj/projectile/temp/basilisk_cold
 	projectilesound = 'sound/weapons/pierce.ogg'
 	ranged = 1
 	ranged_message = "stares"
@@ -113,6 +113,7 @@ mob/living/simple_animal/hostile/asteroid/basilisk/proc/cool_down()
 	armor = list("melee" = 30, "bullet" = 30, "laser" = 100, "energy" = 100, "bomb" = 30, "bio" = 30, "rad" = 30, "fire" = 30, "acid" = 30)
 	attack_same = TRUE		// So we'll attack watchers
 	butcher_results = list(/obj/item/stack/sheet/sinew = 4, /obj/item/stack/sheet/bone = 2)
+	lava_drinker = FALSE
 	var/shell_health = 50
 	var/has_shell = TRUE
 
@@ -123,7 +124,7 @@ mob/living/simple_animal/hostile/asteroid/basilisk/proc/cool_down()
 		shell_health -= dam_amount
 		if(shell_health <= 0)
 			has_shell = FALSE
-			armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)		// Armor comes from the shell
+			armor = null		// Armor comes from the shell
 		return TRUE
 	return FALSE
 
@@ -152,7 +153,10 @@ mob/living/simple_animal/hostile/asteroid/basilisk/whitesands/bullet_act(obj/pro
 	if(istype(AM, /obj/item))
 		shell_damage(BULLET_SHELL_DAMAGE)
 	..()
-	
+
+/mob/living/simple_animal/hostile/asteroid/basilisk/whitesands/heat
+	name = "glowing basilisk"
+	projectiletype = /obj/projectile/temp/basilisk_heat
 
 #undef BULLET_SHELL_DAMAGE
 
@@ -168,8 +172,8 @@ mob/living/simple_animal/hostile/asteroid/basilisk/whitesands/bullet_act(obj/pro
 	health_doll_icon = "watcher"
 	pixel_x = -10
 	throw_message = "bounces harmlessly off of"
-	melee_damage_lower = 15
-	melee_damage_upper = 15
+	melee_damage_lower = 5
+	melee_damage_upper = 12
 	attack_verb_continuous = "impales"
 	attack_verb_simple = "impale"
 	a_intent = INTENT_HARM
@@ -178,6 +182,7 @@ mob/living/simple_animal/hostile/asteroid/basilisk/whitesands/bullet_act(obj/pro
 	stat_attack = UNCONSCIOUS
 	movement_type = FLYING
 	robust_searching = 1
+	attack_same = TRUE		// So we'll fight basilisks
 	crusher_loot = /obj/item/crusher_trophy/watcher_wing
 	gold_core_spawnable = NO_SPAWN
 	loot = list()
@@ -190,6 +195,16 @@ mob/living/simple_animal/hostile/asteroid/basilisk/whitesands/bullet_act(obj/pro
 	. = ..()
 	if(stat == CONSCIOUS)
 		consume_bait()
+
+/mob/living/simple_animal/hostile/asteroid/basilisk/watcher/CanAttack(atom/the_target)
+	. = ..()
+	if(!.)
+		return FALSE
+	if(istype(the_target, /mob/living/simple_animal/hostile/asteroid))
+		if(istype(the_target, /mob/living/simple_animal/hostile/asteroid/basilisk/whitesands))
+			return TRUE
+		return FALSE
+	return TRUE
 
 /mob/living/simple_animal/hostile/asteroid/basilisk/watcher/proc/consume_bait()
 	var/obj/item/stack/ore/diamond/diamonds = locate(/obj/item/stack/ore/diamond) in oview(src, 9)
