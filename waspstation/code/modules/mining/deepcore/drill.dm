@@ -15,7 +15,7 @@
 	var/ore_contained = list() //[Ore stack path] = Amount
 	var/total_amount = 0
 	var/max_amount = 10000
-	var/area/lavaland/surface/ore_vein/active_vein //Ore vein currently set to be mined in
+	var/area/lavaland/surface/outdoors/ore_vein/active_vein //Ore vein currently set to be mined in
 
 /obj/machinery/deepcore/drill/interact(mob/user, special_state)
 	. = ..()
@@ -76,7 +76,6 @@
 
 	var/list/extracted = active_vein.extract_ore()
 	for(var/O in extracted)
-		to_chat(world, "DEBUG: extracting [O] x [extracted[O]]");
 		var/extract_amount = extracted[O]
 		if(total_amount + extract_amount >= max_amount)
 			ore_contained[O] += max_amount - total_amount
@@ -100,8 +99,8 @@
 	//Checks for ores and latches to an active vein if one is located.
 	var/area/deployed_zone = get_area(src)
 	if(deployed_zone && isarea(deployed_zone))
-		if(istype(deployed_zone, /area/lavaland/surface/ore_vein))
-			var/area/lavaland/surface/ore_vein/vein = deployed_zone
+		if(istype(deployed_zone, /area/lavaland/surface/outdoors/ore_vein))
+			var/area/lavaland/surface/outdoors/ore_vein/vein = deployed_zone
 			if(!vein.active_drill)
 				vein.active_drill = src
 				active_vein = vein
@@ -146,7 +145,7 @@
 	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
 	//Cool beam of light ignores shadows.
 	if(active && deployed)
-		set_light(1, 1, "99FFFF")
+		set_light(3, 1, "99FFFF")
 		SSvis_overlays.add_vis_overlay(src, icon, "mining_beam-particles", layer, plane, dir)
 		SSvis_overlays.add_vis_overlay(src, icon, "mining_beam-particles", layer, EMISSIVE_PLANE, dir)
 	else
@@ -160,6 +159,6 @@
 		update_overlays()
 
 /obj/machinery/deepcore/drill/can_be_unfasten_wrench(mob/user, silent)
-	to_chat(user, "<span class='warning'>You don't need a wrench to deploy [src]!</span>")
+	to_chat(user, "<span class='notice'>You don't need a wrench to deploy [src]!</span>")
 	return CANT_UNFASTEN
 
