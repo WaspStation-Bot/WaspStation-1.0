@@ -6,12 +6,8 @@
 	idle_power_usage = 5
 	active_power_usage = 50
 
-	var/active
+	var/active = FALSE
 	var/list/ore_contained = list()
-
-/obj/machinery/deepcore/hopper/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/simple_rotation, ROTATION_WRENCH)
 
 /obj/machinery/deepcore/hopper/interact(mob/user, special_state)
 	. = ..()
@@ -28,10 +24,12 @@
 			active = TRUE
 			use_power = 2 //Use active power
 			to_chat(user, "<span class='notice'>You reactiveate [src]</span>")
+	update_icon_state()
 
 /obj/machinery/deepcore/hopper/process()
 	if(!network && !length(ore_contained))
 		active = FALSE
+		update_icon_state()
 	if(active)
 		if(network)
 			network.Pull(ore_contained)
@@ -47,3 +45,24 @@
 		return 0
 	new O(get_step(src, dir), amount, TRUE)
 	return amount
+
+/obj/machinery/deepcore/hopper/update_icon_state()
+	if(powered(power_channel) || !anchored)
+		if(active)
+			icon_state = "hopper_on"
+		else
+			icon_state = "hopper_off"
+	else
+		icon_state = "hopper_nopower"
+
+/obj/machinery/deepcore/hopper/can_be_unfasten_wrench(mob/user, silent)
+	if(active)
+		to_chat(user, "<span class='warning'>Turn \the [src] off first!</span>")
+		return FAILED_UNFASTEN
+	return ..()
+
+/obj/machinery/deepcore/hopper/wrench_act(mob/living/user, obj/item/I)
+	. = ..()
+	if(default_unfasten_wrench(user, I))
+		update_icon_state()
+		return TRUE

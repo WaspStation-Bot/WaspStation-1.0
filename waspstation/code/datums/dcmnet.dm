@@ -1,4 +1,6 @@
 /datum/dcm_net
+	//Hub machine
+	var/obj/machinery/deepcore/hub/netHub
 	/* List of connected machines
 
 	*/
@@ -6,11 +8,11 @@
 	/* Ores available for system output
 	NOT to be considered
 	*/
-	var/list/ores //Key = item/stack/ore ref | Value = Stack amount
+	var/list/ores = list() //Key = item/stack/ore ref | Value = Stack amount
 
 
-/datum/dcm_net/New(obj/machinery/deepcore/source)
-	connected += source
+/datum/dcm_net/New(obj/machinery/deepcore/hub/source)
+	netHub = source
 
 // ** Machine handling procs **
 

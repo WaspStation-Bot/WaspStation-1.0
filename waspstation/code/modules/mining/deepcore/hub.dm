@@ -1,38 +1,49 @@
-// /obj/machinery/computer/dcm_hub
-// 	name = "Deepcore Mining Control Hub"
-// 	desc = "Houses the server which processes all connected mining equipment."
-// 	icon = 'waspstation/icons/obj/machines/deepcore.dmi'
-// 	icon_state = "hub"
-// 	var/list/datum/dcm_net/connected = list()
+GLOBAL_DATUM(dcm_net_default, /datum/dcm_net)
+/obj/machinery/deepcore/hub
+	name = "Deepcore Mining Control Hub"
+	desc = "Houses the server which processes all connected mining equipment."
+	icon_state = "hub"
+	density = TRUE
 
-// /obj/machinery/computer/dcm_hub/Initialize(mapload)
-// 	if(mapload && is_station_level(z))
-// 		connected += GLOB.dcm_net_default
+/obj/machinery/deepcore/hub/Initialize(mapload)
+	. = ..()
+	if(mapload)
+		if(!GLOB.dcm_net_default)
+			GLOB.dcm_net_default = new /datum/dcm_net(src)
+		network = GLOB.dcm_net_default
+	else if (!network)
+		network = new /datum/dcm_net(src)
 
-// /obj/machinery/computer/dcm_hub/Destroy()
-// 	connected = null
+/obj/machinery/deepcore/hub/Destroy()
+	qdel(network)
+	return ..()
 
-// 	return ..()
+/obj/machinery/deepcore/hub/examine(mob/user)
+	. = ..()
+	. += "<span class='info'>Linked to [network.connected.len] networks.</span>"
+	. += "<span class='notice'>Deep core mining equipment can be linked to [src] with a multitool.</span>"
 
-// /obj/machinery/computer/dcm_hub/examine(mob/user)
-// 	. = ..()
-// 	. += "<span class='info'>Linked to [connected.len] networks.</span>"
-// 	. += "<span class='notice'>Deep core mining equipment can be linked to [src] with a multitool.</span>"
+/obj/machinery/deepcore/hub/multitool_act(mob/living/user, obj/item/multitool/I)
+	. = ..()
+	if (istype(I))
+		to_chat(user, "<span class='notice'>You load the network data on to the multitool...</span>")
+		I.buffer = network
+		return TRUE
 
-// /obj/machinery/computer/dcm_hub/multitool_act(mob/living/user, obj/item/multitool/I)
-// 	. = ..()
-// 	if (istype(I) && istype(I.buffer, /datum/dcm_net))
-// 		to_chat(user, "<span class='notice'>You load the network data on the multitool to [src] and gain remote access...</span>")
-// 		connected += I.buffer
-// 		return TRUE
+/obj/machinery/deepcore/hub/ui_interact(mob/user, datum/tgui/ui)
+	user.set_machine(src)
+	var/datum/browser/popup = new(user, "dcm_hub", null, 600, 550)
+	popup.set_content(generate_ui())
+	popup.open()
 
-// /obj/machinery/computer/dcm_hub/ui_interact(mob/user, datum/tgui/ui)
-// 	user.set_machine(src)
-// 	var/datum/browser/popup = new(user, "dcm_hub", null, 600, 550)
-// 	popup.set_content(generate_ui())
-// 	popup.open()
+/obj/machinery/deepcore/hub/proc/generate_ui()
+	var/dat = "<div class='statusDisplay'><h3>Deepcore Network Hub:</h3><br>"
+	dat = "<h2>Connected to [network.connected.len] machines.</h4>"
+	for(var/M in network.connected)
+		var/obj/machinery/deepcore/D = M
+		dat += "[D.x], [D.y], [D.z] : <b>[D.name]</b>"
+		dat += "<br>"
+	dat += "</div>"
+	return dat
 
-// // DCM NETWORK LOGIC
-
-// /obj/machinery/computer/dcm_hub/proc/generate_ui()
-// 	return "TODO: HUB UI"
+// DCM NETWORK LOGIC
