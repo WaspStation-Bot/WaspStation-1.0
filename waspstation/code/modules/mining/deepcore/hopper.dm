@@ -23,7 +23,7 @@
 		else
 			active = TRUE
 			use_power = 2 //Use active power
-			to_chat(user, "<span class='notice'>You reactiveate [src]</span>")
+			to_chat(user, "<span class='notice'>You activeate \the [src]</span>")
 	update_icon_state()
 
 /obj/machinery/deepcore/hopper/process()
@@ -47,7 +47,7 @@
 	return amount
 
 /obj/machinery/deepcore/hopper/update_icon_state()
-	if(powered(power_channel) || !anchored)
+	if(powered(power_channel) && anchored)
 		if(active)
 			icon_state = "hopper_on"
 		else
