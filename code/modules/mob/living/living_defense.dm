@@ -1,6 +1,5 @@
 
 /mob/living/proc/run_armor_check(def_zone = null, attack_flag = "melee", absorb_text = null, soften_text = null, silent=FALSE, armour_penetration, penetrated_text)
-	message_admins("run_armor_check")
 	var/armor = getarmor(def_zone, attack_flag)
 
 	if(armor <= 0)
@@ -49,7 +48,6 @@
 	return BULLET_ACT_HIT
 
 /mob/living/bullet_act(obj/projectile/P, def_zone)
-	message_admins("Bullet_act")
 	var/armor = run_armor_check(def_zone, P.flag, "","",P.armour_penetration)
 	var/on_hit_state = P.on_hit(src, armor)
 	if(!P.nodamage && on_hit_state != BULLET_ACT_BLOCK)
