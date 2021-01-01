@@ -49,7 +49,7 @@
 	display_name = "Basic Tools"
 	description = "Basic mechanical, electronic, surgical and botanical tools."
 	design_ids = list("screwdriver", "wrench", "wirecutters", "crowbar", "multitool", "welding_tool", "tscanner", "analyzer", "cable_coil", "pipe_painter", "airlock_painter",
-					"cultivator", "plant_analyzer", "shovel", "spade", "hatchet", "mop", "floor_painter", "plunger", "spraycan") //WaspStation Edit - Floor Painters
+					"cultivator", "plant_analyzer", "shovel", "spade", "hatchet", "mop", "floor_painter", "decal_painter", "plunger", "spraycan") //WaspStation Edit - Floor Painters
 
 /datum/techweb_node/basic_medical
 	id = "basic_medical"
@@ -619,7 +619,7 @@
 	display_name = "Advanced Weapon Development Technology"
 	description = "Our weapons are breaking the rules of reality by now."
 	prereq_ids = list("adv_engi", "weaponry")
-	design_ids = list("pin_loyalty","gun_cell_upgraded")
+	design_ids = list("pin_loyalty","gun_cell_upgraded", "gun_cell_large")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 	export_price = 5000
 
