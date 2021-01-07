@@ -4,7 +4,6 @@
 /datum/gateway_destination/point/another_universe
 
 /obj/machinery/gateway/bs_evac_gateway
-	var/is_complete = FALSE
 	var/is_fueled = FALSE
 	var/transited_players = 0
 	// How much total fuel is required to initialize the gateway
@@ -15,6 +14,8 @@
 		/obj/item/reagent_containers/food/snacks/grown/banana/bluespace = 20
 	)
 	var/fuel_contents = list()
+	critical_machine = TRUE
+	circuit = /obj/item/circuitboard/machine/bs_evac_gateway
 
 /obj/machinery/gateway/bs_evac_gateway/Initialize()
 	use_power = NO_POWER_USE
@@ -33,6 +34,7 @@
 	if (!istype(AU))
 		CRASH("Invalid destination type for bs_evac_gateway: [D.type]")
 	if (check_fuel_requirements())
+		is_fueled = TRUE
 		target = D
 		target.activate(destination)
 		generate_bumper()
@@ -43,6 +45,10 @@
 
 /obj/machinery/gateway/bs_evac_gateway/process()
 	return
+
+/obj/machinery/gateway/bs_evac_gateway/Transfer()
+	transited_players += 1
+	..()
 
 /obj/item/circuitboard/machine/bs_evac_gateway
 	name = "Bluespace Evacuation Gateway (Machine Board)"
@@ -94,7 +100,7 @@
 	if(..())
 		return TRUE
 	for(var/obj/machinery/gateway/bs_evac_gateway/B in GLOB.machines)
-		if(B.is_complete && B.is_fueled && B.transited_players >= 1)
+		if(B.is_fueled && B.transited_players >= 1)
 			return TRUE
 	return FALSE
 
