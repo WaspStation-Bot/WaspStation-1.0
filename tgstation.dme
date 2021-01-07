@@ -3274,6 +3274,7 @@
 #include "waspstation\code\game\objects\items\pinpointer.dm"
 #include "waspstation\code\game\objects\items\shuttle_creator.dm"
 #include "waspstation\code\game\objects\items\circuitboards\computer_circuitboards.dm"
+#include "waspstation\code\game\objects\items\circuitboards\deepcore.dm"
 #include "waspstation\code\game\objects\items\circuitboards\machine_circuitboards.dm"
 #include "waspstation\code\game\objects\items\devices\crowbar.dm"
 #include "waspstation\code\game\objects\items\devices\multitool.dm"
