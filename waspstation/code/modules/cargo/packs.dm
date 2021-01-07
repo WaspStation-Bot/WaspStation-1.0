@@ -402,6 +402,27 @@
 	crate_name = "catgrill crate"
 
 //////////////////////////////////////////////////////////////////////////////
+/////////////////////////////// Deepcore /////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+
+/datum/supply_pack/materials/deepcore_drill
+	name = "Deep Core Mining Drill Crate"
+	desc = "Contains three Deep Core Mining Drills to boost your productivity."
+	cost = 3000
+	contains = list(/obj/machinery/deepcore/drill,
+					/obj/machinery/deepcore/drill,
+					/obj/machinery/deepcore/drill)
+	crate_name = "deep core drill crate"
+
+/datum/supply_pack/materials/deepcore_logi
+	name = "Deep Core Mining Logistics Crate"
+	desc = "Contains the logistics systems needed to run your Deep Core Mining Drills."
+	cost = 5000
+	contains = list(/obj/machinery/deepcore/hopper,
+					/obj/machinery/deepcore/hub)
+	crate_name = "deep core logi crate"
+
+//////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Miscellaneous ///////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
