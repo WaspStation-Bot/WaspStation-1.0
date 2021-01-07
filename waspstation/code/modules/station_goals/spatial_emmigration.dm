@@ -90,13 +90,6 @@
 		CRASH("Invalid game_mode [SSticker.mode] for executing start_countdown. Aborting!")
 	C.start_countdown()
 
-
-/datum/station_goal/spatial_emmigration/proc/trigger_cascade()
-	var/datum/game_mode/cataclysm/C = SSticker.mode
-	if (!istype(C))
-		CRASH("Invalid game_mode [SSticker.mode] for executing trigger_cascade. Aborting!")
-	C.trigger_cascade()
-
 /datum/station_goal/spatial_emmigration/check_completion()
 	if(..())
 		return TRUE
