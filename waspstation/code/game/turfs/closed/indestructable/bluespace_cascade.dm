@@ -14,7 +14,7 @@
 	var/spread_process_timer
 
 /turf/closed/indestructable/bluespace_cascade/New()
-	spread_process_timer = addtimer(CALLBACK(src, /turf/closed/indestructable/bluespace_cascade/.proc/process), 30, TIMER_OVERRIDE | TIMER_STOPPABLE)
+	spread_process_timer = addtimer(CALLBACK(src, .process), 30, TIMER_OVERRIDE | TIMER_STOPPABLE)
 	return ..()
 
 /turf/closed/indestructable/bluespace_cascade/Destroy()
@@ -32,7 +32,7 @@
 	var/turf/T=get_step(src,pdir)
 	if(istype(T, /turf/closed/indestructable/bluespace_cascade))
 		avail_dirs -= pdir
-		spread_process_timer = addtimer(CALLBACK(src, /turf/closed/indestructable/bluespace_cascade/.proc/process), 30, TIMER_OVERRIDE | TIMER_STOPPABLE)
+		spread_process_timer = addtimer(CALLBACK(src, .process), 30, TIMER_OVERRIDE | TIMER_STOPPABLE)
 
 	// EXPAND DONG
 	if(isturf(T))
