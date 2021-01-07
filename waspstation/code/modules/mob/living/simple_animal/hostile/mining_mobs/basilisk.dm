@@ -1,3 +1,6 @@
+#define LEGIONVIRUS_TYPE /datum/disease/transformation/legionvirus
+#define BULLET_SHELL_DAMAGE 1
+
 //A beast that fire freezing blasts.
 /mob/living/simple_animal/hostile/asteroid/basilisk
 	name = "basilisk"
@@ -66,7 +69,9 @@
 		var/mob/living/carbon/human/H = target
 		for(var/vir in H.diseases)
 			var/datum/disease/D = vir
-			//TODO - Put legionvirus stuff here
+			if(D.type == LEGIONVIRUS_TYPE)
+				D.cure()
+				break
 
 
 
@@ -116,8 +121,7 @@ mob/living/simple_animal/hostile/asteroid/basilisk/proc/cool_down()
 	lava_drinker = FALSE
 	var/shell_health = 50
 	var/has_shell = TRUE
-
-#define BULLET_SHELL_DAMAGE 1
+	var/list/shell_loot = list(/obj/item/stack/ore/diamond, /obj/item/stack/ore/diamond)
 
 /mob/living/simple_animal/hostile/asteroid/basilisk/whitesands/proc/shell_damage(dam_amount)
 	if(has_shell)
@@ -125,6 +129,8 @@ mob/living/simple_animal/hostile/asteroid/basilisk/proc/cool_down()
 		if(shell_health <= 0)
 			has_shell = FALSE
 			armor = null		// Armor comes from the shell
+			for(var/l in shell_loot)
+				new l(loc)
 		return TRUE
 	return FALSE
 
@@ -154,11 +160,18 @@ mob/living/simple_animal/hostile/asteroid/basilisk/whitesands/bullet_act(obj/pro
 		shell_damage(BULLET_SHELL_DAMAGE)
 	..()
 
+mob/living/simple_animal/hostile/asteroid/basilisk/whitesands/drop_loot()
+	if(has_shell)
+		for(var/l in shell_loot)		// You get the stuff anyways
+			new l(loc)
+	..()
+
 /mob/living/simple_animal/hostile/asteroid/basilisk/whitesands/heat
 	name = "glowing basilisk"
 	projectiletype = /obj/projectile/temp/basilisk_heat
 
 #undef BULLET_SHELL_DAMAGE
+#undef LEGIONVIRUS_TYPE
 
 //Watcher
 /mob/living/simple_animal/hostile/asteroid/basilisk/watcher

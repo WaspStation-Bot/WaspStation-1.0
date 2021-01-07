@@ -21,7 +21,7 @@
 	stage5 = list("<span class='warning'>You feel something growing inside your chest!</span>")
 	new_form = /mob/living/simple_animal/hostile/asteroid/hivelord/legion
 
-/datum/disease/transformation/legionvirus/do_disease_transformation(mob/living/H)		// Is it literally that easy?
+/datum/disease/transformation/legionvirus/do_disease_transformation(mob/living/H)
 	H.visible_message("<span class='warning'>[H] transforms into a legion!</span>")
 	var/mob/living/simple_animal/hostile/asteroid/hivelord/legion/L
 	if(HAS_TRAIT(H, TRAIT_DWARF)) //dwarf legions aren't just fluff!
