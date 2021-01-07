@@ -8,17 +8,18 @@
 	var/material_rate = 0	//Affects overall value of the ore vein
 	var/obj/machinery/deepcore/drill/active_drill
 
-/area/lavaland/surface/outdoors/ore_vein/update_areasize()
-	//Overrides the outdoors restriction on areasize
-	areasize = 0
-	for(var/turf/open/T in contents)
-		areasize++
+// /area/lavaland/surface/outdoors/ore_vein/update_areasize()
+// 	//Overrides the outdoors restriction on areasize
+// 	areasize = 0
+// 	for(var/turf/open/T in contents)
+// 		areasize++
 
 /area/lavaland/surface/outdoors/ore_vein/proc/extract_ore() //Called by deepcore drills, returns a list of keyed ore stacks by amount
 	var/list/ores = list()
-	if(!areasize)
-		update_areasize()
-	ores[ore_type] = CEILING((sqrt(areasize) * material_rate), 1)
+	// if(!areasize)
+	// 	update_areasize()
+	// ores[ore_type] = CEILING((sqrt(areasize) * material_rate), 1)
+	ores[ore_type] = material_rate
 	return ores
 
 /area/lavaland/surface/outdoors/ore_vein/iron
