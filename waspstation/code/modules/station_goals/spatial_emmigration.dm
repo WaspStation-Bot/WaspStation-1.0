@@ -1,6 +1,5 @@
 /datum/station_goal/spatial_emmigration
 	name = "Emergency Spatial Emmigration"
-	var/armageddon_timer
 
 /datum/gateway_destination/point/another_universe
 
