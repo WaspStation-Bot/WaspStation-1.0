@@ -4,7 +4,7 @@ GLOBAL_LIST_EMPTY(ore_vein_landmarks)
 	name = "OreVein"
 	var/resource
 
-/obj/effect/landmark/ore_vein/Initialize(/area/lavaland/surface/outdoors/ore_vein/vein_type)
+/obj/effect/landmark/ore_vein/Initialize(mapload, var/area/lavaland/surface/outdoors/ore_vein/vein_type)
 	. = ..()
 	GLOB.ore_vein_landmarks += src
 	if(!vein_type)
