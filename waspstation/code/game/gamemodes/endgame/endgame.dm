@@ -28,6 +28,7 @@
 	recommended_enemies = 1
 	antag_flag = ROLE_TRAITOR
 	allow_persistence_save = FALSE
+	config_tag = "cataclysm"
 
 	var/armageddon_timer
 	var/saturation_timer
