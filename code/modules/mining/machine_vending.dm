@@ -32,6 +32,7 @@
 		new /datum/data/mining_equipment("Jaunter",						/obj/item/wormhole_jaunter,											750),
 		new /datum/data/mining_equipment("Kinetic Crusher",				/obj/item/kinetic_crusher,											750),
 		new /datum/data/mining_equipment("Kinetic Accelerator",			/obj/item/gun/energy/kinetic_accelerator,							750),
+		new /datum/data/mining_equipment("Surface Scanner",				/obj/item/t_scanner/adv_mining_scanner,								800),
 		new /datum/data/mining_equipment("Scanner",						/obj/item/pinpointer/deepcore,										200),		// WS edit - Deepcore
 		new /datum/data/mining_equipment("Advanced Scanner",			/obj/item/pinpointer/deepcore/advanced,								800),		// WS edit - Deepcore
 		new /datum/data/mining_equipment("Resonator",					/obj/item/resonator,												800),
