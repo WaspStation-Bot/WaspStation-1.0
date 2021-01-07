@@ -409,9 +409,9 @@
 	name = "Deep Core Mining Drill Crate"
 	desc = "Contains three Deep Core Mining Drills to boost your productivity."
 	cost = 3000
-	contains = list(/obj/machinery/deepcore/drill,
-					/obj/machinery/deepcore/drill,
-					/obj/machinery/deepcore/drill)
+	contains = list(/obj/item/deepcorecapsule,
+					/obj/item/deepcorecapsule,
+					/obj/item/deepcorecapsule)
 	crate_name = "deep core drill crate"
 
 /datum/supply_pack/materials/deepcore_logi
