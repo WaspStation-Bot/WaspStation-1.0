@@ -2,7 +2,7 @@
 	name = "Soulus Saturation"
 	max_stages = 5
 	spread_flags = DISEASE_SPREAD_NON_CONTAGIOUS
-	cure_text = "Calomel"
+	cure_text = "System Cleaner"
 	cures = list(/datum/reagent/medicine/system_cleaner)
 	agent = "Soulus Dust"
 	viable_mobtypes = list(/mob/living/carbon/human)
