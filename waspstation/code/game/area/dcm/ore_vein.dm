@@ -1,3 +1,22 @@
+GLOBAL_LIST_EMPTY(ore_vein_landmarks)
+
+/obj/effect/landmark/ore_vein
+	name = "OreVein"
+	var/resource
+
+/obj/effect/landmark/ore_vein/Initialize(/area/lavaland/surface/outdoors/ore_vein/vein_type)
+	. = ..()
+	GLOB.ore_vein_landmarks += src
+	if(!vein_type)
+		vein_type = pick(subtypesof(/area/lavaland/surface/outdoors/ore_vein)) //random is default
+	if(ispath(vein_type))
+		vein_type = GLOB.areas_by_type[vein_type] || new vein_type //Finds either a preexisting instance or makes a new one
+	var/turf/T = get_turf(src)
+	var/area/old_area = get_area(T)
+	vein_type.contents += T
+	T.change_area(old_area, vein_type)
+	resource = initial(vein_type.ore_type.name)
+
 /*\
 	# Ore Veins
 	Represents material hidden beneath the earth for Deep Core Mining
@@ -7,6 +26,8 @@
 	var/obj/item/stack/ore/ore_type //What you're pulling out of the ground
 	var/material_rate = 0	//Affects overall value of the ore vein
 	var/obj/machinery/deepcore/drill/active_drill
+	///Currently linked ore vein landmark
+	var/obj/effect/landmark/ore_vein/landmark
 
 // /area/lavaland/surface/outdoors/ore_vein/update_areasize()
 // 	//Overrides the outdoors restriction on areasize
