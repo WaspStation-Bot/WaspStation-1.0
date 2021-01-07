@@ -419,6 +419,7 @@
 	desc = "Contains the logistics systems needed to run your Deep Core Mining Drills."
 	cost = 5000
 	contains = list(/obj/machinery/deepcore/hopper,
+							/obj/item/multitool,
 					/obj/machinery/deepcore/hub)
 	crate_name = "deep core logi crate"
 
