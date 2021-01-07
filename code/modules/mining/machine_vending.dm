@@ -35,6 +35,7 @@
 		new /datum/data/mining_equipment("Surface Scanner",				/obj/item/t_scanner/adv_mining_scanner,								800),
 		new /datum/data/mining_equipment("Scanner",						/obj/item/pinpointer/deepcore,										200),		// WS edit - Deepcore
 		new /datum/data/mining_equipment("Advanced Scanner",			/obj/item/pinpointer/deepcore/advanced,								800),		// WS edit - Deepcore
+		new /datum/data/mining_equipment("Advanced Scanner",			/obj/item/deepcorecapsule,											2000),		// WS edit - Deepcore
 		new /datum/data/mining_equipment("Resonator",					/obj/item/resonator,												800),
 		new /datum/data/mining_equipment("Fulton Pack",					/obj/item/extraction_pack,											1000),
 		new /datum/data/mining_equipment("Lazarus Injector",			/obj/item/lazarus_injector,											1000),

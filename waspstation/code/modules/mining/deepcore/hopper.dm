@@ -5,6 +5,7 @@
 	density = TRUE
 	idle_power_usage = 5
 	active_power_usage = 50
+	anchored = FALSE
 
 	var/active = FALSE
 	var/list/ore_contained = list()
@@ -27,7 +28,7 @@
 	update_icon_state()
 
 /obj/machinery/deepcore/hopper/process()
-	if(!network && !length(ore_contained))
+	if((!network && !length(ore_contained)) || !anchored)
 		active = FALSE
 		update_icon_state()
 	if(active)
@@ -66,3 +67,6 @@
 	if(default_unfasten_wrench(user, I))
 		update_icon_state()
 		return TRUE
+
+/obj/machinery/deepcore/hopper/anchored
+	anchored = 1
