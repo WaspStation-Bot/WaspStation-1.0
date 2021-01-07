@@ -1,10 +1,11 @@
 /obj/item/pinpointer/deepcore
 	name = "deep core pinpointer"
 	desc = "A handheld dowsing utility for locating material deep beneath the surface."
-	// icon = 'waspstation/icons/obj/device.dmi'
-	// icon_state = "pinpointer_dcm"
+	icon = 'waspstation/icons/obj/mining.dmi'
+	icon_state = "miningpinpointing"
 	custom_price = 300
 	custom_premium_price = 300
+	icon_suffix = "_mining"
 
 /obj/item/pinpointer/deepcore/attack_self(mob/living/user)
 	if(active)
@@ -39,6 +40,7 @@
 /obj/item/pinpointer/deepcore/advanced
 	name = "advanced deep core pinpointer"
 	desc = "A sophisticated dowsing utility for locating specific materials at any depth."
+	icon_state = "miningadvpinpointing"
 	custom_price = 600
 	custom_premium_price = 600
 
