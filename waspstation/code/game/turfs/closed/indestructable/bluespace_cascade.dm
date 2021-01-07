@@ -9,7 +9,7 @@
 	light_range = 5
 	light_power = 2
 	light_color="#0066FF"
-	plane = LIGHTING_PLANE
+	plane = CAMERA_STATIC_PLANE
 
 	var/next_check=0
 	var/list/avail_dirs = list(NORTH,SOUTH,EAST,WEST)
@@ -23,7 +23,7 @@
 	deltimer(spread_process_timer)
 	return ..()
 
-/turf/closed/indestructable/bluespace_cascade/process()
+/turf/closed/indestructable/bluespace_cascade/proc/process()
 	// No more available directions? Shut down process().
 	if(!length(avail_dirs))
 		deltimer(spread_process_timer)
@@ -90,7 +90,7 @@
 		AM.visible_message("<span class=\"warning\">\The [AM] smacks into \the [src] and rapidly flashes to ash.</span>",\
 		"<span class=\"warning\">You hear a loud crack as you are washed with a wave of heat.</span>")
 
-	playsound(src, 'waspstation/sound/effects/supermatter.ogg', 50, 1)
+	playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
 
 	Consume(AM)
 
