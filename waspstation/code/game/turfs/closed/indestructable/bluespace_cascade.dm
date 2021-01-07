@@ -1,4 +1,4 @@
-#define CREATE_SPREAD_TIMER spread_process_timer = addtimer(CALLBACK(src, process), 30, TIMER_OVERRIDE | TIMER_STOPPABLE | TIMER_UNIQUE)
+#define CREATE_SPREAD_TIMER spread_process_timer = addtimer(CALLBACK(src, .process), 30, TIMER_OVERRIDE | TIMER_STOPPABLE | TIMER_UNIQUE)
 
 // QUALITY COPYPASTA
 /turf/closed/indestructable/bluespace_cascade
@@ -13,7 +13,7 @@
 
 	var/next_check=0
 	var/list/avail_dirs = list(NORTH,SOUTH,EAST,WEST)
-	var/process_spread_timer
+	var/spread_process_timer
 
 /turf/closed/indestructable/bluespace_cascade/New()
 	CREATE_SPREAD_TIMER
@@ -23,7 +23,7 @@
 	deltimer(spread_process_timer)
 	return ..()
 
-/turf/closed/indestructable/bluespace_cascade/proc/process()
+/turf/closed/indestructable/bluespace_cascade/process()
 	// No more available directions? Shut down process().
 	if(!length(avail_dirs))
 		deltimer(spread_process_timer)
@@ -42,7 +42,7 @@
 		T.singularity_act()
 		T.ChangeTurf(/turf/closed/indestructable/bluespace_cascade, flags= CHANGETURF_INHERIT_AIR)
 		var/turf/closed/indestructable/bluespace_cascade/BC = T
-		T.New()
+		BC.New()
 
 /turf/closed/indestructable/bluespace_cascade/attack_paw(mob/user as mob)
 	return attack_hand(user)
@@ -56,10 +56,10 @@
 
 // /vg/: Don't let ghosts fuck with this.
 /turf/closed/indestructable/bluespace_cascade/attack_ghost(mob/user as mob)
-	user.examination(src)
+	user.examine(src)
 
 /turf/closed/indestructable/bluespace_cascade/attack_ai(mob/user as mob)
-	return user.examination(src)
+	return user.examine(src)
 
 /turf/closed/indestructable/bluespace_cascade/attack_hand(mob/user as mob)
 	user.visible_message("<span class=\"warning\">\The [user] reaches out and touches \the [src]... And then blinks out of existance.</span>",\
@@ -70,14 +70,14 @@
 
 	Consume(user)
 
-/turf/closed/indestructable/bluespace_cascade/attackby(obj/item/weapon/W as obj, mob/living/user as mob)
+/turf/closed/indestructable/bluespace_cascade/attackby(obj/item/W, mob/living/user as mob)
 	user.visible_message("<span class=\"warning\">\The [user] touches \a [W] to \the [src] as a silence fills the room...</span>",\
 		"<span class=\"danger\">You touch \the [W] to \the [src] when everything suddenly goes silent.\"</span>\n<span class=\"notice\">\The [W] flashes into dust as you flinch away from \the [src].</span>",\
 		"<span class=\"warning\">Everything suddenly goes silent.</span>")
 
 	playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
 
-	user.drop_from_inventory(W)
+	user.dropItemToGround(W)
 	Consume(W)
 
 
@@ -98,7 +98,7 @@
 /turf/closed/indestructable/bluespace_cascade/proc/Consume(atom/AM)
 	if(istype(AM, /mob/dead/observer))
 		return
-	return AM.supermatter_act(src)
+	return AM.singularity_act(src)
 
 /turf/closed/indestructable/bluespace_cascade/singularity_act()
 	return

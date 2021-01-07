@@ -26,6 +26,9 @@
 /obj/machinery/gateway/bs_evac_gateway/generate_destination()
 	destination = new
 
+/obj/machinery/gateway/bs_evac_gateway/proc/check_fuel_requirements()
+	return TRUE
+
 /obj/machinery/gateway/bs_evac_gateway/activate(datum/gateway_destination/D)
 	var/datum/gateway_destination/point/another_universe/AU = D
 	if (!istype(AU))
@@ -53,7 +56,7 @@
 		/obj/item/stock_parts/matter_bin/bluespace = 10,
 		/obj/item/stock_parts/micro_laser/quadultra = 5,
 		/obj/item/stock_parts/manipulator/femto = 3,
-		/obj/item/stock_parts/scanning_module/triphasic = 1
+		/obj/item/stock_parts/scanning_module/triphasic = 1,
 		/obj/item/stack/cable_coil = 30
 	)
 
@@ -84,10 +87,10 @@
 	P.special_enabled = TRUE
 
 /datum/station_goal/spatial_emmigration/proc/trigger_cascade()
-	var/datum/game_mode/cataclysm = SSticker.mode
-	if (!istype(cataclysm))
+	var/datum/game_mode/cataclysm/C = SSticker.mode
+	if (!istype(C))
 		CRASH("Invalid game_mode [SSticker.mode] for executing trigger_cascade. Aborting!")
-	cataclysm.trigger_cascade()
+	C.trigger_cascade()
 
 /datum/station_goal/spatial_emmigration/check_completion()
 	if(..())

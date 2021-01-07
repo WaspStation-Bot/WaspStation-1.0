@@ -33,7 +33,7 @@
 	var/saturation_complete = FALSE
 
 /datum/game_mode/cataclysm/proc/start_countdown()
-	armageddon_timer = addtimer(CALLBACK(src, proc/trigger_cascade), CASCADE_EVENT_COUNTDOWN, TIMER_UNIQUE)
+	armageddon_timer = addtimer(CALLBACK(src, .proc/trigger_cascade), CASCADE_EVENT_COUNTDOWN, TIMER_UNIQUE)
 
 /datum/game_mode/cataclysm/proc/trigger_cascade()
 	// Update parallax colors for all players to reflect the hell they're now in
@@ -53,12 +53,12 @@
 		var/turf/T = get_turf(L)
 		T.ChangeTurf(/turf/closed/indestructable/bluespace_cascade)
 	priority_announce("Warning! Bluespace Cascade Event detected in close proximity to the station. Begin evacuation immediately!")
-	saturation_timer = addtimer(CALLBACK(src, proc/trigger_saturation), CASCADE_SATURATION_COUNTDOWN, TIMER_UNIQUE)
+	saturation_timer = addtimer(CALLBACK(src, .proc/trigger_saturation), CASCADE_SATURATION_COUNTDOWN, TIMER_UNIQUE)
 
 /datum/game_mode/cataclysm/proc/trigger_saturation()
 	// all things must come to an end
 	priority_announce("Warning! Final bluespace satuaration has completed! Universal spatial breakdown imminent!")
-	Cinematic(CINEMATIC_BLUESPACE_CATACLYSM, world, CALLBACK(src, proc/complete_saturation))
+	Cinematic(CINEMATIC_BLUESPACE_CATACLYSM, world, CALLBACK(src, .proc/complete_saturation))
 
 /datum/game_mode/cataclysm/proc/complete_saturation()
 	saturation_complete = TRUE
