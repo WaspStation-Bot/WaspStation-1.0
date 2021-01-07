@@ -4,6 +4,7 @@
 /datum/gateway_destination/point/another_universe
 
 /obj/machinery/gateway/bs_evac_gateway
+	icon = 'waspstation/icons/obj/machines/evac_gateway.dmi'
 	var/is_fueled = FALSE
 	var/transited_players = 0
 	// How much total fuel is required to initialize the gateway
