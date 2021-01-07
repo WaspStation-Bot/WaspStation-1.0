@@ -80,11 +80,17 @@
 	 Specifications for emergency evacuation equipment is being made available to all NT/SolGov stations in the sector.
 	 There will be no further evacuation shuttles. All crew-safe logistical infrastructure has been dedicated to distributing evacuation equipment to underequipped stations.
 	 Syndicate Forces are guaranteed to attempt to evacuate through your gate. Ensure they do not succeed.
+	 You will have an estimated <b>90 minutes</b> until the cascade event reaches your station.
 	 Evacuation Gateway parts are available for shipping via cargo."}
 
 /datum/station_goal/spatial_emmigration/on_report()
 	var/datum/supply_pack/P = SSshuttle.supply_packs[/datum/supply_pack/engineering/bs_evac_gateway_kit]
 	P.special_enabled = TRUE
+	var/datum/game_mode/cataclysm/C = SSticker.mode
+	if (!istype(C))
+		CRASH("Invalid game_mode [SSticker.mode] for executing start_countdown. Aborting!")
+	C.start_countdown()
+
 
 /datum/station_goal/spatial_emmigration/proc/trigger_cascade()
 	var/datum/game_mode/cataclysm/C = SSticker.mode

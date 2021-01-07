@@ -1,5 +1,3 @@
-#define CREATE_SPREAD_TIMER spread_process_timer = addtimer(CALLBACK(src, .process), 30, TIMER_OVERRIDE | TIMER_STOPPABLE | TIMER_UNIQUE)
-
 // QUALITY COPYPASTA
 /turf/closed/indestructable/bluespace_cascade
 	name = "Bluespace Cascade Foam"
@@ -16,7 +14,7 @@
 	var/spread_process_timer
 
 /turf/closed/indestructable/bluespace_cascade/New()
-	CREATE_SPREAD_TIMER
+	spread_process_timer = addtimer(CALLBACK(src, /turf/closed/indestructable/bluespace_cascade/.proc/process), 30, TIMER_OVERRIDE | TIMER_STOPPABLE)
 	return ..()
 
 /turf/closed/indestructable/bluespace_cascade/Destroy()
@@ -34,7 +32,7 @@
 	var/turf/T=get_step(src,pdir)
 	if(istype(T, /turf/closed/indestructable/bluespace_cascade))
 		avail_dirs -= pdir
-		CREATE_SPREAD_TIMER
+		spread_process_timer = addtimer(CALLBACK(src, /turf/closed/indestructable/bluespace_cascade/.proc/process), 30, TIMER_OVERRIDE | TIMER_STOPPABLE)
 
 	// EXPAND DONG
 	if(isturf(T))
@@ -105,5 +103,3 @@
 
 /turf/closed/indestructable/bluespace_cascade/no_spread
 	avail_dirs = list()
-
-#undef CREATE_SPREAD_TIMER
