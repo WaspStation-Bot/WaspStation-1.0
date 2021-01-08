@@ -1,7 +1,27 @@
+#define GATEWAY_DEST_ANOTHER_UNIVERSE "cataclysm_another_universe"
+
 /datum/station_goal/spatial_emmigration
 	name = "Emergency Spatial Emmigration"
 
 /datum/gateway_destination/point/another_universe
+	id = GATEWAY_DEST_ANOTHER_UNIVERSE
+
+/datum/gateway_destination/point/another_universe/New()
+	if (another_universe_dest != null)
+		return another_universe_dest
+	another_universe_dest = src
+
+/obj/effect/landmark/awaystart/another_universe
+	id = GATEWAY_DEST_ANOTHER_UNIVERSE
+
+/obj/effect/landmark/awaystart/another_universe/Initialize()
+	var/datum/gateway_destination/point/another_universe/current
+	current = another_universe_dest
+	if(!current)
+		current = new
+	current.target_turfs += get_turf(src)
+
+GLOBAL_DATUM(another_universe_dest, /datum/gateway_destination/point/another_universe)
 
 /obj/machinery/gateway/bs_evac_gateway
 	icon = 'waspstation/icons/obj/machines/evac_gateway.dmi'
@@ -25,21 +45,19 @@
 	return ..()
 
 /obj/machinery/gateway/bs_evac_gateway/generate_destination()
-	destination = new
+	destination = another_universe_dest
 
 /obj/machinery/gateway/bs_evac_gateway/proc/check_fuel_requirements()
 	return TRUE
 
-/obj/machinery/gateway/bs_evac_gateway/activate(datum/gateway_destination/D)
-	var/datum/gateway_destination/point/another_universe/AU = D
+/obj/machinery/gateway/bs_evac_gateway/activate()
+	var/datum/gateway_destination/point/another_universe/AU = another_universe_dest
 	if (!istype(AU))
-		CRASH("Invalid destination type for bs_evac_gateway: [D.type]")
-	if (check_fuel_requirements())
-		is_fueled = TRUE
-		target = D
-		target.activate(destination)
-		generate_bumper()
-		update_icon()
+		CRASH("Failed to configure destination for another universe!")
+	target = D
+	target.activate(destination)
+	generate_bumper()
+	update_icon()
 
 /obj/machinery/gateway/bs_evac_gateway/deactivate()
 	return // No brakes on this train!
@@ -53,6 +71,15 @@
 		if(M.client)
 			transited_players += M.client
 	..()
+
+/obj/machinery/gateway/bs_evac_gateway/can_be_unfasten_wrench()
+	return FAILED_UNFASTEN
+
+/obj/machinery/gateway/bs_evac_gateway/update_icon_state()
+	if (is_fueled && target)
+		icon_state = "evac_gateway_on"
+	else
+		icon_state = "evac_gateway_off"
 
 /obj/item/circuitboard/machine/bs_evac_gateway
 	name = "Bluespace Evacuation Gateway (Machine Board)"
