@@ -5,18 +5,19 @@
 
 /datum/gateway_destination/point/another_universe
 	id = GATEWAY_DEST_ANOTHER_UNIVERSE
+	var/target_gateway
 
 /datum/gateway_destination/point/another_universe/New()
-	if (another_universe_dest != null)
-		return another_universe_dest
-	another_universe_dest = src
+	if (GLOB.another_universe_dest != null)
+		return GLOB.another_universe_dest
+	GLOB.another_universe_dest = src
 
-/obj/effect/landmark/awaystart/another_universe
-	id = GATEWAY_DEST_ANOTHER_UNIVERSE
+/obj/effect/landmark/another_universe
 
-/obj/effect/landmark/awaystart/another_universe/Initialize()
+/obj/effect/landmark/another_universe/Initialize()
+	. = ..()
 	var/datum/gateway_destination/point/another_universe/current
-	current = another_universe_dest
+	current = GLOB.another_universe_dest
 	if(!current)
 		current = new
 	current.target_turfs += get_turf(src)
@@ -35,18 +36,11 @@ GLOBAL_DATUM(another_universe_dest, /datum/gateway_destination/point/another_uni
 	destination_name = "Another Universe"
 	return ..()
 
-/obj/machinery/gateway/bs_evac_gateway/generate_destination()
-	destination = another_universe_dest
-
-/obj/machinery/gateway/bs_evac_gateway/proc/check_fuel_requirements()
-	return TRUE
-
 /obj/machinery/gateway/bs_evac_gateway/activate()
-	var/datum/gateway_destination/point/another_universe/AU = another_universe_dest
+	var/datum/gateway_destination/point/another_universe/AU = GLOB.another_universe_dest
 	if (!istype(AU))
 		CRASH("Failed to configure destination for another universe!")
-	target = D
-	target.activate(destination)
+	target = AU
 	generate_bumper()
 	update_icon()
 
@@ -64,7 +58,7 @@ GLOBAL_DATUM(another_universe_dest, /datum/gateway_destination/point/another_uni
 	return FAILED_UNFASTEN
 
 /obj/machinery/gateway/bs_evac_gateway/update_icon_state()
-	if (is_fueled && target)
+	if (target)
 		icon_state = "evac_gateway_on"
 	else
 		icon_state = "evac_gateway_off"

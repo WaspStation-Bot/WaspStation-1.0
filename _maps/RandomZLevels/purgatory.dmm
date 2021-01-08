@@ -369,7 +369,7 @@
 /area/hilbertshotel)
 "iR" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/awaystart/another_universe,
+/obj/effect/landmark/another_universe,
 /turf/open/indestructible/hotelwood,
 /area/hilbertshotel)
 "PY" = (

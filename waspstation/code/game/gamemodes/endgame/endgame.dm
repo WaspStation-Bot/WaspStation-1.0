@@ -19,6 +19,10 @@
 	special()
 	screen.icon_state = "summary_cataclysm"
 
+/datum/map_template/purgatory
+	name = "Purgatory"
+	mappath = '_maps/RandomZLevels/purgatory.dmm'
+
 /datum/game_mode/cataclysm
 	name = "Bluespace Cataclysmic Event"
 	votable = 0
@@ -30,9 +34,15 @@
 	allow_persistence_save = FALSE
 	config_tag = "cataclysm"
 
+	var/datum/map_template/purgatory/another_universe
 	var/armageddon_timer
 	var/saturation_timer
 	var/saturation_complete = FALSE
+
+/datum/game_mode/cataclysm/pre_setup()
+	another_universe = new
+	another_universe.load_new_z()
+	return 1
 
 /datum/game_mode/cataclysm/proc/start_countdown()
 	armageddon_timer = addtimer(CALLBACK(src, .proc/trigger_cascade), CASCADE_EVENT_COUNTDOWN, TIMER_UNIQUE | TIMER_STOPPABLE)
