@@ -13,12 +13,12 @@
 	team_number = 100
 	},
 /turf/open/floor/plating/abductor{
-	initial_gas_mix = "LAVALAND_ATMOS"
+	initial_gas_mix = "ws_atmos"
 	},
 /area/whitesands/surface/outdoors)
 "k" = (
 /turf/open/floor/plating/abductor{
-	initial_gas_mix = "LAVALAND_ATMOS"
+	initial_gas_mix = "ws_atmos"
 	},
 /area/whitesands/surface/outdoors)
 "l" = (
@@ -26,58 +26,58 @@
 	team_number = 100
 	},
 /turf/open/floor/plating/abductor{
-	initial_gas_mix = "LAVALAND_ATMOS"
+	initial_gas_mix = "ws_atmos"
 	},
 /area/whitesands/surface/outdoors)
 "o" = (
 /obj/item/hemostat/alien,
 /turf/open/floor/plating/abductor{
-	initial_gas_mix = "LAVALAND_ATMOS"
+	initial_gas_mix = "ws_atmos"
 	},
 /area/whitesands/surface/outdoors)
 "p" = (
 /obj/effect/mob_spawn/human/abductor,
 /turf/open/floor/plating/abductor{
-	initial_gas_mix = "LAVALAND_ATMOS"
+	initial_gas_mix = "ws_atmos"
 	},
 /area/whitesands/surface/outdoors)
 "q" = (
 /obj/structure/closet/abductor,
 /turf/open/floor/plating/abductor{
-	initial_gas_mix = "LAVALAND_ATMOS"
+	initial_gas_mix = "ws_atmos"
 	},
 /area/whitesands/surface/outdoors)
 "s" = (
 /obj/structure/table/optable/abductor,
 /obj/item/cautery/alien,
 /turf/open/floor/plating/abductor{
-	initial_gas_mix = "LAVALAND_ATMOS"
+	initial_gas_mix = "ws_atmos"
 	},
 /area/whitesands/surface/outdoors)
 "t" = (
 /obj/structure/table/abductor,
 /obj/item/storage/box/alienhandcuffs,
 /turf/open/floor/plating/abductor{
-	initial_gas_mix = "LAVALAND_ATMOS"
+	initial_gas_mix = "ws_atmos"
 	},
 /area/whitesands/surface/outdoors)
 "v" = (
 /obj/item/scalpel/alien,
 /turf/open/floor/plating/abductor{
-	initial_gas_mix = "LAVALAND_ATMOS"
+	initial_gas_mix = "ws_atmos"
 	},
 /area/whitesands/surface/outdoors)
 "w" = (
 /obj/item/retractor/alien,
 /obj/item/paper/guides/antag/abductor,
 /turf/open/floor/plating/abductor{
-	initial_gas_mix = "LAVALAND_ATMOS"
+	initial_gas_mix = "ws_atmos"
 	},
 /area/whitesands/surface/outdoors)
 "y" = (
 /obj/machinery/abductor/gland_dispenser,
 /turf/open/floor/plating/abductor{
-	initial_gas_mix = "LAVALAND_ATMOS"
+	initial_gas_mix = "ws_atmos"
 	},
 /area/whitesands/surface/outdoors)
 "z" = (
@@ -85,13 +85,13 @@
 /obj/item/surgicaldrill/alien,
 /obj/item/circular_saw/alien,
 /turf/open/floor/plating/abductor{
-	initial_gas_mix = "LAVALAND_ATMOS"
+	initial_gas_mix = "ws_atmos"
 	},
 /area/whitesands/surface/outdoors)
 "A" = (
 /obj/structure/bed/abductor,
 /turf/open/floor/plating/abductor{
-	initial_gas_mix = "LAVALAND_ATMOS"
+	initial_gas_mix = "ws_atmos"
 	},
 /area/whitesands/surface/outdoors)
 "X" = (

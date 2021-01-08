@@ -25,3 +25,6 @@
 
 /turf/open/floor/plating/asteroid/whitesands/remove_air(amount)
 	return return_air()
+
+/turf/open/floor/plating/grass/whitesands
+	initial_gas_mix = WHITESANDS_ATMOS
