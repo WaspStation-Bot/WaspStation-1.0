@@ -62,8 +62,18 @@
 			0,0,0,0,
 			0,0.4,1,1) // Looks like RGBA? Currently #0066FF
 	for (var/atom/L in GLOB.generic_event_spawns)
+		CHECK_TICK
 		var/turf/T = get_turf(L)
 		T.ChangeTurf(/turf/closed/indestructable/bluespace_cascade)
+	var/list/target_traits = list(ZTRAIT_MINING, ZTRAIT_SPACE_RUINS, ZTRAIT_ISOLATED_RUINS)
+	for (var/trait in target_traits)
+		CHECK_TICK
+		var/z_levels = SSmapping.levels_by_trait(trait)
+		for (var/level in z_levels)
+			CHECK_TICK
+			var/atom/L = locate(rand(0, world.maxx), rand(0, world.maxy), level)
+			var/turf/T = get_turf(L)
+			T.ChangeTurf(/turf/closed/indestructable/bluespace_cascade)
 	priority_announce("Warning! Bluespace Cascade Event detected in close proximity to the station. Begin evacuation immediately!")
 	saturation_timer = addtimer(CALLBACK(src, .proc/trigger_saturation), CASCADE_SATURATION_COUNTDOWN, TIMER_UNIQUE)
 

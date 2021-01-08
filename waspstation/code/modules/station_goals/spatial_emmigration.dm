@@ -26,6 +26,7 @@ GLOBAL_DATUM(another_universe_dest, /datum/gateway_destination/point/another_uni
 
 /obj/machinery/gateway/bs_evac_gateway
 	icon = 'waspstation/icons/obj/machines/evac_gateway.dmi'
+	desc = "A high-tech interdimensional portal to the multiverse, and your salvation from the Apocalypse. You have no idea where this could lead..."
 	var/transited_players = list()
 	critical_machine = TRUE
 	circuit = /obj/item/circuitboard/machine/bs_evac_gateway
@@ -36,7 +37,7 @@ GLOBAL_DATUM(another_universe_dest, /datum/gateway_destination/point/another_uni
 	destination_name = "Another Universe"
 	return ..()
 
-/obj/machinery/gateway/bs_evac_gateway/attack_hand(mob/living/user)
+/obj/machinery/gateway/bs_evac_gateway/multitool_act(mob/living/user, obj/item/I)
 	if(can_interact(user))
 		activate()
 
