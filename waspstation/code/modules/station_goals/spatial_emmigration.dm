@@ -6,7 +6,7 @@
 /obj/machinery/gateway/bs_evac_gateway
 	icon = 'waspstation/icons/obj/machines/evac_gateway.dmi'
 	var/is_fueled = FALSE
-	var/transited_players = 0
+	var/transited_players = list()
 	// How much total fuel is required to initialize the gateway
 	var/aggregate_fuel_total = 20
 	var/fuel_requirements = list(
@@ -47,8 +47,11 @@
 /obj/machinery/gateway/bs_evac_gateway/process()
 	return
 
-/obj/machinery/gateway/bs_evac_gateway/Transfer()
-	transited_players += 1
+/obj/machinery/gateway/bs_evac_gateway/Transfer(atom/movable/AM)
+	if(ismob(AM))
+		var/mob/M = AM
+		if(M.client)
+			transited_players += M.client
 	..()
 
 /obj/item/circuitboard/machine/bs_evac_gateway
@@ -100,8 +103,14 @@
 /datum/station_goal/spatial_emmigration/check_completion()
 	if(..())
 		return TRUE
+	var/list/all_transited_players = list()
 	for(var/obj/machinery/gateway/bs_evac_gateway/B in GLOB.machines)
-		if(B.is_fueled && B.transited_players >= 1)
-			return TRUE
+		all_transited_players.Add(B.transited_players)
+	if(all_transited_players.len >= 1)
+		for(var/client/C in GLOB.clients)
+			if(!(C in all_transited_players))
+				C.set_metacoin_count(0, FALSE)
+				to_chat(C, "<span class='rose bold'>You have been lost to time and space, your metacoin bank has been erased.</span>")
+		return TRUE
 	return FALSE
 
