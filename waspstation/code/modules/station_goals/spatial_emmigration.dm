@@ -126,5 +126,5 @@ GLOBAL_DATUM(another_universe_dest, /datum/gateway_destination/point/another_uni
 		else
 			C.set_metacoin_count(0, FALSE)
 			to_chat(C, "<span class='rose bold'>You have been lost to time and space, your metacoin bank has been erased.</span>")
-	return all_transited_players.length >= 1
+	return all_transited_players.len >= 1
 
