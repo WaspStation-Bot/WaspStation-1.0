@@ -69,6 +69,7 @@
 		CHECK_TICK
 		var/turf/T = get_turf(L)
 		T.ChangeTurf(/turf/closed/indestructable/bluespace_cascade)
+	SEND_SOUND(world, 'waspstation/sound/effects/cataclysm.ogg') //oh fuck
 	var/list/target_traits = list(ZTRAIT_MINING, ZTRAIT_SPACE_RUINS, ZTRAIT_ISOLATED_RUINS)
 	for (var/trait in target_traits)
 		CHECK_TICK

@@ -81,10 +81,10 @@ GLOBAL_DATUM(another_universe_dest, /datum/gateway_destination/point/another_uni
 		/obj/item/stack/cable_coil = 30
 	)
 
-/datum/supply_pack/engineering/bs_evac_gateway_kit
+/datum/supply_pack/emergency/bs_evac_gateway_kit
 	name = "Bluespace Evacuation Gateway Kit"
 	desc = "Released as part of CASE OMEGA, contains the circuitry for the Bluepsace Evacuation Gateway"
-	cost = 1000
+	cost = 10000
 	special = TRUE
 	contains = list() // TODO
 	crate_name = "bluespace evacuation gateway kit"
@@ -105,12 +105,13 @@ GLOBAL_DATUM(another_universe_dest, /datum/gateway_destination/point/another_uni
 	 Evacuation Gateway parts are available for shipping via cargo."}
 
 /datum/station_goal/spatial_emmigration/on_report()
-	var/datum/supply_pack/P = SSshuttle.supply_packs[/datum/supply_pack/engineering/bs_evac_gateway_kit]
+	var/datum/supply_pack/P = SSshuttle.supply_packs[/datum/supply_pack/emergency/bs_evac_gateway_kit]
 	P.special_enabled = TRUE
 	var/datum/game_mode/cataclysm/C = SSticker.mode
 	if (!istype(C))
 		CRASH("Invalid game_mode [SSticker.mode] for executing start_countdown. Aborting!")
 	C.start_countdown()
+	set_security_level(SEC_LEVEL_OMEGA)
 
 /datum/station_goal/spatial_emmigration/check_completion()
 	if(..())
@@ -118,11 +119,12 @@ GLOBAL_DATUM(another_universe_dest, /datum/gateway_destination/point/another_uni
 	var/list/all_transited_players = list()
 	for(var/obj/machinery/gateway/bs_evac_gateway/B in GLOB.machines)
 		all_transited_players.Add(B.transited_players)
-	if(all_transited_players.len >= 1)
-		for(var/client/C in GLOB.clients)
-			if(!(C in all_transited_players))
-				C.set_metacoin_count(0, FALSE)
-				to_chat(C, "<span class='rose bold'>You have been lost to time and space, your metacoin bank has been erased.</span>")
-		return TRUE
-	return FALSE
+	for(var/client/C in GLOB.clients)
+		if(C in all_transited_players)
+			C.set_metacoin_count(C.get_metabalance() * 2, FALSE)
+			to_chat(C, "<span class='rose bold'>You have managed to escape the calamity! Your metacoins have double the value here.</span>")
+		else
+			C.set_metacoin_count(0, FALSE)
+			to_chat(C, "<span class='rose bold'>You have been lost to time and space, your metacoin bank has been erased.</span>")
+	return all_transited_players >= 1
 
