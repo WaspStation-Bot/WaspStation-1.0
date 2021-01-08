@@ -64,6 +64,7 @@
 	for (var/atom/L in GLOB.nukeop_start)
 		var/turf/T = get_turf(L)
 		T.ChangeTurf(/turf/closed/indestructable/bluespace_cascade)
+	SEND_SOUND(world, 'waspstation/sound/effects/cataclysm.ogg') //oh fuck
 	priority_announce("Warning! Bluespace Cascade Event detected in close proximity to the station. Begin evacuation immediately!")
 	saturation_timer = addtimer(CALLBACK(src, .proc/trigger_saturation), CASCADE_SATURATION_COUNTDOWN, TIMER_UNIQUE)
 
