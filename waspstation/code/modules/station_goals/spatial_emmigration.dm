@@ -1,20 +1,31 @@
+#define GATEWAY_DEST_ANOTHER_UNIVERSE "cataclysm_another_universe"
+
 /datum/station_goal/spatial_emmigration
 	name = "Emergency Spatial Emmigration"
 
 /datum/gateway_destination/point/another_universe
+	id = GATEWAY_DEST_ANOTHER_UNIVERSE
+
+/datum/gateway_destination/point/another_universe/New()
+	if (another_universe_dest != null)
+		return another_universe_dest
+	another_universe_dest = src
+
+/obj/effect/landmark/awaystart/another_universe
+	id = GATEWAY_DEST_ANOTHER_UNIVERSE
+
+/obj/effect/landmark/awaystart/another_universe/Initialize()
+	var/datum/gateway_destination/point/another_universe/current
+	current = another_universe_dest
+	if(!current)
+		current = new
+	current.target_turfs += get_turf(src)
+
+GLOBAL_DATUM(another_universe_dest, /datum/gateway_destination/point/another_universe)
 
 /obj/machinery/gateway/bs_evac_gateway
 	icon = 'waspstation/icons/obj/machines/evac_gateway.dmi'
-	var/is_fueled = FALSE
 	var/transited_players = 0
-	// How much total fuel is required to initialize the gateway
-	var/aggregate_fuel_total = 20
-	var/fuel_requirements = list(
-		/obj/item/stack/ore/bluespace_crystal = 20,
-		/obj/item/reagent_containers/food/snacks/grown/tomato/blue/bluespace = 20,
-		/obj/item/reagent_containers/food/snacks/grown/banana/bluespace = 20
-	)
-	var/fuel_contents = list()
 	critical_machine = TRUE
 	circuit = /obj/item/circuitboard/machine/bs_evac_gateway
 
@@ -25,21 +36,19 @@
 	return ..()
 
 /obj/machinery/gateway/bs_evac_gateway/generate_destination()
-	destination = new
+	destination = another_universe_dest
 
 /obj/machinery/gateway/bs_evac_gateway/proc/check_fuel_requirements()
 	return TRUE
 
-/obj/machinery/gateway/bs_evac_gateway/activate(datum/gateway_destination/D)
-	var/datum/gateway_destination/point/another_universe/AU = D
+/obj/machinery/gateway/bs_evac_gateway/activate()
+	var/datum/gateway_destination/point/another_universe/AU = another_universe_dest
 	if (!istype(AU))
-		CRASH("Invalid destination type for bs_evac_gateway: [D.type]")
-	if (check_fuel_requirements())
-		is_fueled = TRUE
-		target = D
-		target.activate(destination)
-		generate_bumper()
-		update_icon()
+		CRASH("Failed to configure destination for another universe!")
+	target = D
+	target.activate(destination)
+	generate_bumper()
+	update_icon()
 
 /obj/machinery/gateway/bs_evac_gateway/deactivate()
 	return // No brakes on this train!
@@ -50,6 +59,15 @@
 /obj/machinery/gateway/bs_evac_gateway/Transfer()
 	transited_players += 1
 	..()
+
+/obj/machinery/gateway/bs_evac_gateway/can_be_unfasten_wrench()
+	return FAILED_UNFASTEN
+
+/obj/machinery/gateway/bs_evac_gateway/update_icon_state()
+	if (is_fueled && target)
+		icon_state = "evac_gateway_on"
+	else
+		icon_state = "evac_gateway_off"
 
 /obj/item/circuitboard/machine/bs_evac_gateway
 	name = "Bluespace Evacuation Gateway (Machine Board)"
@@ -101,7 +119,7 @@
 	if(..())
 		return TRUE
 	for(var/obj/machinery/gateway/bs_evac_gateway/B in GLOB.machines)
-		if(B.is_fueled && B.transited_players >= 1)
+		if(B.transited_players >= 1)
 			return TRUE
 	return FALSE
 
