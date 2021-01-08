@@ -61,7 +61,7 @@
 			0,0,0,0,
 			0,0,0,0,
 			0,0.4,1,1) // Looks like RGBA? Currently #0066FF
-	for (var/atom/L in GLOB.nukeop_start)
+	for (var/atom/L in GLOB.generic_event_spawns)
 		var/turf/T = get_turf(L)
 		T.ChangeTurf(/turf/closed/indestructable/bluespace_cascade)
 	priority_announce("Warning! Bluespace Cascade Event detected in close proximity to the station. Begin evacuation immediately!")
