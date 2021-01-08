@@ -3379,6 +3379,7 @@
 #include "waspstation\code\modules\mapping\minimaps.dm"
 #include "waspstation\code\modules\mapping\writer.dm"
 #include "waspstation\code\modules\metacoin\metacoin.dm"
+#include "waspstation\code\modules\mining\lavaland\ash_flora.dm"
 #include "waspstation\code\modules\mob\emote.dm"
 #include "waspstation\code\modules\mob\say_vr.dm"
 #include "waspstation\code\modules\mob\living\brain\posibrain.dm"
