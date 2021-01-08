@@ -9,12 +9,11 @@
 	light_color="#0066FF"
 	plane = CAMERA_STATIC_PLANE
 
-	var/next_check=0
 	var/list/avail_dirs = list(NORTH,SOUTH,EAST,WEST)
 	var/spread_process_timer
 
 /turf/closed/indestructable/bluespace_cascade/New()
-	spread_process_timer = addtimer(CALLBACK(src, .process), 30, TIMER_OVERRIDE | TIMER_STOPPABLE | TIMER_UNIQUE)
+	spread_process_timer = addtimer(CALLBACK(src, .process), 30, TIMER_STOPPABLE)
 	return ..()
 
 /turf/closed/indestructable/bluespace_cascade/Destroy()
@@ -22,28 +21,33 @@
 	return ..()
 
 /turf/closed/indestructable/bluespace_cascade/process()
+	CHECK_TICK
 	// No more available directions? Shut down process().
 	if(!length(avail_dirs))
-		deltimer(spread_process_timer)
-
+		return
+	var/datum/game_mode/cataclysm/C = SSticker.mode
+	if (!istype(C))
+		return src.Destroy()
+	if(C.check_finished())
+		return
 	// Choose a direction.
 	var/pdir = pick(avail_dirs)
 	avail_dirs -= pdir
 	var/turf/T=get_step(src,pdir)
+	CHECK_TICK
 	if(istype(T, /turf/closed/indestructable/bluespace_cascade))
 		avail_dirs -= pdir
-		deltimer(spread_process_timer)
-		spread_process_timer = addtimer(CALLBACK(src, .process), 30, TIMER_OVERRIDE | TIMER_STOPPABLE | TIMER_UNIQUE)
+		return process()
 
 	// EXPAND DONG
 	if(isturf(T))
 		// Nom.
+		CHECK_TICK
 		T.singularity_act()
-		T.ChangeTurf(/turf/closed/indestructable/bluespace_cascade, flags= CHANGETURF_INHERIT_AIR)
+		T.ChangeTurf(/turf/closed/indestructable/bluespace_cascade)
 		for(var/atom/A in T.contents)
 			A.Destroy()
-		var/turf/closed/indestructable/bluespace_cascade/BC = T
-		BC.New()
+	spread_process_timer = addtimer(CALLBACK(src, .process), 30, TIMER_STOPPABLE)
 
 /turf/closed/indestructable/bluespace_cascade/attack_paw(mob/user as mob)
 	return attack_hand(user)

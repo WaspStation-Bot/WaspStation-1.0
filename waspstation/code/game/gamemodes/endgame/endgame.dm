@@ -1,6 +1,6 @@
 
 #define CASCADE_EVENT_COUNTDOWN 54000 // 1 hour 30 minutes
-#define CASCADE_SATURATION_COUNTDOWN 9000 // 15 minutes
+#define CASCADE_SATURATION_COUNTDOWN 2500 // 2 minutes 30 seconds
 
 #define CINEMATIC_BLUESPACE_CATACLYSM 15
 /datum/cinematic/bluespace_cataclysm
@@ -61,7 +61,11 @@
 			0,0,0,0,
 			0,0,0,0,
 			0,0.4,1,1) // Looks like RGBA? Currently #0066FF
-	for (var/atom/L in GLOB.generic_event_spawns)
+	var/carpspawns_list = list()
+	for (var/obj/effect/landmark/carpspawn/L in GLOB.landmarks_list)
+		carpspawns_list += L
+	for(var/count = 0, count < 6, count++)
+		var/obj/effect/landmark/carpspawn/L = pick(carpspawns_list)
 		CHECK_TICK
 		var/turf/T = get_turf(L)
 		T.ChangeTurf(/turf/closed/indestructable/bluespace_cascade)
