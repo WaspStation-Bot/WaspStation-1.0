@@ -35,7 +35,7 @@
 	var/saturation_complete = FALSE
 
 /datum/game_mode/cataclysm/proc/start_countdown()
-	armageddon_timer = addtimer(CALLBACK(src, .proc/trigger_cascade), CASCADE_EVENT_COUNTDOWN, TIMER_UNIQUE)
+	armageddon_timer = addtimer(CALLBACK(src, .proc/trigger_cascade), CASCADE_EVENT_COUNTDOWN, TIMER_UNIQUE | TIMER_STOPPABLE)
 
 /datum/game_mode/cataclysm/proc/trigger_cascade()
 	// Update parallax colors for all players to reflect the hell they're now in
