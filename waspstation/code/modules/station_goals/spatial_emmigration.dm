@@ -26,16 +26,8 @@ GLOBAL_DATUM(another_universe_dest, /datum/gateway_destination/point/another_uni
 
 /obj/machinery/gateway/bs_evac_gateway
 	icon = 'waspstation/icons/obj/machines/evac_gateway.dmi'
-	var/is_fueled = FALSE
+	desc = "A high-tech interdimensional portal to the multiverse, and your salvation from the Apocalypse. You have no idea where this could lead..."
 	var/transited_players = list()
-	// How much total fuel is required to initialize the gateway
-	var/aggregate_fuel_total = 20
-	var/fuel_requirements = list(
-		/obj/item/stack/ore/bluespace_crystal = 20,
-		/obj/item/reagent_containers/food/snacks/grown/tomato/blue/bluespace = 20,
-		/obj/item/reagent_containers/food/snacks/grown/banana/bluespace = 20
-	)
-	var/fuel_contents = list()
 	critical_machine = TRUE
 	circuit = /obj/item/circuitboard/machine/bs_evac_gateway
 
@@ -45,7 +37,13 @@ GLOBAL_DATUM(another_universe_dest, /datum/gateway_destination/point/another_uni
 	destination_name = "Another Universe"
 	return ..()
 
+/obj/machinery/gateway/bs_evac_gateway/multitool_act(mob/living/user, obj/item/I)
+	if(can_interact(user))
+		activate()
+
 /obj/machinery/gateway/bs_evac_gateway/activate()
+	if(target)
+		return
 	var/datum/gateway_destination/point/another_universe/AU = GLOB.another_universe_dest
 	if (!istype(AU))
 		CRASH("Failed to configure destination for another universe!")
@@ -68,13 +66,6 @@ GLOBAL_DATUM(another_universe_dest, /datum/gateway_destination/point/another_uni
 
 /obj/machinery/gateway/bs_evac_gateway/can_be_unfasten_wrench()
 	return FAILED_UNFASTEN
-
-/obj/machinery/gateway/bs_evac_gateway/update_icon_state()
-	if (target)
-		icon_state = "evac_gateway_on"
-	else
-		icon_state = "evac_gateway_off"
-
 /obj/item/circuitboard/machine/bs_evac_gateway
 	name = "Bluespace Evacuation Gateway (Machine Board)"
 	icon_state = "command"

@@ -2,7 +2,7 @@
 /turf/closed/indestructable/bluespace_cascade
 	name = "Bluespace Cascade Foam"
 	desc = "The unimaginable consequences of tampering with Bluespace. The Universe will never be the same."
-	icon='icons/turf/space.dmi'
+	icon='waspstation/icons/turf/walls/bs_cascade.dmi'
 	icon_state = "bluespacecrystal1"
 	light_range = 5
 	light_power = 2
@@ -14,7 +14,7 @@
 	var/spread_process_timer
 
 /turf/closed/indestructable/bluespace_cascade/New()
-	spread_process_timer = addtimer(CALLBACK(src, .process), 30, TIMER_OVERRIDE | TIMER_STOPPABLE)
+	spread_process_timer = addtimer(CALLBACK(src, .process), 30, TIMER_OVERRIDE | TIMER_STOPPABLE | TIMER_UNIQUE)
 	return ..()
 
 /turf/closed/indestructable/bluespace_cascade/Destroy()
@@ -32,13 +32,16 @@
 	var/turf/T=get_step(src,pdir)
 	if(istype(T, /turf/closed/indestructable/bluespace_cascade))
 		avail_dirs -= pdir
-		spread_process_timer = addtimer(CALLBACK(src, .process), 30, TIMER_OVERRIDE | TIMER_STOPPABLE)
+		deltimer(spread_process_timer)
+		spread_process_timer = addtimer(CALLBACK(src, .process), 30, TIMER_OVERRIDE | TIMER_STOPPABLE | TIMER_UNIQUE)
 
 	// EXPAND DONG
 	if(isturf(T))
 		// Nom.
 		T.singularity_act()
 		T.ChangeTurf(/turf/closed/indestructable/bluespace_cascade, flags= CHANGETURF_INHERIT_AIR)
+		for(var/atom/A in T.contents)
+			A.Destroy()
 		var/turf/closed/indestructable/bluespace_cascade/BC = T
 		BC.New()
 
