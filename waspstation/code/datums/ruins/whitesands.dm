@@ -58,13 +58,13 @@
 	id = "envy"
 	description = "When you get what they have, then you'll finally be happy."
 	suffix = "whitesands_surface_envy.dmm"
+	allow_duplicates = FALSE
 
-// Used to define "camps" of surviviors, nests of mobs, or other templates primarily geared towards creating tendril-like locations.
-/datum/map_template/ruin/whitesands/camp
-	prefix = "_maps/RandomRuins/SandCamps/"
-
-// /datum/map_template/ruin/whitesands/camp/surviviors
-// 	name = "Survivor Camp"
-// 	id = "ws-survivors"
-// 	description = "A small encampment of nomadic survivors of the First Colony, and their descendants. By all accounts, feral and without allegance to anyone but themselves."
-// 	suffix = "whitesands_surface_camp_survivors.dmm"
+/datum/map_template/ruin/whitesands/camp/survivors
+	name = "Survivor Camp"
+	id = "ws-survivors"
+	description = "A small encampment of nomadic survivors of the First Colony, and their descendants. By all accounts, feral and without allegance to anyone but themselves."
+	suffix = "whitesands_surface_camp_survivors.dmm"
+	cost = 2
+	placement_weight = 1.2
+	always_place = TRUE

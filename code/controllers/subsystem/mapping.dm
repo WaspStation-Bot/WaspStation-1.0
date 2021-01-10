@@ -456,10 +456,10 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 
 		if(istype(R, /datum/map_template/ruin/lavaland))
 			lava_ruins_templates[R.name] = R
-		else if(istype(R, /datum/map_template/ruin/whitesands))
-			sand_ruins_templates[R.name] = R
 		else if(istype(R, /datum/map_template/ruin/whitesands/camp))
 			sand_camps_templates[R.name] = R
+		else if(istype(R, /datum/map_template/ruin/whitesands))
+			sand_ruins_templates[R.name] = R
 		else if(istype(R, /datum/map_template/ruin/jungle))
 			jungle_ruins_templates[R.name] = R
 		else if(istype(R, /datum/map_template/ruin/icemoon/underground))
