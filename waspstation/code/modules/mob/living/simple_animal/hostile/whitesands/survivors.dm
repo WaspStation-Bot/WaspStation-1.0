@@ -54,8 +54,8 @@
 	"}
 
 /mob/living/simple_animal/hostile/whitesands/ranged
-	icon_state = "survivor_crackhead_rifle"
-	icon_living = "survivor_crackhead_rifle"
+	icon_state = "survivor_hunter"
+	icon_living = "survivor_hunter"
 	projectiletype = /obj/item/ammo_casing/ballistic/aac_300blk/recycled
 	projectilesound = 'sound/weapons/gun/rifle/shot.ogg'
 	ranged = 1
@@ -74,14 +74,14 @@
 		/obj/effect/spawner/lootdrop/whitesands/survivor/hunter
 	)
 
-/mob/living/simple_animal/hostile/whitesands/survivor/gunslinger
+/mob/living/simple_animal/hostile/whitesands/ranged/gunslinger
 	name = "Whitesands Gunslinger"
 	desc = {"
 	 One of the few survivors on the planet with working weaponry.
 	 While the weapon they wield is ancient compared to most modern firearms, it packs a hell of a punch.
 	"}
-	icon_state = "survivor_aks74u"
-	icon_living = "survivor_aks74u"
+	icon_state = "survivor_gunslinger"
+	icon_living = "survivor_gunslinger"
 	projectilesound = 'sound/weapons/gun/smg/shot.ogg'
 	rapid = 4
 	rapid_fire_delay = 3
