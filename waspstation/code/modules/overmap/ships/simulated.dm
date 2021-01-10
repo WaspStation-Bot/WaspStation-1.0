@@ -1,9 +1,13 @@
-#define SHIP_IDLE			"idle"
-#define SHIP_FLYING			"flying"
-#define SHIP_DOCKING		"docking"
-#define SHIP_UNDOCKING		"undocking"
+#define SHIP_IDLE				"idle"
+#define SHIP_FLYING				"flying"
+#define SHIP_DOCKING			"docking"
+#define SHIP_UNDOCKING			"undocking"
 
-#define SHIP_SIZE_THRESHOLD	300
+//Threshold above which it uses the ship sprites instead of the shuttle sprites
+#define SHIP_SIZE_THRESHOLD		300
+
+//How long it takes to regain 1% integrity while docked
+#define SHIP_DOCKED_REPAIR_TIME	2 SECONDS
 
 /**
   * ### Simulated overmap ship
@@ -16,6 +20,8 @@
 
 	///The time the shuttle started launching
 	var/dock_change_start_time
+	///The timer ID of the repair timer.
+	var/repair_timer
 	///State of the shuttle: idle, flying, docking, or undocking
 	var/state = SHIP_IDLE
 	///Vessel estimated thrust
@@ -75,10 +81,11 @@
 /obj/structure/overmap/ship/simulated/proc/overmap_object_act(mob/user, obj/structure/overmap/object)
 	if(istype(object, /obj/structure/overmap/dynamic))
 		var/obj/structure/overmap/dynamic/D = object
+		var/prev_state = state
 		state = SHIP_DOCKING
 		. = D.load_level(shuttle)
 		if(.)
-			state = SHIP_IDLE
+			state = prev_state
 		else
 			return dock(D) //If a value is returned from load_level(), say that, otherwise, commence docking
 	else if(istype(object, /obj/structure/overmap/level))
@@ -94,15 +101,22 @@
 /obj/structure/overmap/ship/simulated/proc/dock(obj/structure/overmap/to_dock)
 	if(!is_still())
 		return "Ship must be stopped to dock!"
-	var/dock_to_use
-	if(SSshuttle.getDock("[id]_[to_dock.id]"))
-		dock_to_use = SSshuttle.getDock("[id]_[to_dock.id]")
-	else if(SSshuttle.getDock("[DEFAULT_OVERMAP_DOCK_PREFIX]_[to_dock.id]"))
-		dock_to_use = SSshuttle.getDock("[DEFAULT_OVERMAP_DOCK_PREFIX]_[to_dock.id]")
-	else
-		return "Error finding valid docking port!"
-	if(!shuttle.check_dock(dock_to_use, TRUE))
-		return "Error with docking port. Try using a docking computer if possible."
+
+	var/obj/docking_port/stationary/dock_to_use
+	for(var/port_id in list(id, TERTIARY_OVERMAP_DOCK_PREFIX, PRIMARY_OVERMAP_DOCK_PREFIX, SECONDARY_OVERMAP_DOCK_PREFIX)) //This is poor form, but it was better than what it used to be. Tertiary is before default and secondary because it's currently the public mining ports.
+		var/obj/docking_port/stationary/found_port = SSshuttle.getDock("[port_id]_[to_dock.id]")
+		if(!found_port)
+			continue
+		if(!shuttle.check_dock(found_port, TRUE))
+			if(!found_port.width && !found_port.height)
+				. = "Please use a docking computer to specify dock location."
+			continue
+		dock_to_use = found_port
+		break
+
+	if(!dock_to_use)
+		return . + "Error finding available docking port!"
+
 	shuttle.request(dock_to_use)
 	docked = to_dock
 
@@ -192,11 +206,13 @@
 			INVOKE_ASYNC(D, /obj/structure/overmap/dynamic/.proc/unload_level)
 		forceMove(SSovermap.get_unused_overmap_square())
 		docked = null
+		state = SHIP_FLYING
 		update_screen()
 		return FALSE
 	if(!docked && docked_object) //The overmap object thinks it's NOT docked to something, but it actually is. Move to the correct place.
 		forceMove(docked_object)
 		docked = docked_object
+		state = SHIP_IDLE
 		update_screen()
 		return FALSE
 
@@ -215,6 +231,8 @@
 		if(SHIP_DOCKING) //so that the shuttle is truly docked first
 			if(shuttle.mode == SHUTTLE_CALL)
 				forceMove(docked)
+				if(istype(docked, /obj/structure/overmap/level/main)) //Hardcoded and bad
+					addtimer(CALLBACK(src, .proc/repair), SHIP_DOCKED_REPAIR_TIME, TIMER_STOPPABLE | TIMER_LOOP)
 				state = SHIP_IDLE
 		if(SHIP_UNDOCKING)
 			if(docked)
@@ -224,13 +242,18 @@
 					INVOKE_ASYNC(D, /obj/structure/overmap/dynamic/.proc/unload_level)
 				docked = null
 				state = SHIP_FLYING
+				if(repair_timer)
+					deltimer(repair_timer)
 	update_screen()
 
 /**
-  * Handles a few miscellaneous features, namely repairs. called by the SSovermap subsystem, TODO: refactor pls
+  * Handles repairs. Called by a repeating timer that is created when the ship docks.
   */
-/obj/structure/overmap/ship/simulated/proc/process_misc()
-	if(docked && integrity < initial(integrity))
+/obj/structure/overmap/ship/simulated/proc/repair()
+	if(!docked)
+		deltimer(repair_timer)
+		return
+	if(integrity < initial(integrity))
 		integrity++
 
 /obj/structure/overmap/ship/simulated/update_icon_state()
@@ -244,3 +267,5 @@
 #undef SHIP_UNDOCKING
 
 #undef SHIP_SIZE_THRESHOLD
+
+#undef SHIP_DOCKED_REPAIR_TIME
