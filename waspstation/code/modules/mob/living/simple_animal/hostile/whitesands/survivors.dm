@@ -41,10 +41,10 @@
 	del_on_death = 1
 	faction = list() // Generated at runtime based on their camp ID
 
-/obj/living/simple_animal/hostile/whitesands/proc/set_camp_faction(tag)
-	faction = list()
-	faction += initial(faction)
-	faction += tag
+/mob/living/simple_animal/hostile/whitesands/proc/set_camp_faction(tag)
+	src.faction = list()
+	src.faction += initial(src.faction)
+	src.faction += tag
 
 /mob/living/simple_animal/hostile/whitesands/survivor
 	name = "Whitesands Survivor"
@@ -56,7 +56,7 @@
 /mob/living/simple_animal/hostile/whitesands/ranged
 	icon_state = "survivor_crackhead_rifle"
 	icon_living = "survivor_crackhead_rifle"
-	projectiletype = /obj/projectile/ballistic/aac_300blk/recycled
+	projectiletype = /obj/item/ammo_casing/ballistic/aac_300blk/recycled
 	projectilesound = 'sound/weapons/gun/rifle/shot.ogg'
 	ranged = 1
 	rapid_fire_delay = 6
@@ -70,7 +70,7 @@
 	 Hunting on Whitesands is dangerous, hard work, making a hunter still standing one to be feared.
 	"}
 	loot = list(
-		/obj/effect/mob_spawn/human/corpse/whitesands/survivor/ranged/hunter,
+		/obj/effect/mob_spawn/human/corpse/whitesands/survivor/hunter,
 		/obj/effect/spawner/lootdrop/whitesands/survivor/hunter
 	)
 
@@ -87,6 +87,6 @@
 	rapid_fire_delay = 3
 	projectiletype = /obj/item/ammo_casing/ballistic/a545_39/recycled
 	loot = list(
-		/obj/effect/mob_spawn/human/corpse/whitesands/survivor/ranged/gunslinger,
+		/obj/effect/mob_spawn/human/corpse/whitesands/survivor/gunslinger,
 		/obj/effect/spawner/lootdrop/whitesands/survivor/gunslinger
 	)

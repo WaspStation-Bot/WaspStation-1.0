@@ -32,7 +32,7 @@ GLOBAL_LIST_INIT(ws_survivor_default_loot, list(
 	/obj/item/reagent_containers/food/drinks/waterbottle/empty = 0.8,
 	/obj/item/storage/firstaid/ancient/heirloom = 0.5,
 	/obj/item/kitchen/knife/combat/survival = 0.5,
-	obj/item/reagent_containers/food/snacks/rationpack = 0.7
+	/obj/item/reagent_containers/food/snacks/rationpack = 0.7
 ))
 
 /obj/effect/spawner/lootdrop/whitesands
@@ -53,7 +53,7 @@ GLOBAL_LIST_INIT(ws_survivor_default_loot, list(
 /obj/effect/spawner/lootdrop/whitesands/survivor/hunter
 	name = "Whitesands Hunter loot spawner"
 	loot = list(
-		/obj/item/gun/ballistic/boltaction/polymer = 0.3,
+		/obj/item/gun/ballistic/rifle/boltaction/polymer = 0.3,
 		/obj/item/ammo_box/aac_300blk_stripper = 0.4
 	)
 /obj/effect/spawner/lootdrop/whitesands/survivor/gunslinger

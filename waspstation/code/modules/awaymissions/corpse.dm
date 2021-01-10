@@ -4,8 +4,8 @@
 /datum/outfit/whitesands/survivor
 	name = "Whitesands Survivor"
 	uniform = /obj/item/clothing/under/color/random
-	back = /obj/items/storage/backpack
-	shoes = /obj/items/clothing/shoes/workboots/mining
+	back = /obj/item/storage/backpack
+	shoes = /obj/item/clothing/shoes/workboots/mining
 	suit = /obj/item/clothing/suit/hooded/survivor
 	r_pocket = /obj/item/tank/internals/emergency_oxygen/engi
 	gloves = /obj/item/clothing/gloves/color/black
