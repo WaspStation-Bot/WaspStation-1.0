@@ -1,15 +1,15 @@
 // Used to define "camps" of surviviors, nests of mobs, or other templates primarily geared towards creating tendril-like locations.
-/datum/map_template/ruin/whitesands/camp
+/datum/map_template/ruin/camp/whitesands
 	prefix = "_maps/RandomRuins/SandCamps/"
 	// Used to associate the mobs generated in the area with eachother.
 	var/camp_id = "error_contact_coder"
 
-/datum/map_template/ruin/whitesands/camp/New()
+/datum/map_template/ruin/camp/whitesands/New()
 	. = ..()
 	//In the event this collides, it's a feature, not a bug.
 	camp_id = "[id]:[rand(1, 128)]"
 
-/datum/map_template/ruin/whitesands/camp/load(turf/T, centered = FALSE)
+/datum/map_template/ruin/camp/whitesands/load(turf/T, centered = FALSE)
 	if(centered)
 		T = locate(T.x - round(width/2) , T.y - round(height/2) , T.z)
 	if(!T)
