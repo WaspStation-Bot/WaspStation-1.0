@@ -68,9 +68,9 @@
 				continue
 			if(istype(A, /obj/machinery/atmospherics))
 				atmos_machines += A
-			if(istype(A, /mob/living/simple_animal/hostile/whitesands))
-				var/mob/living/simple_animal/hostile/whitesands/WS = A
-				WS.set_camp_faction(camp_id)
+			if(istype(A, /mob/living/simple_animal/hostile))
+				var/mob/living/simple_animal/hostile/M = A
+				M.set_camp_faction(camp_id)
 	for(var/L in border)
 		var/turf/T = L
 		T.air_update_turf(TRUE) //calculate adjacent turfs along the border to prevent runtimes

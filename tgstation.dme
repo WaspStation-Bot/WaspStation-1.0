@@ -3409,6 +3409,7 @@
 #include "waspstation\code\modules\mob\living\simple_animal\corpse.dm"
 #include "waspstation\code\modules\mob\living\simple_animal\friendly\gator.dm"
 #include "waspstation\code\modules\mob\living\simple_animal\friendly\snake.dm"
+#include "waspstation\code\modules\mob\living\simple_animal\hostile\hostile.dm"
 #include "waspstation\code\modules\mob\living\simple_animal\hostile\zombie.dm"
 #include "waspstation\code\modules\mob\living\simple_animal\hostile\mining_mobs\basilisk.dm"
 #include "waspstation\code\modules\mob\living\simple_animal\hostile\mining_mobs\goliath.dm"

@@ -42,11 +42,6 @@
 	del_on_death = 1
 	faction = list() // Generated at runtime based on their camp ID
 
-/mob/living/simple_animal/hostile/whitesands/proc/set_camp_faction(tag)
-	src.faction = list()
-	src.faction += initial(src.faction)
-	src.faction += tag
-
 /mob/living/simple_animal/hostile/whitesands/survivor
 	name = "Whitesands Survivor"
 	desc = {"

@@ -125,9 +125,7 @@ SUBSYSTEM_DEF(mapping)
 	var/list/sand_ruins = levels_by_trait(ZTRAIT_SAND_RUINS)
 	if (sand_ruins.len)
 		seedRuins(sand_ruins, CONFIG_GET(number/whitesands_budget), list(/area/whitesands/surface/outdoors/unexplored), sand_ruins_templates)
-	var/list/sand_camps = levels_by_trait(ZTRAIT_SAND_CAMPS)
-	if (sand_camps.len)
-		seedRuins(sand_camps, CONFIG_GET(number/whitesands_budget), list(/area/whitesands/surface/outdoors/explored), sand_camps_templates)
+		seedRuins(sand_ruins, CONFIG_GET(number/whitesands_budget), list(/area/whitesands/surface/outdoors/explored), sand_camps_templates)
 	// WS Edit End - Whitesands
 	// Generate deep space ruins
 	var/list/space_ruins = levels_by_trait(ZTRAIT_SPACE_RUINS)

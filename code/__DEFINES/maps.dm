@@ -39,7 +39,6 @@ require only minor tweaks.
 #define ZTRAIT_ICE_RUINS "Ice Ruins"
 #define ZTRAIT_ICE_RUINS_UNDERGROUND "Ice Ruins Underground"
 #define ZTRAIT_SAND_RUINS "Sand Ruins" //Wasp edit - Whitesands
-#define ZTRAIT_SAND_CAMPS "Sand Camps" // WS Edit - Whitesands - Specifically used for non-ruin spawns, like mob camps/fauna nests
 #define ZTRAIT_ISOLATED_RUINS "Isolated Ruins" //Placing ruins on z levels with this trait will use turf reservation instead of usual placement.
 
 // boolean - weather types that occur on the level
@@ -85,7 +84,6 @@ require only minor tweaks.
     ZTRAIT_MINING = TRUE, \
 	ZTRAIT_TEMPERATURE_GRADIENT = TRUE, \
     ZTRAIT_SAND_RUINS = TRUE, \
-	ZTRAIT_SAND_CAMPS = TRUE, \
     ZTRAIT_BOMBCAP_MULTIPLIER = 2, \
     ZTRAIT_BASETURF = /turf/open/floor/plating/asteroid/whitesands)
 #define ZTRAITS_ICEMOON list(\
