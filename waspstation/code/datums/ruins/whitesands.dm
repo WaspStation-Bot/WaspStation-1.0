@@ -92,3 +92,4 @@
 	suffix = "whitesands_surface_camp_adobe.dmm"
 	cost = 10
 	placement_weight = 0.5
+	allow_duplicates = FALSE
