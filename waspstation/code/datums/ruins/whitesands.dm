@@ -60,7 +60,7 @@
 	suffix = "whitesands_surface_envy.dmm"
 	allow_duplicates = FALSE
 
-/datum/map_template/ruin/whitesands/camp/survivors
+/datum/map_template/ruin/camp/whitesands/survivors
 	name = "Survivor Camp"
 	id = "ws-survivors"
 	description = "A small encampment of nomadic survivors of the First Colony, and their descendants. By all accounts, feral and without allegance to anyone but themselves."
@@ -69,7 +69,7 @@
 	placement_weight = 1.2
 	always_place = TRUE
 
-/datum/map_template/ruin/whitesands/camp/survivors/hunters
+/datum/map_template/ruin/camp/whitesands/survivors/hunters
 	name = "Hunter Camp"
 	id = "ws-survivors-hunter"
 	description = "A small encampment of nomadic hunters of the First Colony, and their descendants. It's worth steering wide of these guys."
@@ -77,7 +77,7 @@
 	cost = 3
 	placement_weight = 0.8
 
-/datum/map_template/ruin/whitesands/camp/survivors/gunslingers
+/datum/map_template/ruin/camp/whitesands/survivors/gunslingers
 	name = "Mercenary Camp"
 	id = "ws-survivors-gunslingers"
 	description = "A small encampment of nomadic warriors of the First Colony, and their descendants. They might have the only working automatics on the planet."
@@ -85,7 +85,7 @@
 	cost = 5
 	placement_weight = 0.7
 
-/datum/map_template/ruin/whitesands/camp/survivors/adobe
+/datum/map_template/ruin/camp/whitesands/survivors/adobe
 	name = "Native Adobe"
 	id = "ws-survivors-gunslingers"
 	description = "A semi-permanent settlement of survivors of the First Colony, and their descendants. Places like this often stash gear and supplies for their bretheren."
