@@ -12,10 +12,7 @@
 
 	var/deployed = FALSE //If the drill is anchored and ready-to-mine
 	var/active = FALSE //If the drill is activly mining ore
-	var/ore_contained = list() //[Ore stack path] = Amount
-	var/total_amount = 0
-	var/max_amount = 10000
-	var/area/lavaland/surface/outdoors/ore_vein/active_vein //Ore vein currently set to be mined in
+	var/obj/effect/landmark/ore_vein/active_vein //Ore vein currently set to be mined in
 
 /obj/machinery/deepcore/drill/interact(mob/user, special_state)
 	. = ..()
@@ -65,50 +62,32 @@
 			active = FALSE
 			update_icon_state()
 		if(network)
-			network.Push(ore_contained)
+			network.Push(container)
 		else //Dry deployment of ores
-			for(var/O in ore_contained)
-				dropOre(O, ore_contained[O])
+			dropOre()
 
 /obj/machinery/deepcore/drill/proc/mineOre()
-	if(total_amount >= max_amount || !active_vein)
-		return FALSE
-
 	var/list/extracted = active_vein.extract_ore()
-	for(var/O in extracted)
-		var/extract_amount = extracted[O]
-		if(total_amount + extract_amount >= max_amount)
-			ore_contained[O] += max_amount - total_amount
-			total_amount = max_amount
+	var/result
+	for(var/datum/material/M in extracted)
+		result = container.insert_amount_mat(extracted[M], M)
+		if(result)
+			. += result
+		else
 			return FALSE
-		ore_contained[O] += extract_amount
-		total_amount += extract_amount
-	return total_amount
 
-/obj/machinery/deepcore/drill/proc/dropOre(obj/item/stack/ore/O, amount)
-	if(ore_contained[O] > amount)
-		ore_contained[O] -= amount
-	else if(ore_contained[O] == amount)
-		ore_contained -= O
-	else
-		return 0
-	new O(get_step(src, SOUTH), amount, TRUE)
-	return amount
+/obj/machinery/deepcore/drill/proc/dropOre(datum/material/M, amount)
+	return container.retrieve_all(get_step(src, SOUTH))
 
 /obj/machinery/deepcore/drill/proc/scanArea()
 	//Checks for ores and latches to an active vein if one is located.
-	var/area/deployed_zone = get_area(src)
-	if(deployed_zone && isarea(deployed_zone))
-		if(istype(deployed_zone, /area/lavaland/surface/outdoors/ore_vein))
-			var/area/lavaland/surface/outdoors/ore_vein/vein = deployed_zone
-			if(!vein.active_drill)
-				vein.active_drill = src
-				active_vein = vein
-				return DCM_LOCATED_VEIN
-			else
-				return DCM_OCCUPIED_VEIN
-		else
-			return DCM_NO_VEIN
+	var/turf/deployed_zone = get_turf(src)
+	var/obj/effect/landmark/ore_vein/vein = locate() in deployed_zone
+	if(vein)
+		active_vein = vein
+		return TRUE
+	else
+		return FALSE
 
 /obj/machinery/deepcore/drill/proc/Deploy()
 	deployed = TRUE
@@ -117,7 +96,6 @@
 	visible_message("<span class='notice'>[src] is now deployed and ready to operate!</span>")
 
 /obj/machinery/deepcore/drill/proc/Undeploy()
-	active_vein.active_drill = null
 	active_vein = null
 	deployed = FALSE
 	anchored = FALSE

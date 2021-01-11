@@ -2,7 +2,8 @@ GLOBAL_LIST_EMPTY(ore_vein_landmarks)
 
 /obj/effect/landmark/ore_vein
 	name = "OreVein"
-	var/resource
+	var/datum/material/resource
+	var/material_rate = 0
 
 /obj/effect/landmark/ore_vein/Initialize(mapload, var/area/lavaland/surface/outdoors/ore_vein/vein_type)
 	. = ..()
@@ -17,6 +18,11 @@ GLOBAL_LIST_EMPTY(ore_vein_landmarks)
 	T.change_area(old_area, vein_type)
 	resource = initial(vein_type.ore_type.name)
 
+/obj/effect/landmark/ore_vein/proc/extract_ore() //Called by deepcore drills, returns a list of keyed ore stacks by amount
+	var/list/ores = list()
+	ores[resource] = material_rate
+	return ores
+
 /*\
 	# Ore Veins
 	Represents material hidden beneath the earth for Deep Core Mining
@@ -25,23 +31,10 @@ GLOBAL_LIST_EMPTY(ore_vein_landmarks)
 	name = "Undefined Ore Vein"
 	var/obj/item/stack/ore/ore_type //What you're pulling out of the ground
 	var/material_rate = 0	//Affects overall value of the ore vein
-	var/obj/machinery/deepcore/drill/active_drill
 	///Currently linked ore vein landmark
 	var/obj/effect/landmark/ore_vein/landmark
 
-// /area/lavaland/surface/outdoors/ore_vein/update_areasize()
-// 	//Overrides the outdoors restriction on areasize
-// 	areasize = 0
-// 	for(var/turf/open/T in contents)
-// 		areasize++
-
-/area/lavaland/surface/outdoors/ore_vein/proc/extract_ore() //Called by deepcore drills, returns a list of keyed ore stacks by amount
-	var/list/ores = list()
-	// if(!areasize)
-	// 	update_areasize()
-	// ores[ore_type] = CEILING((sqrt(areasize) * material_rate), 1)
-	ores[ore_type] = material_rate
-	return ores
+/area/lavaland/surface/outdoors/ore_vein/
 
 /area/lavaland/surface/outdoors/ore_vein/iron
 	name = "Iron Ore Vein"
