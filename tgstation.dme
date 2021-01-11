@@ -3389,6 +3389,7 @@
 #include "waspstation\code\modules\mining\deepcore\hopper.dm"
 #include "waspstation\code\modules\mining\deepcore\hub.dm"
 #include "waspstation\code\modules\mining\deepcore\ore_vein.dm"
+#include "waspstation\code\modules\mining\lavaland\ash_flora.dm"
 #include "waspstation\code\modules\mob\emote.dm"
 #include "waspstation\code\modules\mob\say_vr.dm"
 #include "waspstation\code\modules\mob\living\brain\posibrain.dm"
