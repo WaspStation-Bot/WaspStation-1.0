@@ -52,7 +52,8 @@
 /mob/living/simple_animal/hostile/whitesands/ranged
 	icon_state = "survivor_hunter"
 	icon_living = "survivor_hunter"
-	projectiletype = /obj/item/ammo_casing/ballistic/aac_300blk/recycled
+	projectiletype = null
+	casingtype = /obj/item/ammo_casing/ballistic/aac_300blk/recycled
 	projectilesound = 'sound/weapons/gun/rifle/shot.ogg'
 	ranged = 1
 	rapid_fire_delay = 6
@@ -81,7 +82,7 @@
 	projectilesound = 'sound/weapons/gun/smg/shot.ogg'
 	rapid = 4
 	rapid_fire_delay = 3
-	projectiletype = /obj/item/ammo_casing/ballistic/a545_39/recycled
+	casingtype = /obj/item/ammo_casing/ballistic/a545_39/recycled
 	loot = list(
 		/obj/effect/mob_spawn/human/corpse/whitesands/survivor/gunslinger,
 		/obj/effect/spawner/lootdrop/whitesands/survivor/gunslinger
