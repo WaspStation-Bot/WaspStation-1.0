@@ -313,7 +313,7 @@
 	if(get_gene(/datum/plant_gene/trait/plant_type/fungal_metabolism))
 		text += "- Plant type: Mushroom. Can grow in dry soil.\n"
 	if(get_gene(/datum/plant_gene/trait/plant_type/crystal))		// WS Edit - Crystal
-		text += "- Plant type: Crystal. Does not require light.\n"		// WS Edit - Crystal
+		text += "- Plant type: Crystal. Revitalizes soil.\n"		// WS Edit - Crystal
 	if(get_gene(/datum/plant_gene/trait/plant_type/alien_properties))
 		text += "- Plant type: <span class='warning'>UNKNOWN</span> \n"
 	if(potency != -1)
