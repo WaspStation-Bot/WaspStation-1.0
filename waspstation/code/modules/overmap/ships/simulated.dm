@@ -28,6 +28,8 @@
 	var/est_thrust
 	///Vessel approximate mass
 	var/mass
+	///Average fuel fullness percentage
+	var/avg_fuel_amnt = 100
 
 	///The overmap object the ship is docked to, if any
 	var/obj/structure/overmap/docked
@@ -39,12 +41,6 @@
 	LAZYADD(SSovermap.simulated_ships, src)
 	if(_shuttle)
 		shuttle = _shuttle
-
-/obj/structure/overmap/ship/Destroy()
-	. = ..()
-	LAZYREMOVE(SSovermap.simulated_ships, src)
-	if(movement_callback_id)
-		deltimer(movement_callback_id)
 
 /obj/structure/overmap/ship/simulated/proc/initial_load()
 	if(istype(loc, /obj/structure/overmap))
@@ -63,6 +59,7 @@
 	if(integrity > 0)
 		return
 	if(docked) //what even
+		check_loc()
 		return
 	for(var/MN in GLOB.mob_living_list)
 		var/mob/M = MN
@@ -129,9 +126,10 @@
   * Undocks the shuttle by launching the shuttle with no destination (this causes it to remain in transit)
   */
 /obj/structure/overmap/ship/simulated/proc/undock()
-	if(!is_still()) //how the hell is it even moving (is the question I've asked multiple times)
-		return "Ship must be stopped to undock!"
+	if(!is_still()) //how the hell is it even moving (is the question I've asked multiple times) //fuck you past me this didn't help at all
+		decelerate(max_speed)
 	if(!docked)
+		check_loc()
 		return "Ship not docked!"
 	if(!shuttle)
 		return "Shuttle not found!"
@@ -155,6 +153,7 @@
 	refresh_engines()
 	if(!mass)
 		calculate_mass()
+	calculate_avg_fuel()
 	for(var/obj/machinery/power/shuttle/engine/E in shuttle.engine_list)
 		if(!E.enabled)
 			continue
@@ -189,6 +188,21 @@
 	update_icon_state()
 
 /**
+  * Calculates the average fuel fullness of all engines.
+  */
+/obj/structure/overmap/ship/simulated/proc/calculate_avg_fuel()
+	var/fuel_avg = 0
+	var/engine_amnt = 0
+	for(var/obj/machinery/power/shuttle/engine/E in shuttle.engine_list)
+		if(!E.enabled)
+			continue
+		fuel_avg += E.return_fuel() / E.return_fuel_cap()
+	if(!engine_amnt || !fuel_avg)
+		avg_fuel_amnt = 0
+		return
+	avg_fuel_amnt = round(fuel_avg / engine_amnt)
+
+/**
   * Proc called after a shuttle is moved, used for checking a ship's location when it's moved manually (E.G. calling the mining shuttle via a console)
   */
 /obj/structure/overmap/ship/simulated/proc/check_loc()
@@ -214,11 +228,13 @@
 		forceMove(docked_object)
 		docked = docked_object
 		state = SHIP_IDLE
+		decelerate(max_speed)
 		update_screen()
 		return FALSE
 
 /obj/structure/overmap/ship/simulated/tick_move()
 	if(docked)
+		decelerate(max_speed)
 		deltimer(movement_callback_id)
 		movement_callback_id = null
 		return
