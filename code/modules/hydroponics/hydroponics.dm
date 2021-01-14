@@ -152,7 +152,7 @@
 			adjustWater(-rand(1,6) / rating)
 
 			// If the plant is dry, it loses health pretty fast, unless mushroom
-			if(waterlevel <= 10 && !myseed.get_gene(/datum/plant_gene/trait/plant_type/fungal_metabolism))
+			if(waterlevel <= 10 && !(myseed.get_gene(/datum/plant_gene/trait/plant_type/fungal_metabolism) || myseed.get_gene(/datum/plant_gene/trait/plant_type/crystal)))
 				adjustHealth(-rand(0,1) / rating)
 				if(waterlevel <= 0)
 					adjustHealth(-rand(0,2) / rating)
