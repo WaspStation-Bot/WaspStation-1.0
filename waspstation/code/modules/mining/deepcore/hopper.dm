@@ -6,8 +6,24 @@
 	idle_power_usage = 5
 	active_power_usage = 50
 	anchored = FALSE
+	circuit = /obj/item/circuitboard/machine/deepcore/hopper
 
 	var/active = FALSE
+	var/eject_lim = 0 //Amount of ore stacks the hopper can eject each tick
+
+/obj/machinery/deepcore/hopper/RefreshParts()
+	// Material container size
+	var/MB_value = 0
+	for(var/obj/item/stock_parts/matter_bin/MB in component_parts)
+		MB_value += 4 * MB.rating ** 2 // T1 = 8, T2 = 32, T3 = 72, T4 = 128
+	container.max_amount = MB_value * MINERAL_MATERIAL_AMOUNT
+	// Ejection limit per-tick
+	var/MM_value = 0
+	for(var/obj/item/stock_parts/manipulator/MM in component_parts)
+		MM_value += MM.rating
+	eject_lim = MM_value ** 2
+	// Capacitor part function
+	// lol there is none
 
 /obj/machinery/deepcore/hopper/interact(mob/user, special_state)
 	. = ..()
@@ -33,10 +49,15 @@
 	if(active)
 		if(network)
 			network.Pull(container)
-		dropOre()
+			dropOre()
 
 /obj/machinery/deepcore/hopper/proc/dropOre()
-	return container.retrieve_all(get_step(src, dir))
+	var/eject_count = eject_lim
+	for(var/I in container.materials)
+		if(eject_count <= 0)
+			return
+		var/datum/material/M = I
+		eject_count -= container.retrieve_sheets(eject_count, M, get_step(src, dir))
 
 /obj/machinery/deepcore/hopper/update_icon_state()
 	if(powered(power_channel) && anchored)
