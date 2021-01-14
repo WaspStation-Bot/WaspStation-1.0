@@ -19,7 +19,7 @@ GLOBAL_LIST_EMPTY(ore_vein_landmarks)
 		/datum/material/plasma = 450,
 		/datum/material/uranium = 200,
 		/datum/material/titanium = 300,
-		/datum/material/bluespace = 50s
+		/datum/material/bluespace = 50
 	)
 	var/datum/material/M = resource
 	if(mat)
