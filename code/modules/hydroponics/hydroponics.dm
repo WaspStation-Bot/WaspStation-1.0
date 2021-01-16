@@ -1,5 +1,6 @@
 #define TRAY_NAME_UPDATE name = myseed ? "[initial(name)] ([myseed.plantname])" : initial(name)
 #define CYCLE_DELAY_DEFAULT 200			//About 10 seconds / cycle
+#define CYCLE_DELAY_SLOW    500			//About 25 seconds / cycle
 
 /obj/machinery/hydroponics
 	name = "hydroponics tray"
@@ -137,7 +138,7 @@
 				adjustNutri(-1 / rating)
 
 			// Lack of nutrients hurts non-weeds
-			if(nutrilevel <= 0 && myseed.get_gene(/datum/plant_gene/trait/plant_type/weed_hardy))
+			if(nutrilevel <= 0 && !myseed.get_gene(/datum/plant_gene/trait/plant_type/weed_hardy))
 				adjustHealth(-rand(1,3))
 
 //Photosynthesis/////////////////////////////////////////////////////////
@@ -794,7 +795,7 @@
 				return
 			var/obj/item/seeds/S = O
 			if(S.get_gene(/datum/plant_gene/trait/plant_type/crystal))
-				cycledelay = 500
+				cycledelay = CYCLE_DELAY_SLOW
 			else
 				cycledelay = CYCLE_DELAY_DEFAULT
 			to_chat(user, "<span class='notice'>You plant [O].</span>")
